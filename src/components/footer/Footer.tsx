@@ -1,4 +1,3 @@
-import { GithubLogo, LinkedinLogo } from "@phosphor-icons/react"
 
 
 function Footer() {
@@ -14,10 +13,8 @@ function Footer() {
         <p className="font-light "> Copyright: {data}</p>
           <p className="font-bold mb-3">Acesse nossas redes sociais</p>
         <div className="flex justify-center gap-3">
-          <a  target="_blank "href="https://github.com/Centro-Bell-Hooks" aria-label="Github Centro Bell Hooks" rel="noopener">
-              <GithubLogo size={34} />
-            </a>
-            <LinkedinLogo size={34}/>
+          
+              
           </div>
         </div>
       </div>
