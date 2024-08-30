@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: 'https://centro-bell-hooks.onrender.com/'
+  baseURL: 'https://centro-bell-hooks.onrender.com'
 })
 
 export const auth = async(url: string, dados: Object, setDados: Function) => {

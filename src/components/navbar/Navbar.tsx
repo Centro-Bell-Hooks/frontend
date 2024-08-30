@@ -12,7 +12,7 @@ export function Navbar() {
                     <div className="flex gap-4">
                         <div className="hover:underline font-bold">Sobre</div>
                         <div className="hover:underline font-bold">Contato</div>
-                        <div className="hover:underline font-bold">Login</div>
+                        <Link to="/login" className="hover:underline font-bold">Login</Link>
                     </div>
                 </div>
             </div>
