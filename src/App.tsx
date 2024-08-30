@@ -1,18 +1,17 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { Navbar } from './components/navbar'
-import { Home } from './pages/homepage'
-import Footer from './components/footer/Footer'
+
+import { Home } from './pages'
+import { Navbar, Footer } from './components'
 
 function App() {
     return (
         <BrowserRouter>
             <Navbar />
             <Routes>
-                <Route path="/home" element={<Home />} />
+                <Route path="/" element={<Home />} />
             </Routes>
-            <Footer/>
+            <Footer />
         </BrowserRouter>
-        
     )
 }
 
