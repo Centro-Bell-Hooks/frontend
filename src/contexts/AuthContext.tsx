@@ -32,9 +32,9 @@ export function AuthProviders({ children }: AuthProvidersProps) {
 
         try {
             await auth(`/usuarios/logar`, usuarioLogin, setUsuario)
-            alert ("Usuário logado.")
-            setIsLoading (false)
+            alert('Usuário logado.')
         } catch (error) {
+            console.log('ERROR', error)
             alert('Os dados do usuário estão inconsistentes')
         }
 
@@ -58,4 +58,4 @@ export function AuthProviders({ children }: AuthProvidersProps) {
         </authContext.Provider>
     )
 }
-export default authContext;
+export default authContext
