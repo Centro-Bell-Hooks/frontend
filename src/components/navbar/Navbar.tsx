@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 export function Navbar() {
     return (
         <>
-            <div className="w-full bg-fuchsia-800 text-white flex justify-center py-4">
+            <div className="w-full bg-fuchsia-800 text-white flex justify-center items-center h-[100px]">
                 <div className="container flex justify-between text-lg">
                     <Link to="/" className="text-2x1 font-bold ml-4">
                         Centro Bell Hooks
