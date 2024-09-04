@@ -4,6 +4,7 @@ import { ChangeEvent, useContext, useEffect, useState } from 'react'
 import { UsuarioLogin } from '../../models'
 import { AuthContext } from '../../contexts'
 import { Input } from '../../components'
+import { RotatingLines } from 'react-loader-spinner'
 
 // const valoresIniciais = {
 //     id: 0,
@@ -17,7 +18,7 @@ import { Input } from '../../components'
 export function Login() {
     const navigate = useNavigate()
     const [usuarioLogin, setUsuarioLogin] = useState<UsuarioLogin>({} as UsuarioLogin)
-    const { usuario, handleLogin } = useContext(AuthContext)
+    const { usuario, handleLogin, isLoading } = useContext(AuthContext)
 
     useEffect(() => {
         if (usuario.token !== '') {
@@ -37,11 +38,10 @@ export function Login() {
         handleLogin(usuarioLogin)
     }
 
-    // TESTAR - se os componentes estão funcionando
     return (
-        <>
-            <form onSubmit={login} className="flex justify-center items-center flex-col w-1/2">
-                <h2 className="text-slate-900 text-5xl">Entrar</h2>
+        <div className="h-screen flex justify-center items-center">
+            <form onSubmit={login} className="flex justify-center items-center flex-col w-1/4">
+                <h2 className="text-slate-900 text-3xl font-semibold mb-3">Entrar</h2>
                 <div className="flex flex-col w-full">
                     <Input
                         name="usuario"
@@ -49,8 +49,6 @@ export function Login() {
                         value={usuarioLogin.usuario}
                         onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
                     />
-                </div>
-                <div className="flex flex-col w-full">
                     <Input
                         type="password"
                         name="senha"
@@ -60,31 +58,30 @@ export function Login() {
                     />
                 </div>
 
-                {/*  <button
-                    type="submit"
-                    className="rounded bg-fuchsia-700 hover:bg-fuchsia-800 text-white w-1/2 py-2 flex justify-center"
-                >
-                    {isLoading ? <RotatingLines
-                        strokeColor="white"
-                        strokeWidth="5"
-                        animationDuration="0.75"
-                        width="24"
-                        visible={true}
-                      /> : 
-                    <span>Entrar</span>
-                    {/* } 
-                </button>*/}
-
-                <hr className="border-slate-800 w-full" />
-
-                <p>
+                <p className="mb-4">
                     Ainda não tem uma conta?{' '}
                     <Link to="/cadastro" className="text-sky-900 hover:underline">
                         Cadastre-se
                     </Link>
                 </p>
+
+                <button
+                    type="submit"
+                    className="rounded bg-primaria hover:bg-fuchsia-800 text-white w-full py-2 flex justify-center"
+                >
+                    {isLoading ? (
+                        <RotatingLines
+                            strokeColor="white"
+                            strokeWidth="5"
+                            animationDuration="0.75"
+                            width="24"
+                            visible={true}
+                        />
+                    ) : (
+                        <span>Entrar</span>
+                    )}
+                </button>
             </form>
-            <div className="hidden lg:block"></div>
-        </>
+        </div>
     )
 }

@@ -5,7 +5,7 @@ export function Footer() {
 
     return (
         <>
-            <div className="mt-80  bg-fuchsia-800 flex justify-center text-white py-8 text-center w-full min-full">
+            <div className="bg-fuchsia-800 flex justify-center text-white py-8 text-center w-full min-full">
                 <div className="text-xl-3">
                     <p className="font-bold"> Centro Bell Hooks</p>
                     <p className="font-light "> Copyright: {data}</p>
