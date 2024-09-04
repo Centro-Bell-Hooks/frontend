@@ -1,6 +1,7 @@
 import { createContext, ReactNode, useState } from 'react'
-import UsuarioLogin from '../models/UsuarioLogin'
-import { auth } from '../service/Service'
+
+import { UsuarioLogin } from '../models'
+import { auth } from '../services'
 
 interface AuthContextProps {
     usuario: UsuarioLogin
@@ -13,7 +14,7 @@ interface AuthProvidersProps {
     children: ReactNode
 }
 
-export const authContext = createContext({} as AuthContextProps)
+export const AuthContext = createContext({} as AuthContextProps)
 
 export function AuthProviders({ children }: AuthProvidersProps) {
     const [usuario, setUsuario] = useState<UsuarioLogin>({
@@ -53,9 +54,9 @@ export function AuthProviders({ children }: AuthProvidersProps) {
     }
 
     return (
-        <authContext.Provider value={{ usuario, handleLogin, handleLogout, isLoading }}>
+        <AuthContext.Provider value={{ usuario, handleLogin, handleLogout, isLoading }}>
             {children}
-        </authContext.Provider>
+        </AuthContext.Provider>
     )
 }
-export default authContext
+export default AuthContext

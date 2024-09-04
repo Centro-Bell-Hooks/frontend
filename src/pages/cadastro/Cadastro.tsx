@@ -1,7 +1,7 @@
 import { ChangeEvent, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Usuario from '../../models/Usuario'
-import { auth } from '../../service/Service'
+import { auth } from '../../services'
 
 const valoresInicias = { id: 0, nome: '', usuario: '', senha: '', foto: '' }
 
@@ -19,11 +19,12 @@ export function Cadastro() {
         foto: '',
     })
 
-    // useEffect(() => {
-    //     if (usuarioResposta.id !== 0) {
-    //         back()
-    //     }
-    // }, [usuarioResposta])
+    // ver se vai dar problema
+    useEffect(() => {
+        if (usuarioResposta.id !== 0) {
+            back()
+        }
+    }, [usuarioResposta])
 
     function back() {
         navigate('/login')
