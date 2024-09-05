@@ -17,8 +17,8 @@ function ListaCategoria() {
 
     async function buscarCategorias() {
         try {
-            await buscar(`/categoria`, setCategoria, {
-                headers: { Authorization: token },
+            await buscar(`/categorias`, setCategoria, {
+                headers: { Authorization: token }
             })
         } catch (error: any) {
             if (error.toString().includes('401')) {
