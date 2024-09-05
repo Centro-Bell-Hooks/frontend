@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Home, Login, Cadastro } from './pages'
 import { Navbar, Footer } from './components'
 import { AuthProviders } from './contexts/AuthContext'
+import { routes } from './routes'
 
 function App() {
     return (
@@ -10,9 +11,9 @@ function App() {
             <BrowserRouter>
                 <Navbar />
                 <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/cadastro" element={<Cadastro />} />
+                    <Route path={routes.homepage} element={<Home />} />
+                    <Route path={routes.login} element={<Login />} />
+                    <Route path={routes.cadastro} element={<Cadastro />} />
                 </Routes>
                 <Footer />
             </BrowserRouter>
