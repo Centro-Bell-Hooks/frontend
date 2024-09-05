@@ -1,10 +1,11 @@
-import { Link, useNavigate } from 'react-router-dom'
-import { ChangeEvent, useContext, useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import { ChangeEvent, useContext, useState } from 'react'
 
 import { UsuarioLogin } from '../../models'
 import { AuthContext } from '../../contexts'
 import { Input } from '../../components'
 import { RotatingLines } from 'react-loader-spinner'
+import { routes } from '../../routes'
 
 // const valoresIniciais = {
 //     id: 0,
@@ -16,15 +17,9 @@ import { RotatingLines } from 'react-loader-spinner'
 // }
 
 export function Login() {
-    const navigate = useNavigate()
+    // aqui da erro de uncontroled
     const [usuarioLogin, setUsuarioLogin] = useState<UsuarioLogin>({} as UsuarioLogin)
-    const { usuario, handleLogin, isLoading } = useContext(AuthContext)
-
-    useEffect(() => {
-        if (usuario.token !== '') {
-            navigate('/')
-        }
-    }, [usuario])
+    const { handleLogin, isLoading } = useContext(AuthContext)
 
     function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
         setUsuarioLogin({
@@ -47,20 +42,21 @@ export function Login() {
                         name="usuario"
                         placeholder="Digite seu Email"
                         value={usuarioLogin.usuario}
-                        onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+                        onChange={atualizarEstado}
                     />
                     <Input
                         type="password"
                         name="senha"
                         placeholder="Digite sua senha"
                         value={usuarioLogin.senha}
-                        onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+                        onChange={atualizarEstado}
+                        autocomplete="current-password"
                     />
                 </div>
 
                 <p className="mb-4">
                     Ainda não tem uma conta?{' '}
-                    <Link to="/cadastro" className="text-sky-900 hover:underline">
+                    <Link to={routes.cadastro} className="text-sky-900 hover:underline">
                         Cadastre-se
                     </Link>
                 </p>
