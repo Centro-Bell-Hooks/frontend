@@ -1,4 +1,4 @@
-import { FC, MouseEventHandler, ReactNode } from 'react'
+import { MouseEventHandler, ReactNode } from 'react'
 
 type SizeProps = 'sm' | 'md' | 'lg'
 
@@ -8,36 +8,40 @@ type ButtonProps = {
     type?: 'button' | 'reset' | 'submit'
     onClick?: MouseEventHandler<HTMLButtonElement>
     disabled?: boolean
-    color?: string
-    background?: string
+    background?: 'padrao' | 'sem_fundo'
     fullWidth?: boolean
+    className?: string
 }
 
-// ver se precisa ajustar o tamanho depois
 const tipoDoTamanho: Record<SizeProps, string> = {
     sm: 'py-1 px-3',
     md: 'py-2 px-4',
     lg: 'py-3 px-4',
 }
 
-const estiloBase = `border-bg-primaria border-solid border-2 rounded`
-
-export const Button: FC<ButtonProps> = ({
+export function Button({
     size = 'md',
     type = 'button',
     disabled = false,
-    color = 'text-white',
-    background = 'bg-primaria',
+    background = 'padrao',
     fullWidth = false,
     children,
     onClick,
-}) => {
+    className,
+}: ButtonProps) {
     return (
         <button
             type={type}
             disabled={disabled}
             onClick={onClick}
-            className={`${estiloBase} ${tipoDoTamanho[size]} ${background} ${color} ${fullWidth && 'w-full'}`}
+            className={`
+                rounded
+                cursor-pointer
+                ${tipoDoTamanho[size]} 
+                ${background === 'padrao' ? 'bg-primaria hover:bg-fuchsia-700 text-white' : 'border border-solid border-primaria text-primaria'} 
+                ${fullWidth && 'w-full'}
+                ${className}
+                `}
         >
             {children}
         </button>

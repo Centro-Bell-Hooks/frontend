@@ -22,7 +22,7 @@ const tipoDoTamanho: Record<SizeProps, string> = {
     lg: 'py-3 px-4',
 }
 
-const estiloBase = `border-2 border-slate-700 rounded`
+const estiloBase = `border border-slate-700 rounded`
 
 export function Input({
     size = 'md',
