@@ -16,14 +16,14 @@ function CardCategoria({ categoria }: CardCategoriasProps) {
 
             <div className="flex">
                 <Link
-                    to={`/editartema/${categoria.id}`}
+                    to={`/editarCategoria/${categoria.id}`}
                     className="w-full text-slate-100 bg-indigo-400 hover:bg-indigo-800 flex items-center justify-center py-2"
                 >
                     <button>Editar</button>
                 </Link>
 
                 <Link
-                    to={`/deletartema/${categoria.id}`}
+                    to={`/deletarcategoria/${categoria.id}`}
                     className="text-slate-100 bg-red-400 hover:bg-red-700 w-full flex items-center justify-center"
                 >
                     <button>Deletar</button>

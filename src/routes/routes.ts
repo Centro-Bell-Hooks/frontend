@@ -4,6 +4,6 @@ export const routes = {
     cadastro: '/cadastro',
     listagem: '/listagem',
     categoria: '/categorias',
-    deletarcategoria: '/deletarcategoria'
+    deletarcategoria: '/deletarCategoria/:id'
 
 }
