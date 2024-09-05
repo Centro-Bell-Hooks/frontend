@@ -3,6 +3,7 @@ import { Home, Login, Cadastro } from './pages'
 import { Navbar, Footer } from './components'
 import { AuthProviders } from './contexts/AuthContext'
 import { routes } from './routes'
+import DeletarCategoria from './components/categorias/deletarcategoria/DeletarCategoria'
 import ListaCategoria from './components/categorias/listacategoria/ListaCategoria'
 
 import FormCategoria from './components/categorias/formcategorias/FormCategorias'
@@ -19,6 +20,8 @@ function App() {
                     <Route path={routes.categoria} element={<ListaCategoria />} />
                     <Route path="/cadastroCategoria" element={<FormCategoria />} />
                     <Route path="/editarCategoria/:id" element={<FormCategoria />} />
+                    <Route path={routes.deletarcategoria}
+                    element={<DeletarCategoria />} />
                 </Routes>
                 <Footer />
             </BrowserRouter>
