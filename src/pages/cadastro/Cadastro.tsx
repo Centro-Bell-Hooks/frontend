@@ -5,6 +5,7 @@ import Usuario from '../../models/Usuario'
 import { auth } from '../../services'
 import { RotatingLines } from 'react-loader-spinner'
 import { routes } from '../../routes'
+import { Alert } from '../../components'
 
 const valoresInicias = { id: 0, nome: '', usuario: '', senha: '', foto: '' }
 
@@ -43,12 +44,15 @@ export function Cadastro() {
             setIsLoading(true)
             try {
                 await auth(`/usuarios/cadastrar`, usuario, setUsuario)
-                alert('Usuário cadastrado com sucesso')
-            } catch {
-                alert('Erro ao cadastrar o Usuário')
+
+                Alert({ mensagem: 'Usuário cadastrado com sucesso!' })
+                setTimeout(() => navigate(routes.login), 3000)
+            } catch (err: any) {
+                console.error(err)
+                Alert({ mensagem: 'Erro ao cadastrar o Usuário.', tipo: 'error' })
             }
         } else {
-            alert('Dados inconsistentes. Verifique as informações de cadastro.')
+            Alert({ mensagem: 'Dados inconsistentes. Verifique as informações de cadastro.', tipo: 'error' })
             setUsuario({ ...usuario, senha: '' })
             setConfirmaSenha('')
         }

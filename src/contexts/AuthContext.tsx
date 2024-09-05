@@ -2,6 +2,7 @@ import { createContext, ReactNode, useState } from 'react'
 
 import { UsuarioLogin } from '../models'
 import { auth } from '../services'
+import { Alert } from '../components'
 
 interface AuthContextProps {
     usuario: UsuarioLogin
@@ -16,16 +17,17 @@ interface AuthProvidersProps {
 
 export const AuthContext = createContext({} as AuthContextProps)
 
-export function AuthProviders({ children }: AuthProvidersProps) {
-    const [usuario, setUsuario] = useState<UsuarioLogin>({
-        id: 0,
-        nome: '',
-        usuario: '',
-        senha: '',
-        foto: '',
-        token: '',
-    })
+const valoresIniciais = {
+    id: 0,
+    nome: '',
+    usuario: '',
+    senha: '',
+    foto: '',
+    token: '',
+}
 
+export function AuthProviders({ children }: AuthProvidersProps) {
+    const [usuario, setUsuario] = useState<UsuarioLogin>(valoresIniciais)
     const [isLoading, setIsLoading] = useState(false)
 
     async function handleLogin(usuarioLogin: UsuarioLogin) {
@@ -33,24 +35,17 @@ export function AuthProviders({ children }: AuthProvidersProps) {
 
         try {
             await auth(`/usuarios/logar`, usuarioLogin, setUsuario)
-            alert('Usuário logado.')
-        } catch (error) {
-            console.log('ERROR', error)
-            alert('Os dados do usuário estão inconsistentes')
+            Alert({ mensagem: 'Usuário logado!' })
+        } catch (err) {
+            console.error(err)
+            Alert({ mensagem: 'Os dados do usuário estão inconsistentes.', tipo: 'error' })
         }
 
         setIsLoading(false)
     }
 
     function handleLogout() {
-        setUsuario({
-            id: 0,
-            nome: '',
-            usuario: '',
-            senha: '',
-            foto: '',
-            token: '',
-        })
+        setUsuario(valoresIniciais)
     }
 
     return (
