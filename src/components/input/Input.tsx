@@ -13,6 +13,7 @@ type InputProps = {
     margin?: boolean
     errorMessage?: any
     className?: string
+    autocomplete?: string
 }
 
 const tipoDoTamanho: Record<SizeProps, string> = {
@@ -34,6 +35,7 @@ export function Input({
     name,
     onChange,
     placeholder,
+    autocomplete,
 }: InputProps) {
     return (
         <>
@@ -43,6 +45,7 @@ export function Input({
                 onChange={onChange}
                 value={value}
                 placeholder={placeholder}
+                autoComplete={autocomplete}
                 className={`${estiloBase} ${tipoDoTamanho[size]} ${margin && 'my-2'} ${fullWidth && 'w-full'} ${className}`}
             />
             <p>{errorMessage}</p>
