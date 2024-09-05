@@ -1,8 +1,9 @@
 import { ChangeEvent, useContext, useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { AuthContext } from '../../../contexts/AuthContext'
 import { RotatingLines } from 'react-loader-spinner'
-import Categoria from '../../../models/Categoria'
+
+import { AuthContext } from '../../../contexts/AuthContext'
+import { Categoria } from '../../../models'
 import { atualizar, buscar, cadastrar } from '../../../services'
 
 const valoresIniciais = {
@@ -12,7 +13,7 @@ const valoresIniciais = {
     produto: null,
 }
 
-function FormCategoria() {
+export function FormCategoria() {
     const navigate = useNavigate()
 
     const [categoria, setCategoria] = useState<Categoria>(valoresIniciais)
@@ -142,5 +143,3 @@ function FormCategoria() {
         </div>
     )
 }
-
-export default FormCategoria

@@ -1,6 +1,6 @@
-import Produto from './Produto'
+import { Produto } from './Produto'
 
-export default interface Categoria {
+export interface Categoria {
     id: number
     tipo: string
     cargo: string

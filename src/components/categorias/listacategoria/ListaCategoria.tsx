@@ -2,11 +2,12 @@ import { useContext, useEffect, useState } from 'react'
 import { Dna } from 'react-loader-spinner'
 import { useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../../contexts/AuthContext'
-import Categoria from '../../../models/Categoria'
-import { buscar } from '../../../services/Service'
-import CardCategoria from '../cardcategoria/CardCategoria'
 
-function ListaCategoria() {
+import { Categoria } from '../../../models'
+import { buscar } from '../../../services/Service'
+import { CardCategoria } from '../cardcategoria'
+
+export function ListaCategoria() {
     const navigate = useNavigate()
 
     const [categoria, setCategoria] = useState<Categoria[]>([])
@@ -18,7 +19,7 @@ function ListaCategoria() {
     async function buscarCategorias() {
         try {
             await buscar(`/categorias`, setCategoria, {
-                headers: { Authorization: token }
+                headers: { Authorization: token },
             })
         } catch (error: any) {
             if (error.toString().includes('401')) {
@@ -65,4 +66,3 @@ function ListaCategoria() {
         </>
     )
 }
-export default ListaCategoria

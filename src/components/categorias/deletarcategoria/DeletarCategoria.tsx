@@ -1,10 +1,11 @@
 import { useState, useContext, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+
 import { AuthContext } from '../../../contexts'
-import Categoria from '../../../models/Categoria'
+import { Categoria } from '../../../models'
 import { buscar, deletar } from '../../../services'
 
-function DeletarCategoria() {
+export function DeletarCategoria() {
     const navigate = useNavigate()
 
     const [categoria, setCategoria] = useState<Categoria>({} as Categoria)
@@ -72,7 +73,7 @@ function DeletarCategoria() {
 
             <div className="border flex flex-col rounded-2xl overflow-hidden justify-between">
                 <header className="py-2 px-6 bg-indigo-600 text-white font-bold text-2xl">Categoria</header>
-                <p className="p-8 text-3xl bg-slate-200 h-full">{categoria.cargo}</p>
+                <p className="p-8 text-3xl bg-slate-200 h-full">Cargo: {categoria.cargo}</p>
                 <div className="flex">
                     <button className="text-slate-100 bg-red-400 hover:bg-red-600 w-full py-2" onClick={retornar}>
                         Não
@@ -88,5 +89,3 @@ function DeletarCategoria() {
         </div>
     )
 }
-
-export default DeletarCategoria

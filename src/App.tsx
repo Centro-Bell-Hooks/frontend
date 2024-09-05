@@ -1,19 +1,20 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-// import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import { ToastContainer } from 'react-toastify'
 
 import { Home, Login, Cadastro } from './pages'
 import { Navbar, Footer } from './components'
 import { AuthProviders } from './contexts/AuthContext'
 import { routes } from './routes'
 
-import DeletarCategoria from './components/categorias/deletarcategoria/DeletarCategoria'
-import ListaCategoria from './components/categorias/listacategoria/ListaCategoria'
-import FormCategoria from './components/categorias/formcategorias/FormCategorias'
+import { DeletarCategoria } from './components/categorias'
+import { ListaCategoria } from './components/categorias'
+import { FormCategoria } from './components/categorias'
 
 function App() {
     return (
         <AuthProviders>
-            {/* <ToastContainer /> */}
+            <ToastContainer />
             <BrowserRouter>
                 <Navbar />
                 <Routes>
