@@ -4,5 +4,4 @@ export const routes = {
     cadastro: '/cadastro',
     listagem: '/listagem',
     categoria: '/categorias',
-    
 }
