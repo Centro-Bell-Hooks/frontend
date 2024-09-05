@@ -1,17 +1,23 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
-import { Home } from './pages'
+import { Home, Login, Cadastro } from './pages'
 import { Navbar, Footer } from './components'
+import { AuthProviders } from './contexts/AuthContext'
+import { routes } from './routes'
 
 function App() {
     return (
-        <BrowserRouter>
-            <Navbar />
-            <Routes>
-                <Route path="/" element={<Home />} />
-            </Routes>
-            <Footer />
-        </BrowserRouter>
+        <AuthProviders>
+            <BrowserRouter>
+                <Navbar />
+                <Routes>
+                    <Route path={routes.homepage} element={<Home />} />
+                    <Route path={routes.login} element={<Login />} />
+                    <Route path={routes.cadastro} element={<Cadastro />} />
+                </Routes>
+                <Footer />
+            </BrowserRouter>
+        </AuthProviders>
     )
 }
 
