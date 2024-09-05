@@ -5,10 +5,17 @@ import { RotatingLines } from 'react-loader-spinner'
 import Categoria from '../../../models/Categoria'
 import { atualizar, buscar, cadastrar } from '../../../services'
 
+const valoresIniciais = {
+    id: 0,
+    tipo: 'curso',
+    cargo: '',
+    produto: null,
+}
+
 function FormCategoria() {
     const navigate = useNavigate()
 
-    const [categoria, setCategoria] = useState<Categoria>({} as Categoria)
+    const [categoria, setCategoria] = useState<Categoria>(valoresIniciais)
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
     const { usuario, handleLogout } = useContext(AuthContext)
@@ -97,12 +104,20 @@ function FormCategoria() {
             <form className="w-1/2 flex flex-col gap-4" onSubmit={gerarNovaCategoria}>
                 <div className="flex flex-col gap-2">
                     <label htmlFor="descricao">Descrição da Categoria</label>
+                    {/* <input
+                        type="text"
+                        placeholder="Tipo de categoria"
+                        name="tipo"
+                        className="border-2 border-slate-700 rounded p-2"
+                        value={categoria.tipo}
+                        onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+                    /> */}
                     <input
                         type="text"
-                        placeholder="Descreva aqui sua categoria"
-                        name="descricao"
+                        placeholder="Cargo"
+                        name="cargo"
                         className="border-2 border-slate-700 rounded p-2"
-                        value={categoria.descricao}
+                        value={categoria.cargo}
                         onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
                     />
                 </div>
