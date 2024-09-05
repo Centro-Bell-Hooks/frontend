@@ -15,6 +15,9 @@ export function Navbar() {
                     <Link to={routes.login} className="hover:underline font-bold">
                         Login
                     </Link>
+                    <Link to={routes.categoria} className="hover:underline font-bold">
+                        Listar Categorias
+                    </Link>
                 </div>
             </div>
         </div>

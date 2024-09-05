@@ -3,6 +3,7 @@ import { Home, Login, Cadastro } from './pages'
 import { Navbar, Footer } from './components'
 import { AuthProviders } from './contexts/AuthContext'
 import { routes } from './routes'
+import ListaCategoria from './components/categorias/listacategoria/ListaCategoria'
 
 
 
@@ -16,7 +17,7 @@ function App() {
                     <Route path={routes.homepage} element={<Home />} />
                     <Route path={routes.login} element={<Login />} />
                     <Route path={routes.cadastro} element={<Cadastro />} />
-                  
+                    <Route path={routes.categoria} element={<ListaCategoria />} />
                     
                 </Routes>
                 <Footer />
