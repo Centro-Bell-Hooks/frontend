@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom'
 import { ChangeEvent, useContext, useState } from 'react'
+import { RotatingLines } from 'react-loader-spinner'
 
 import { UsuarioLogin } from '../../models'
 import { AuthContext } from '../../contexts'
 import { Input } from '../../components'
-import { RotatingLines } from 'react-loader-spinner'
 import { routes } from '../../routes'
 
 // const valoresIniciais = {
