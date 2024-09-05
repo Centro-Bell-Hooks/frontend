@@ -3,4 +3,5 @@ export const routes = {
     login: '/login',
     cadastro: '/cadastro',
     listagem: '/listagem',
+    categoria: '/categorias'
 }
