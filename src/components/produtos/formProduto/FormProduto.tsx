@@ -48,9 +48,7 @@ export function FormProduto() {
             ...produtos,
             categoria: categoria,
         })
-    
     }, [token, id, categoria])
-
 
     async function buscarProdutoPorId(id: string) {
         try {
@@ -136,18 +134,33 @@ export function FormProduto() {
         }
 
         setIsLoading(false)
-        navigate(routes.produtos)    
+        navigate(routes.produtos)
     }
 
     return (
         <div className="flex flex-col items-center mx-auto container">
-            <h1 className="my-8 text-4xl text-center">{id !== undefined ? 'Editar Postagem' : 'Cadastrar Postagem'}</h1>
+            <h1 className="my-8 text-4xl text-center">{id !== undefined ? 'Editar Produto' : 'Cadastrar Produto'}</h1>
 
             <form className="flex flex-col gap-4 w-1/2" onSubmit={gerarNovoProduto}>
                 <div className="flex flex-col gap-2">
-                    <Input name="titulo" placeholder="Titulo do curso" value={produtos.titulo} onChange={atualizarEstado} />
-                    <Input  name="nome" placeholder="Nome da instituição" value={produtos.nome} onChange={atualizarEstado} />
-                    <Input name="descricao" placeholder="Descrição" value={produtos.descricao} onChange={atualizarEstado} />
+                    <Input
+                        name="titulo"
+                        placeholder="Titulo do curso"
+                        value={produtos.titulo}
+                        onChange={atualizarEstado}
+                    />
+                    <Input
+                        name="nome"
+                        placeholder="Nome da instituição"
+                        value={produtos.nome}
+                        onChange={atualizarEstado}
+                    />
+                    <Input
+                        name="descricao"
+                        placeholder="Descrição"
+                        value={produtos.descricao}
+                        onChange={atualizarEstado}
+                    />
 
                     <p>Categoria</p>
 

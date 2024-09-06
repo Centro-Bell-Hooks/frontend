@@ -6,7 +6,7 @@ import { buscar, deletar } from '../../services'
 import { Produto } from '../../models'
 import { Alert } from '../alert'
 
-function DeletarProdutos() {
+export function DeletarProdutos() {
     const navigate = useNavigate()
 
     const [isLoading, SetIsLoading] = useState<boolean>(false)
@@ -105,5 +105,3 @@ function DeletarProdutos() {
         </div>
     )
 }
-
-export default DeletarProdutos

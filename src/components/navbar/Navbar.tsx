@@ -18,7 +18,7 @@ export function Navbar() {
                     <Link to={routes.cadastrarProduto} className="hover:underline font-bold">
                         Produtos
                     </Link>
-                    <Link to={routes.categoria} className="hover:underline font-bold">
+                    <Link to={routes.categorias} className="hover:underline font-bold">
                         Listar Categorias
                     </Link>
                     <Link to="/categorias" className="hover:underline font-bold">
@@ -30,7 +30,6 @@ export function Navbar() {
                     <Link to="/produtos" className="hover:underline font-bold">
                         Produtos
                     </Link>
-                    
                 </div>
             </div>
         </div>
