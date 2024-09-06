@@ -11,6 +11,7 @@ import { DeletarCategoria } from './components/categorias'
 import { ListaCategoria } from './components/categorias'
 import { FormCategoria } from './components/categorias'
 
+
 function App() {
     return (
         <AuthProviders>

@@ -24,6 +24,10 @@ export function Navbar() {
                     <Link to="/cadastroCategoria" className="hover:underline font-bold">
                         Cadastrar Categoria
                     </Link>
+                    <Link to="/produtos" className="hover:underline font-bold">
+                        Produtos
+                    </Link>
+                    
                 </div>
             </div>
         </div>
