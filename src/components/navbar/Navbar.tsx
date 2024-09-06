@@ -22,32 +22,35 @@ export function Navbar() {
                 </Link>
 
                 <div className="flex gap-4">
-                    {location.pathname === routes.homepage && (
+                    {location.pathname === routes.homepage ? (
                         <>
                             <div className="hover:underline font-bold">Sobre</div>
                             <div className="hover:underline font-bold">Contato</div>
                         </>
-                    )}
-                    <Link to={routes.produtos} className="hover:underline font-bold">
-                        Produtos
-                    </Link>
-                    <Link to={routes.cadastrarProduto} className="hover:underline font-bold">
-                        Cadastrar Produtos
-                    </Link>
-                    <Link to={routes.categorias} className="hover:underline font-bold">
-                        Categorias
-                    </Link>
-                    <Link to={routes.cadastrarCategoria} className="hover:underline font-bold">
-                        Cadastrar Categoria
-                    </Link>
+                    ) : (
+                        <>
+                            <Link to={routes.produtos} className="hover:underline font-bold">
+                                Produtos
+                            </Link>
+                            <Link to={routes.cadastrarProduto} className="hover:underline font-bold">
+                                Cadastrar Produtos
+                            </Link>
+                            <Link to={routes.categorias} className="hover:underline font-bold">
+                                Categorias
+                            </Link>
+                            <Link to={routes.cadastrarCategoria} className="hover:underline font-bold">
+                                Cadastrar Categoria
+                            </Link>
 
-                    <Link
-                        to={usuario.token ? routes.homepage : routes.login}
-                        className="hover:underline font-bold"
-                        onClick={usuario.token ? logout : undefined}
-                    >
-                        {usuario.token === '' ? 'Login' : 'Sair'}
-                    </Link>
+                            <Link
+                                to={usuario.token ? routes.homepage : routes.login}
+                                className="hover:underline font-bold"
+                                onClick={usuario.token ? logout : undefined}
+                            >
+                                {usuario.token === '' ? 'Login' : 'Sair'}
+                            </Link>
+                        </>
+                    )}
                 </div>
             </div>
         </div>

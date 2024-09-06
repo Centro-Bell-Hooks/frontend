@@ -4,16 +4,26 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { AuthContext } from '../../../contexts'
 import { Categoria } from '../../../models'
 import { buscar, deletar } from '../../../services'
+import { routes } from '../../../routes'
+import { Alert } from '../../../components'
 
 export function DeletarCategoria() {
     const navigate = useNavigate()
-
     const [categoria, setCategoria] = useState<Categoria>({} as Categoria)
-
     const { id } = useParams<{ id: string }>()
-
     const { usuario, handleLogout } = useContext(AuthContext)
     const token = usuario.token
+    const retornar = () => navigate(routes.categorias)
+
+    // troquei o useEffect
+    useEffect(() => {
+        if (id !== undefined) buscarPorId(id)
+
+        if (token === '') {
+            Alert({ mensagem: 'Você precisa estar logado.', tipo: 'info' })
+            navigate(routes.login)
+        }
+    }, [token, id])
 
     async function buscarPorId(id: string) {
         try {
@@ -24,14 +34,10 @@ export function DeletarCategoria() {
             })
         } catch (error: any) {
             if (error.toString().includes('401')) {
-                alert('O token expirou, favor logar novamente')
+                Alert({ mensagem: 'O token expirou, favor logar novamente.', tipo: 'info' })
                 handleLogout()
             }
         }
-    }
-
-    function retornar() {
-        navigate('/categorias')
     }
 
     async function deletarCategoria() {
@@ -42,26 +48,13 @@ export function DeletarCategoria() {
                 },
             })
 
-            alert('Tema apagado com sucesso')
+            Alert({ mensagem: 'Categoria apagada com sucesso!' })
         } catch (error) {
-            alert('Erro ao apagar o Tema')
+            console.error(error)
+            Alert({ mensagem: 'Erro ao apagar a Categoria, consulte o administrador.', tipo: 'error' })
         }
-
         retornar()
     }
-
-    useEffect(() => {
-        if (token === '') {
-            alert('Você precisa estar logado')
-            navigate('/login')
-        }
-    }, [token])
-
-    useEffect(() => {
-        if (id !== undefined) {
-            buscarPorId(id)
-        }
-    }, [id])
 
     return (
         <div className="container w-1/3 mx-auto">

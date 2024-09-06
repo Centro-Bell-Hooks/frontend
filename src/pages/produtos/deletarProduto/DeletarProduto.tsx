@@ -1,21 +1,32 @@
 import { useState, useContext, useEffect } from 'react'
 import { RotatingLines } from 'react-loader-spinner'
 import { useNavigate, useParams } from 'react-router-dom'
-import { AuthContext } from '../../contexts'
-import { buscar, deletar } from '../../services'
-import { Produto } from '../../models'
-import { Alert } from '../alert'
 
-export function DeletarProdutos() {
+import { AuthContext } from '../../../contexts'
+import { buscar, deletar } from '../../../services'
+import { Produto } from '../../../models'
+import { Alert } from '../../../components/alert'
+import { routes } from '../../../routes'
+
+export function DeletarProduto() {
     const navigate = useNavigate()
-
-    const [isLoading, SetIsLoading] = useState<boolean>(false)
+    const [isLoading, setIsLoading] = useState<boolean>(false)
     const [produto, setProduto] = useState<Produto>({} as Produto)
-
     const { id } = useParams<{ id: string }>()
-
     const { usuario, handleLogout } = useContext(AuthContext)
     const token = usuario.token
+    const retornar = () => navigate(routes.produtos)
+
+    useEffect(() => {
+        if (token === '') {
+            Alert({ mensagem: 'Você precisa estar logado', tipo: 'info' })
+            navigate(routes.login)
+        }
+
+        if (id !== undefined) {
+            buscarPorId(id)
+        }
+    }, [token, id])
 
     async function buscarPorId(id: string) {
         try {
@@ -31,21 +42,8 @@ export function DeletarProdutos() {
         }
     }
 
-    useEffect(() => {
-        if (token === '') {
-            Alert({ mensagem: 'Você precisa estar logado', tipo: 'info' })
-            navigate('/login')
-        }
-    }, [token])
-
-    useEffect(() => {
-        if (id !== undefined) {
-            buscarPorId(id)
-        }
-    }, [id])
-
     async function deletarProduto() {
-        SetIsLoading(true)
+        setIsLoading(true)
 
         try {
             await deletar(`/produtos/${id}`, {
@@ -61,23 +59,19 @@ export function DeletarProdutos() {
                 Alert({ mensagem: 'Erro ao deletar produto.', tipo: 'error' })
             }
         }
-        SetIsLoading(false)
+        setIsLoading(false)
         retornar()
     }
 
-    function retornar() {
-        navigate('/produtos')
-    }
     return (
         <div className="mx-auto w-1/3 container">
-            <h1 className="my-4 text-4xl text-center">Deletar Produto</h1>
-
-            <p className="mb-4 font-semibold text-center">Você tem certeza de que deseja apagar o produto a seguir?</p>
+            <p className="mb-4 font-semibold text-center">Você tem certeza de que deseja apagar o produto?</p>
 
             <div className="flex flex-col justify-between border rounded-2xl overflow-hidden">
                 <header className="bg-indigo-600 px-6 py-2 font-bold text-2xl text-white">Produto</header>
                 <div className="p-4">
                     <p className="h-full text-xl">{produto.titulo}</p>
+                    <p className="h-full text-xl">{produto.nome}</p>
                     <p>{produto.descricao}</p>
                 </div>
                 <div className="flex">

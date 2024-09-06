@@ -5,9 +5,9 @@ import { RotatingLines } from 'react-loader-spinner'
 import { Categoria, Produto } from '../../../models'
 import { AuthContext } from '../../../contexts'
 import { atualizar, buscar, cadastrar } from '../../../services'
-import { Alert } from '../../alert'
-import { Input } from '../../input'
-import { Button } from '../../button'
+import { Alert } from '../../../components/alert'
+import { Input } from '../../../components/input'
+import { Button } from '../../../components/button'
 import { routes } from '../../../routes'
 
 const valoresIniciais = {
@@ -107,12 +107,12 @@ export function FormProduto() {
                     },
                 })
 
-                Alert({ mensagem: 'Postagem atualizada com sucesso' })
+                Alert({ mensagem: 'Produto atualizada com sucesso' })
             } catch (error: any) {
                 if (error.toString().includes('401')) {
                     handleLogout()
                 } else {
-                    Alert({ mensagem: 'Erro ao atualizar a Postagem', tipo: 'error' })
+                    Alert({ mensagem: 'Erro ao atualizar a Produto', tipo: 'error' })
                 }
             }
         } else {
@@ -123,12 +123,12 @@ export function FormProduto() {
                     },
                 })
 
-                Alert({ mensagem: 'Postagem cadastrada com sucesso' })
+                Alert({ mensagem: 'Produto cadastrada com sucesso' })
             } catch (error: any) {
                 if (error.toString().includes('401')) {
                     handleLogout()
                 } else {
-                    Alert({ mensagem: 'Erro ao cadastrar a Postagem', tipo: 'error' })
+                    Alert({ mensagem: 'Erro ao cadastrar a Produto', tipo: 'error' })
                 }
             }
         }
