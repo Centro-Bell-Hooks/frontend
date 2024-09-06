@@ -22,8 +22,8 @@ function App() {
                     <Route path={routes.login} element={<Login />} />
                     <Route path={routes.cadastro} element={<Cadastro />} />
                     <Route path={routes.categoria} element={<ListaCategoria />} />
-                    <Route path="/cadastroCategoria" element={<FormCategoria />} />
-                    <Route path="/editarCategoria/:id" element={<FormCategoria />} />
+                    <Route path={routes.cadastrarCategoria} element={<FormCategoria />} />
+                    <Route path={routes.editarCategoria} element={<FormCategoria />} />
                     <Route path={routes.deletarcategoria} element={<DeletarCategoria />} />
                 </Routes>
                 <Footer />

@@ -1,7 +1,19 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
+import { useContext } from 'react'
+
 import { routes } from '../../routes'
+import { AuthContext } from '../../contexts'
+import { Alert } from '../alert'
 
 export function Navbar() {
+    const { usuario, handleLogout } = useContext(AuthContext)
+    const location = useLocation()
+
+    function logout() {
+        handleLogout()
+        Alert({ mensagem: 'Usuário desconectado', tipo: 'info' })
+    }
+
     return (
         <div className="w-full bg-primaria text-white flex justify-center py-4">
             <div className="container flex justify-between text-lg">
@@ -10,19 +22,25 @@ export function Navbar() {
                 </Link>
 
                 <div className="flex gap-4">
-                    <div className="hover:underline font-bold">Sobre</div>
-                    <div className="hover:underline font-bold">Contato</div>
-                    <Link to={routes.login} className="hover:underline font-bold">
-                        Login
-                    </Link>
+                    {location.pathname === routes.homepage && (
+                        <>
+                            <div className="hover:underline font-bold">Sobre</div>
+                            <div className="hover:underline font-bold">Contato</div>
+                        </>
+                    )}
+
+                    {usuario.token == '' ? (
+                        <Link to={routes.login} className="hover:underline font-bold">
+                            Login
+                        </Link>
+                    ) : (
+                        <Link to={routes.homepage} className="hover:underline font-bold" onClick={logout}>
+                            Sair
+                        </Link>
+                    )}
+
                     <Link to={routes.categoria} className="hover:underline font-bold">
-                        Listar Categorias
-                    </Link>
-                    <Link to="/categorias" className="hover:underline font-bold">
                         Categorias
-                    </Link>
-                    <Link to="/cadastroCategoria" className="hover:underline font-bold">
-                        Cadastrar Categoria
                     </Link>
                 </div>
             </div>
