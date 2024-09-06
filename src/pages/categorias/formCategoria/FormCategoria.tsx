@@ -12,7 +12,7 @@ const valoresIniciais = {
     id: 0,
     tipo: 'curso',
     cargo: '',
-    produto: null,
+    servico: null,
 }
 
 export function FormCategoria() {

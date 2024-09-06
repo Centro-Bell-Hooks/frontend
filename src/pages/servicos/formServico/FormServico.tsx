@@ -2,7 +2,7 @@ import { ChangeEvent, useContext, useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { RotatingLines } from 'react-loader-spinner'
 
-import { Categoria, Produto } from '../../../models'
+import { Categoria, Servico } from '../../../models'
 import { AuthContext } from '../../../contexts'
 import { atualizar, buscar, cadastrar } from '../../../services'
 import { Alert } from '../../../components/alert'
@@ -23,12 +23,12 @@ const valoresIniciais = {
     usuario: null,
 }
 
-export function FormProduto() {
+export function FormServico() {
     const navigate = useNavigate()
     const [isLoading, setIsLoading] = useState<boolean>(false)
     const [categorias, setCategorias] = useState<Categoria[]>([])
     const [categoria, setCategoria] = useState<Categoria>({ id: 0, tipo: 'curso', cargo: '' })
-    const [produtos, setProdutos] = useState<Produto>(valoresIniciais)
+    const [servicos, setServicos] = useState<Servico>(valoresIniciais)
     const { id } = useParams<{ id: string }>()
     const { usuario, handleLogout } = useContext(AuthContext)
     const token = usuario.token
@@ -41,18 +41,18 @@ export function FormProduto() {
         }
 
         if (id !== undefined) {
-            buscarProdutoPorId(id)
+            buscarServicoPorId(id)
         }
         // corrir talvez
-        setProdutos({
-            ...produtos,
+        setServicos({
+            ...servicos,
             categoria: categoria,
         })
     }, [token, id, categoria])
 
-    async function buscarProdutoPorId(id: string) {
+    async function buscarServicoPorId(id: string) {
         try {
-            await buscar(`/produtos/${id}`, setProdutos, {
+            await buscar(`/produtos/${id}`, setServicos, {
                 headers: { Authorization: token },
             })
         } catch (error: any) {
@@ -87,78 +87,78 @@ export function FormProduto() {
     }
 
     function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
-        setProdutos({
-            ...produtos,
+        setServicos({
+            ...servicos,
             [e.target.name]: e.target.value,
             categoria: categoria,
             usuario: usuario,
         })
     }
 
-    async function gerarNovoProduto(e: ChangeEvent<HTMLFormElement>) {
+    async function gerarNovoServico(e: ChangeEvent<HTMLFormElement>) {
         e.preventDefault()
         setIsLoading(true)
 
         if (id !== undefined) {
             try {
-                await atualizar(`/produtos`, produtos, setProdutos, {
+                await atualizar(`/produtos`, servicos, setServicos, {
                     headers: {
                         Authorization: token,
                     },
                 })
 
-                Alert({ mensagem: 'Produto atualizada com sucesso' })
+                Alert({ mensagem: 'Serviço atualizada com sucesso' })
             } catch (error: any) {
                 if (error.toString().includes('401')) {
                     handleLogout()
                 } else {
-                    Alert({ mensagem: 'Erro ao atualizar a Produto', tipo: 'error' })
+                    Alert({ mensagem: 'Erro ao atualizar a Serviço', tipo: 'error' })
                 }
             }
         } else {
             try {
-                await cadastrar(`/produtos`, produtos, setProdutos, {
+                await cadastrar(`/produtos`, servicos, setServicos, {
                     headers: {
                         Authorization: token,
                     },
                 })
 
-                Alert({ mensagem: 'Produto cadastrada com sucesso' })
+                Alert({ mensagem: 'Serviço cadastrada com sucesso' })
             } catch (error: any) {
                 if (error.toString().includes('401')) {
                     handleLogout()
                 } else {
-                    Alert({ mensagem: 'Erro ao cadastrar a Produto', tipo: 'error' })
+                    Alert({ mensagem: 'Erro ao cadastrar a Serviço', tipo: 'error' })
                 }
             }
         }
 
         setIsLoading(false)
-        navigate(routes.produtos)
+        navigate(routes.servicos)
     }
 
     return (
         <div className="flex flex-col items-center mx-auto container">
-            <h1 className="my-8 text-4xl text-center">{id !== undefined ? 'Editar Produto' : 'Cadastrar Produto'}</h1>
+            <h1 className="my-8 text-4xl text-center">{id !== undefined ? 'Editar Serviço' : 'Cadastrar Serviço'}</h1>
 
-            <form className="flex flex-col gap-4 w-1/2" onSubmit={gerarNovoProduto}>
+            <form className="flex flex-col gap-4 w-1/2" onSubmit={gerarNovoServico}>
                 <div className="flex flex-col gap-2">
                     <Input
                         name="titulo"
                         placeholder="Titulo do curso"
-                        value={produtos.titulo}
+                        value={servicos.titulo}
                         onChange={atualizarEstado}
                     />
                     <Input
                         name="nome"
                         placeholder="Nome da instituição"
-                        value={produtos.nome}
+                        value={servicos.nome}
                         onChange={atualizarEstado}
                     />
                     <Input
                         name="descricao"
                         placeholder="Descrição"
-                        value={produtos.descricao}
+                        value={servicos.descricao}
                         onChange={atualizarEstado}
                     />
 

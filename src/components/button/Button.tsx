@@ -26,7 +26,7 @@ export const Button: FC<ButtonProps> = ({
     size = 'md',
     type = 'button',
     disabled = false,
-    color = 'text-white',
+    color = 'text-fonte',
     background = 'bg-primaria',
     fullWidth = false,
     children,

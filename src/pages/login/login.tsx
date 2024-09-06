@@ -32,7 +32,7 @@ export function Login() {
     function login(e: ChangeEvent<HTMLFormElement>) {
         e.preventDefault()
         handleLogin(usuarioLogin)
-        // setTimeout(() => navigate(routes.produtos), 5000)
+        // setTimeout(() => navigate(routes.servicos), 5000)
     }
 
     return (
@@ -65,8 +65,9 @@ export function Login() {
 
                 <button
                     type="submit"
-                    className="rounded bg-primaria hover:bg-fuchsia-800 text-white w-full py-2 flex justify-center"
+                    className="rounded bg-primaria hover:bg-[#f7db77] text-fonte font-semibold w-full py-2 flex justify-center"
                 >
+                    {/*#E6D081  #f7db77*/}
                     {isLoading ? (
                         <RotatingLines
                             strokeColor="white"

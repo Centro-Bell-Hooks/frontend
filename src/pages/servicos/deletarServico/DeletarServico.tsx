@@ -4,18 +4,18 @@ import { useNavigate, useParams } from 'react-router-dom'
 
 import { AuthContext } from '../../../contexts'
 import { buscar, deletar } from '../../../services'
-import { Produto } from '../../../models'
+import { Servico } from '../../../models'
 import { Alert } from '../../../components/alert'
 import { routes } from '../../../routes'
 
-export function DeletarProduto() {
+export function DeletarServico() {
     const navigate = useNavigate()
     const [isLoading, setIsLoading] = useState<boolean>(false)
-    const [produto, setProduto] = useState<Produto>({} as Produto)
+    const [servico, setServico] = useState<Servico>({} as Servico)
     const { id } = useParams<{ id: string }>()
     const { usuario, handleLogout } = useContext(AuthContext)
     const token = usuario.token
-    const retornar = () => navigate(routes.produtos)
+    const retornar = () => navigate(routes.servicos)
 
     useEffect(() => {
         if (token === '') {
@@ -30,7 +30,7 @@ export function DeletarProduto() {
 
     async function buscarPorId(id: string) {
         try {
-            await buscar(`/produtos/${id}`, setProduto, {
+            await buscar(`/produtos/${id}`, setServico, {
                 headers: {
                     Authorization: token,
                 },
@@ -42,7 +42,7 @@ export function DeletarProduto() {
         }
     }
 
-    async function deletarProduto() {
+    async function deletarServico() {
         setIsLoading(true)
 
         try {
@@ -51,12 +51,12 @@ export function DeletarProduto() {
                     Authorization: token,
                 },
             })
-            Alert({ mensagem: 'Produto deletado com sucesso.', tipo: 'success' })
+            Alert({ mensagem: 'Serviço deletado com sucesso.', tipo: 'success' })
         } catch (error: any) {
             if (error.toString().includes('401')) {
                 handleLogout()
             } else {
-                Alert({ mensagem: 'Erro ao deletar produto.', tipo: 'error' })
+                Alert({ mensagem: 'Erro ao deletar serviço.', tipo: 'error' })
             }
         }
         setIsLoading(false)
@@ -65,14 +65,14 @@ export function DeletarProduto() {
 
     return (
         <div className="mx-auto w-1/3 container">
-            <p className="mb-4 font-semibold text-center">Você tem certeza de que deseja apagar o produto?</p>
+            <p className="mb-4 font-semibold text-center">Você tem certeza de que deseja apagar o serviço?</p>
 
             <div className="flex flex-col justify-between border rounded-2xl overflow-hidden">
-                <header className="bg-indigo-600 px-6 py-2 font-bold text-2xl text-white">Produto</header>
+                <header className="bg-indigo-600 px-6 py-2 font-bold text-2xl text-white">Servico</header>
                 <div className="p-4">
-                    <p className="h-full text-xl">{produto.titulo}</p>
-                    <p className="h-full text-xl">{produto.nome}</p>
-                    <p>{produto.descricao}</p>
+                    <p className="h-full text-xl">{servico.titulo}</p>
+                    <p className="h-full text-xl">{servico.nome}</p>
+                    <p>{servico.descricao}</p>
                 </div>
                 <div className="flex">
                     <button className="bg-red-400 hover:bg-red-600 py-2 w-full text-slate-100" onClick={retornar}>
@@ -80,7 +80,7 @@ export function DeletarProduto() {
                     </button>
                     <button
                         className="flex justify-center items-center bg-indigo-400 hover:bg-indigo-600 w-full text-slate-100"
-                        onClick={deletarProduto}
+                        onClick={deletarServico}
                     >
                         {isLoading ? (
                             <RotatingLines

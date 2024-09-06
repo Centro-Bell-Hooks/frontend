@@ -1,7 +1,7 @@
 import { Categoria } from './Categoria'
 import Usuario from './Usuario'
 
-export interface Produto {
+export interface Servico {
     id: number
     titulo: string
     nome: string

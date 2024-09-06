@@ -1,8 +1,8 @@
-import { Produto } from './Produto'
+import { Servico } from './Servico'
 
 export interface Categoria {
     id: number
     tipo: string
     cargo: string
-    produto?: Produto | null
+    servico?: Servico | null
 }

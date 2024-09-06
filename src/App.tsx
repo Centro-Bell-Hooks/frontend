@@ -12,9 +12,9 @@ import {
     ListaCategoria,
     FormCategoria,
     DeletarCategoria,
-    ListaProduto,
-    FormProduto,
-    DeletarProduto,
+    ListaServicos,
+    FormServico,
+    DeletarServico,
 } from './pages'
 
 function App() {
@@ -33,10 +33,10 @@ function App() {
                     <Route path={routes.editarCategoria} element={<FormCategoria />} />
                     <Route path={routes.deletarCategoria} element={<DeletarCategoria />} />
 
-                    <Route path={routes.produtos} element={<ListaProduto />} />
-                    <Route path={routes.cadastrarProduto} element={<FormProduto />} />
-                    <Route path={routes.editarProduto} element={<FormProduto />} />
-                    <Route path={routes.deletarProduto} element={<DeletarProduto />} />
+                    <Route path={routes.servicos} element={<ListaServicos />} />
+                    <Route path={routes.cadastrarServico} element={<FormServico />} />
+                    <Route path={routes.editarServico} element={<FormServico />} />
+                    <Route path={routes.deletarServico} element={<DeletarServico />} />
                 </Routes>
                 <Footer />
             </BrowserRouter>
