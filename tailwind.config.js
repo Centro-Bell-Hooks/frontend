@@ -1,14 +1,15 @@
 /** @type {import('tailwindcss').Config} */
-// (TESTE) criando cores customizadas para a nossa aplicação
-// palhetas de cores preto com roxo?
+
 export default {
     content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
     theme: {
         extend: {
-            // para chamar ex: bg-primaria ou text-primaria, etc
+            // para chamar a propriedades do tailwind ex: bg-primaria ou text-primaria, etc
             colors: {
-                primaria: '#86198f',
+                primaria: '#ecca51',
                 secundaria: '',
+                fonte: '#231B1B',
+                link: '#737373',
                 fundo: '#f8fafc',
                 cor_texto: '',
             },
