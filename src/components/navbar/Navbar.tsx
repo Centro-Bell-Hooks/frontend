@@ -27,7 +27,6 @@ export function Navbar() {
                     <Link to="/produtos" className="hover:underline font-bold">
                         Produtos
                     </Link>
-                    
                 </div>
             </div>
         </div>

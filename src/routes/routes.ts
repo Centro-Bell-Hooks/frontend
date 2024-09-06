@@ -3,6 +3,5 @@ export const routes = {
     login: '/login',
     cadastro: '/cadastro',
     categoria: '/categorias',
-    deletarcategoria: '/deletarCategoria/:id'
-
+    deletarcategoria: '/deletarCategoria/:id',
 }
