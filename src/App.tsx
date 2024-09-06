@@ -11,7 +11,7 @@ import { DeletarCategoria } from './components/categorias'
 import { ListaCategoria } from './components/categorias'
 import { FormCategoria } from './components/categorias'
 import DeletarProdutos from './components/produtos/DeletarProdutos'
-
+import { FormProduto } from './components/produtos/formProduto/FormProduto'
 
 function App() {
     return (
@@ -23,11 +23,14 @@ function App() {
                     <Route path={routes.homepage} element={<Home />} />
                     <Route path={routes.login} element={<Login />} />
                     <Route path={routes.cadastro} element={<Cadastro />} />
+
                     <Route path={routes.categoria} element={<ListaCategoria />} />
                     <Route path="/cadastroCategoria" element={<FormCategoria />} />
                     <Route path="/editarCategoria/:id" element={<FormCategoria />} />
-                    <Route path={routes.deletarcategoria} element={<DeletarCategoria />} />
-                    <Route path={routes.deletarproduto} element={<DeletarProdutos />} />
+                    <Route path={routes.deletarCategoria} element={<DeletarCategoria />} />
+
+                    <Route path={routes.cadastrarProduto} element={<FormProduto />} />
+                    <Route path={routes.deletarProduto} element={<DeletarProdutos />} />
                 </Routes>
                 <Footer />
             </BrowserRouter>

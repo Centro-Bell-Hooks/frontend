@@ -1,4 +1,5 @@
 import { Categoria } from './Categoria'
+import Usuario from './Usuario'
 
 export interface Produto {
     id: number
@@ -10,4 +11,5 @@ export interface Produto {
     data: Date
     status: boolean
     categoria: Categoria | null
+    usuario: Usuario | null
 }
