@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { ChangeEvent, useContext, useState } from 'react'
 import { RotatingLines } from 'react-loader-spinner'
 
@@ -20,6 +20,7 @@ export function Login() {
     // aqui da erro de uncontroled
     const [usuarioLogin, setUsuarioLogin] = useState<UsuarioLogin>({} as UsuarioLogin)
     const { handleLogin, isLoading } = useContext(AuthContext)
+    const navigate = useNavigate()
 
     function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
         setUsuarioLogin({
@@ -31,6 +32,7 @@ export function Login() {
     function login(e: ChangeEvent<HTMLFormElement>) {
         e.preventDefault()
         handleLogin(usuarioLogin)
+        // setTimeout(() => navigate(routes.produtos), 5000)
     }
 
     return (
@@ -55,7 +57,7 @@ export function Login() {
                 </div>
 
                 <p className="mb-4">
-                    Ainda não tem uma conta?{' '}
+                    Ainda não tem uma conta?
                     <Link to={routes.cadastro} className="text-sky-900 hover:underline">
                         Cadastre-se
                     </Link>
