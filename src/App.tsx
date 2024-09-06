@@ -2,15 +2,20 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import 'react-toastify/dist/ReactToastify.css'
 import { ToastContainer } from 'react-toastify'
 
-import { Home, Login, Cadastro } from './pages'
 import { Navbar, Footer } from './components'
-import { AuthProviders } from './contexts/AuthContext'
+import { AuthProviders } from './contexts'
 import { routes } from './routes'
-import { DeletarCategoria, ListaCategoria, FormCategoria } from './components/categorias'
-
-import { DeletarProdutos } from './components/produtos/DeletarProdutos'
-import { FormProduto } from './components/produtos/formProduto/FormProduto'
-import { ListaProduto } from './components/produtos/listaprodutos/ListaProduto'
+import {
+    Home,
+    Login,
+    Cadastro,
+    ListaCategoria,
+    FormCategoria,
+    DeletarCategoria,
+    ListaProduto,
+    FormProduto,
+    DeletarProduto,
+} from './pages'
 
 function App() {
     return (
@@ -31,7 +36,7 @@ function App() {
                     <Route path={routes.produtos} element={<ListaProduto />} />
                     <Route path={routes.cadastrarProduto} element={<FormProduto />} />
                     <Route path={routes.editarProduto} element={<FormProduto />} />
-                    <Route path={routes.deletarProduto} element={<DeletarProdutos />} />
+                    <Route path={routes.deletarProduto} element={<DeletarProduto />} />
                 </Routes>
                 <Footer />
             </BrowserRouter>
