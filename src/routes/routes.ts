@@ -3,6 +3,7 @@ export const routes = {
     login: '/login',
     cadastro: '/cadastro',
     categoria: '/categorias',
-    deletarcategoria: '/deletarCategoria/:id'
-
+    deletarcategoria: '/deletarCategoria/:id',
+    produtos: '/produtos',
+    cadastrarProduto: '/cadastrar-produto'
 }

@@ -10,6 +10,7 @@ import { routes } from './routes'
 import { DeletarCategoria } from './components/categorias'
 import { ListaCategoria } from './components/categorias'
 import { FormCategoria } from './components/categorias'
+import { FormProduto } from './components/produtos/formProduto/FormProduto'
 
 function App() {
     return (
@@ -25,6 +26,8 @@ function App() {
                     <Route path="/cadastroCategoria" element={<FormCategoria />} />
                     <Route path="/editarCategoria/:id" element={<FormCategoria />} />
                     <Route path={routes.deletarcategoria} element={<DeletarCategoria />} />
+                    <Route path={routes.cadastrarProduto} element={<FormProduto />} />
+
                 </Routes>
                 <Footer />
             </BrowserRouter>
