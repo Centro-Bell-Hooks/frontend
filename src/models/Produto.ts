@@ -7,7 +7,7 @@ export interface Produto {
     descricao: string
     contador: number
     quantidade: number
-    data: number
+    data: Date
     status: boolean
     categoria: Categoria | null
 }
