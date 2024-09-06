@@ -1,4 +1,4 @@
 export * from './Categoria'
-export * from './Produto'
+export * from './Servico'
 export * from './Usuario'
 export * from './UsuarioLogin'
