@@ -1,15 +1,13 @@
 import { ChangeEvent, useCallback, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import Usuario from '../../models/Usuario'
+import { Usuario } from '../../models'
 import { auth } from '../../services'
 import { RotatingLines } from 'react-loader-spinner'
 import { routes } from '../../routes'
 import { Alert, Button, Input } from '../../components'
 
 const valoresInicias = { id: 0, nome: '', usuario: '', senha: '', foto: '' }
-
-// tarefa extra fazer o cadastro como step depois
 
 export function Cadastro() {
     const navigate = useNavigate()
@@ -48,7 +46,7 @@ export function Cadastro() {
                 await auth(`/usuarios/cadastrar`, usuario, setUsuario)
 
                 Alert({ mensagem: 'Usuário cadastrado com sucesso!' })
-                setTimeout(() => navigate(routes.login), 3000)
+                setTimeout(() => voltar(), 3000)
             } catch (err: any) {
                 console.error(err)
                 Alert({ mensagem: 'Erro ao cadastrar o Usuário.', tipo: 'error' })
@@ -69,8 +67,13 @@ export function Cadastro() {
                     <h2 className="text-slate-900 text-3xl mb-3 font-semibold">Cadastrar</h2>
                     <div className="flex flex-col w-full mb-4">
                         <Input name="nome" placeholder="Nome" value={usuario.nome} onChange={atualizarInput} />
-                        <Input name="usuario" placeholder="Usuario" value={usuario.usuario} onChange={atualizarInput} />
-                        <Input name="foto" placeholder="Foto" value={usuario.foto} onChange={atualizarInput} />
+                        <Input
+                            name="usuario"
+                            placeholder="Digite o email do usuário"
+                            value={usuario.usuario}
+                            onChange={atualizarInput}
+                        />
+                        {/* <Input name="foto" placeholder="Foto" value={usuario.foto} onChange={atualizarInput} /> */}
                         <Input
                             type="password"
                             name="senha"

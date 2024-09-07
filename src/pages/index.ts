@@ -1,3 +1,5 @@
 export * from './homepage'
 export * from './login'
 export * from './cadastro'
+export * from './categorias'
+export * from './servicos'

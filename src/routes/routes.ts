@@ -3,8 +3,13 @@ export const routes = {
     login: '/login',
     cadastro: '/cadastro',
 
-    categoria: '/categorias',
+    categorias: '/categorias',
     cadastrarCategoria: '/cadastrar-categoria',
     editarCategoria: '/editar-categoria/:id',
-    deletarcategoria: '/deletar-categoria/:id',
+    deletarCategoria: '/deletar-categoria/:id',
+
+    servicos: '/servicos',
+    cadastrarServico: '/cadastrar-servico',
+    editarServico: '/editar-servico/:id',
+    deletarServico: '/deletar-servico/:id',
 }
