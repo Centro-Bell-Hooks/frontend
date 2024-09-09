@@ -1,6 +1,6 @@
-import { Link, useNavigate } from 'react-router-dom'
 import { ChangeEvent, useContext, useState } from 'react'
 import { RotatingLines } from 'react-loader-spinner'
+import { Link } from 'react-router-dom'
 
 import { UsuarioLogin } from '../../models'
 import { AuthContext } from '../../contexts'
@@ -20,7 +20,6 @@ export function Login() {
     // aqui da erro de uncontroled
     const [usuarioLogin, setUsuarioLogin] = useState<UsuarioLogin>({} as UsuarioLogin)
     const { handleLogin, isLoading } = useContext(AuthContext)
-    const navigate = useNavigate()
 
     function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
         setUsuarioLogin({
@@ -32,7 +31,6 @@ export function Login() {
     function login(e: ChangeEvent<HTMLFormElement>) {
         e.preventDefault()
         handleLogin(usuarioLogin)
-        // setTimeout(() => navigate(routes.servicos), 5000)
     }
 
     return (
