@@ -4,9 +4,8 @@ import { RotatingLines } from 'react-loader-spinner'
 
 import { UsuarioLogin } from '../../models'
 import { AuthContext } from '../../contexts'
-import { Input } from '../../components'
 import { routes } from '../../routes'
-import { Button } from '../../components/ui/button'
+import { Input, Button, Card, CardTitle, CardContent } from '../../components'
 
 // const valoresIniciais = {
 //     id: 0,
@@ -38,57 +37,60 @@ export function Login() {
 
     return (
         <div className="h-screen flex flex-col justify-center items-center">
-            <form
-                onSubmit={login}
-                className="bg-primaria rounded-md px-6 py-5 flex justify-center items-center flex-col w-[33%]"
-            >
-                <h2 className="text-light text-3xl font-semibold mb-5">Login</h2>
-                <div className="flex flex-col w-full">
-                    <Input
-                        name="usuario"
-                        placeholder="Digite seu Email"
-                        value={usuarioLogin.usuario}
-                        onChange={atualizarEstado}
-                        className="border-2"
-                    />
-                    <Input
-                        type="password"
-                        name="senha"
-                        placeholder="Digite sua senha"
-                        value={usuarioLogin.senha}
-                        onChange={atualizarEstado}
-                        autocomplete="current-password"
-                        className="border-2"
-                    />
-                </div>
+            <Card>
+                <CardTitle className="text-light text-3xl font-semibold mb-5">Login</CardTitle>
+                <CardContent>
+                    <form onSubmit={login} className="rounded-md flex justify-center items-center flex-col">
+                        <div className="flex flex-col w-full">
+                            <Input
+                                name="usuario"
+                                placeholder="Digite seu Email"
+                                value={usuarioLogin.usuario}
+                                onChange={atualizarEstado}
+                                className="border-2"
+                            />
+                            <Input
+                                type="password"
+                                name="senha"
+                                placeholder="Digite sua senha"
+                                value={usuarioLogin.senha}
+                                onChange={atualizarEstado}
+                                autoComplete="current-password"
+                                className="border-2"
+                            />
+                        </div>
 
-                <p className="mb-4 text-light">
-                    Ainda não tem uma conta?
-                    <Link to={routes.cadastro} className="text-secundaria hover:underline">
-                        {' '}
-                        Cadastre-se
-                    </Link>
-                </p>
+                        <p className="mb-4 text-light">
+                            Ainda não tem uma conta?
+                            <Link to={routes.cadastro} className="text-secundaria hover:underline">
+                                {' '}
+                                Cadastre-se
+                            </Link>
+                        </p>
 
-                <Button type="submit" variant="outline">
-                    {isLoading ? (
-                        <RotatingLines
-                            strokeColor="white"
-                            strokeWidth="5"
-                            animationDuration="0.75"
-                            width="24"
-                            visible={true}
-                        />
-                    ) : (
-                        <span>Entrar</span>
-                    )}
-                </Button>
+                        <Button type="submit">
+                            {isLoading ? (
+                                <RotatingLines
+                                    strokeColor="white"
+                                    strokeWidth="5"
+                                    animationDuration="0.75"
+                                    width="24"
+                                    visible={true}
+                                />
+                            ) : (
+                                <span>Entrar</span>
+                            )}
+                        </Button>
 
-                {/* <button
+                        {/* <button
                     type="submit"
                     className="rounded text-light text-lg bg-secundaria hover:bg-[#f7db77] font-semibold w-full py-2 flex justify-center"
-                ></button> */}
-            </form>
+                >
+                    Entrar
+                </button> */}
+                    </form>
+                </CardContent>
+            </Card>
         </div>
     )
 }
