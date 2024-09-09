@@ -36,10 +36,10 @@ export function Login() {
     return (
         <div className="h-screen flex flex-col justify-center items-center">
             <Card>
-                <CardTitle className="text-light text-3xl font-semibold mb-5">Login</CardTitle>
+                <CardTitle className="text-3xl font-semibold mb-5 text-center pt-4">Login</CardTitle>
                 <CardContent>
                     <form onSubmit={login} className="rounded-md flex justify-center items-center flex-col">
-                        <div className="flex flex-col w-full">
+                        <div className="flex flex-col w-full gap-3">
                             <Input
                                 name="usuario"
                                 placeholder="Digite seu Email"
@@ -58,7 +58,7 @@ export function Login() {
                             />
                         </div>
 
-                        <p className="mb-4 text-light">
+                        <p className="my-4">
                             Ainda não tem uma conta?
                             <Link to={routes.cadastro} className="text-secundaria hover:underline">
                                 {' '}
@@ -66,7 +66,7 @@ export function Login() {
                             </Link>
                         </p>
 
-                        <Button type="submit">
+                        <Button type="submit" className="w-full">
                             {isLoading ? (
                                 <RotatingLines
                                     strokeColor="white"
