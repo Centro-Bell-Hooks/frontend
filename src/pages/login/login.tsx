@@ -1,25 +1,22 @@
-import { ChangeEvent, useContext, useState } from 'react'
+import { ChangeEvent, useContext, useEffect, useState } from 'react'
 import { RotatingLines } from 'react-loader-spinner'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import { UsuarioLogin } from '../../models'
-import { AuthContext } from '../../contexts'
+import { AuthContext, valoresIniciais } from '../../contexts'
 import { routes } from '../../routes'
-import { Input, Button, Card, CardTitle, CardContent } from '../../components'
-
-// const valoresIniciais = {
-//     id: 0,
-//     nome: '',
-//     usuario: '',
-//     senha: '',
-//     foto: '',
-//     token: '',
-// }
+import { Input, Button } from '../../components'
 
 export function Login() {
-    // aqui da erro de uncontroled
-    const [usuarioLogin, setUsuarioLogin] = useState<UsuarioLogin>({} as UsuarioLogin)
-    const { handleLogin, isLoading } = useContext(AuthContext)
+    const [usuarioLogin, setUsuarioLogin] = useState<UsuarioLogin>(valoresIniciais)
+    const { usuario, handleLogin, isLoading } = useContext(AuthContext)
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if (usuario.id) {
+            navigate(routes.servicos)
+        }
+    }, [usuario])
 
     function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
         setUsuarioLogin({
@@ -34,61 +31,53 @@ export function Login() {
     }
 
     return (
-        <div className="h-screen flex flex-col justify-center items-center">
-            <Card>
-                <CardTitle className="text-3xl font-semibold mb-5 text-center pt-4">Login</CardTitle>
-                <CardContent>
-                    <form onSubmit={login} className="rounded-md flex justify-center items-center flex-col">
-                        <div className="flex flex-col w-full gap-3">
-                            <Input
-                                name="usuario"
-                                placeholder="Digite seu Email"
-                                value={usuarioLogin.usuario}
-                                onChange={atualizarEstado}
-                                className="border-2"
+        <div className="grid grid-cols-2 h-screen">
+            <div className="bg-primaria flex justify-center items-center">
+                <Link to={routes.homepage}>
+                    <img src="src/assets/logo-bell-hooks.jpg" className="rounded-full max-w-[300px]" />
+                </Link>
+            </div>
+            <div className="flex flex-col justify-center items-center">
+                <h1 className="text-3xl mb-3 font-semibold text-primaria">Login</h1>
+                <form onSubmit={login} className="flex flex-col gap-3 w-full max-w-[350px]">
+                    <Input
+                        name="usuario"
+                        placeholder="Digite seu Email"
+                        value={usuarioLogin.usuario}
+                        onChange={atualizarEstado}
+                    />
+                    <Input
+                        type="password"
+                        name="senha"
+                        placeholder="Digite sua senha"
+                        value={usuarioLogin.senha}
+                        onChange={atualizarEstado}
+                        autoComplete="current-password"
+                    />
+
+                    <p className="my-1 text-center">
+                        Ainda não tem uma conta?
+                        <Link to={routes.cadastro} className="text-secundaria hover:underline">
+                            {' '}
+                            Cadastre-se
+                        </Link>
+                    </p>
+
+                    <Button type="submit">
+                        {isLoading ? (
+                            <RotatingLines
+                                strokeColor="white"
+                                strokeWidth="5"
+                                animationDuration="0.75"
+                                width="24"
+                                visible={true}
                             />
-                            <Input
-                                type="password"
-                                name="senha"
-                                placeholder="Digite sua senha"
-                                value={usuarioLogin.senha}
-                                onChange={atualizarEstado}
-                                autoComplete="current-password"
-                                className="border-2"
-                            />
-                        </div>
-
-                        <p className="my-4">
-                            Ainda não tem uma conta?
-                            <Link to={routes.cadastro} className="text-secundaria hover:underline">
-                                {' '}
-                                Cadastre-se
-                            </Link>
-                        </p>
-
-                        <Button type="submit" className="w-full">
-                            {isLoading ? (
-                                <RotatingLines
-                                    strokeColor="white"
-                                    strokeWidth="5"
-                                    animationDuration="0.75"
-                                    width="24"
-                                    visible={true}
-                                />
-                            ) : (
-                                <span>Entrar</span>
-                            )}
-                        </Button>
-
-                        {/* <button
-                    type="submit"
-                    className="rounded text-light text-lg bg-secundaria hover:bg-[#f7db77] font-semibold w-full py-2 flex justify-center"
-                >
-                    Entrar
-                </button> */}
-                    </form>
-                </CardContent>
-            </Card>
+                        ) : (
+                            <>Entrar</>
+                        )}
+                    </Button>
+                </form>
+            </div>
         </div>
     )
 }
