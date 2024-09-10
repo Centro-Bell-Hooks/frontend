@@ -5,7 +5,7 @@ import { RotatingLines } from 'react-loader-spinner'
 import { AuthContext } from '../../../contexts'
 import { Categoria } from '../../../models'
 import { atualizar, buscar, cadastrar } from '../../../services'
-import { Alert, Button, Input } from '../../../components'
+import { Alert, Button, Card, CardContent, CardTitle, Input } from '../../../components'
 import { routes } from '../../../routes'
 
 const valoresIniciais = {
@@ -83,33 +83,38 @@ export function FormCategoria() {
     }
 
     return (
-        <div className="container flex flex-col items-center justify-center mx-auto">
-            <h1 className="text-4xl text-center my-8">
-                {id === undefined ? 'Cadastrar Categoria' : 'Editar Categoria'}
-            </h1>
+        <div className="container flex flex-col items-center justify-center mx-auto h-screen">
+            <Card className="w-full max-w-[350px]">
+                <CardTitle className="text-3xl text-center my-4">
+                    {id === undefined ? 'Cadastrar Categoria' : 'Editar Categoria'}
+                </CardTitle>
 
-            <form className="w-1/2 flex flex-col gap-4" onSubmit={gerarNovaCategoria}>
-                <Input
-                    name="cargo"
-                    placeholder="Nova categoria"
-                    className="border-2 border-slate-700 rounded p-2"
-                    value={categoria.cargo}
-                    onChange={atualizarEstado}
-                />
-                <Button type="submit">
-                    {isLoading ? (
-                        <RotatingLines
-                            strokeColor="white"
-                            strokeWidth="5"
-                            animationDuration="0.75"
-                            width="24"
-                            visible={true}
-                        />
-                    ) : (
-                        <>{id === undefined ? 'Cadastrar' : 'Atualizar'}</>
-                    )}
-                </Button>
-            </form>
+                <CardContent>
+                    <form onSubmit={gerarNovaCategoria}>
+                        <div className="flex flex-col gap-3">
+                            <Input
+                                name="cargo"
+                                placeholder="Nova categoria"
+                                value={categoria.cargo}
+                                onChange={atualizarEstado}
+                            />
+                        </div>
+                        <Button type="submit" className="w-full mt-3">
+                            {isLoading ? (
+                                <RotatingLines
+                                    strokeColor="white"
+                                    strokeWidth="5"
+                                    animationDuration="0.75"
+                                    width="24"
+                                    visible={true}
+                                />
+                            ) : (
+                                <>{id === undefined ? 'Cadastrar' : 'Atualizar'}</>
+                            )}
+                        </Button>
+                    </form>
+                </CardContent>
+            </Card>
         </div>
     )
 }
