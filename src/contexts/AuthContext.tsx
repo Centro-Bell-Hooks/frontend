@@ -23,6 +23,7 @@ export const valoresIniciais = {
     usuario: '',
     foto: '',
     senha: '',
+    tipo: '',
     token: '',
 }
 
