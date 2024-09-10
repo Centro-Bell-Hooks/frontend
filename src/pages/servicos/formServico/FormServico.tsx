@@ -6,7 +6,7 @@ import { Categoria, Servico } from '../../../models'
 import { AuthContext } from '../../../contexts'
 import { atualizar, buscar, cadastrar } from '../../../services'
 import { routes } from '../../../routes'
-import { Card, CardContent, CardTitle, Button, Input, Alert } from '../../../components'
+import { Card, CardContent, CardTitle, Button, Input, Alert, Select } from '../../../components'
 
 const valoresIniciais = {
     id: 0,
@@ -164,20 +164,16 @@ export function FormServico() {
                             />
                             <h4 className="font-semibold my-1">Categoria</h4>
 
-                            <select
+                            <Select
                                 name="categoria"
-                                className="border-slate-800 p-2 border rounded"
                                 onChange={(e) => buscarCategoriaPorId(e.currentTarget.value)}
-                            >
-                                <option value={servicos.categoria?.cargo} selected disabled>
-                                    {servicos.categoria?.cargo}
-                                </option>
-                                {categorias.map((categoria) => (
-                                    <>
-                                        <option value={categoria.id}>{categoria.cargo}</option>
-                                    </>
+                                defaultValue={servicos.categoria?.cargo}
+                                values={categorias.map((categoria) => (
+                                    <option key={categoria.id} value={categoria.id}>
+                                        {categoria.cargo}
+                                    </option>
                                 ))}
-                            </select>
+                            />
                         </div>
                         <Button type="submit" className="w-full mt-3" disabled={categoria.cargo === ''}>
                             {isLoading ? (
