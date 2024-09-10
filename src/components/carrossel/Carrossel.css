@@ -1,0 +1,19 @@
+/*Cor dos botões de Navegação*/
+:root {
+    --swiper-theme-color: #ffffff;
+}
+
+
+.swiper {
+    height: 90vh;
+    margin: 0;
+    
+}
+
+/*Estiliza a imagem do slide*/
+.swiper-slide-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}

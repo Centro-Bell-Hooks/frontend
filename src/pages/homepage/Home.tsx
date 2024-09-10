@@ -1,11 +1,18 @@
-import { Inicio } from './inicio'
+/* import { Inicio } from './inicio' */
 import { Sobre } from './sobre'
 import { Contato } from './contato'
+import Carrossel from '../../components/carrossel/Carrossel'
+
+
 
 export function Home() {
     return (
         <>
-            <Inicio />
+            <div>
+                <Carrossel />
+            </div>
+           {/*  <Inicio /> */}
+
             <Sobre />
             <Contato />
         </>

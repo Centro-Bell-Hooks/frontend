@@ -5,14 +5,23 @@ import { routes } from '../../../routes'
 
 export function Inicio() {
     return (
-        <div className="flex items-center justify-center my-12 gap-4 h-screen">
+        <div className="grid grid-cols-2 gap-3">
             <div className="flex flex-col justify-center items-center">
-                <h1 className="font-bold text-4xl mb-3">Seja Bem vindo!</h1>
+                <h1 className="font-bold text-5xl mb-3 px-2">CENTRO BELL HOOKS</h1>
+                <p className="leading-3 font-thin text-center mx-7 my-2 tracking-widest first-letter:text-1xl mb-6">
+                    Nossa missão é capacitar, empoderar e conectar meninas e mulheres à educação de qualidade, ter
+                    conhecimento de seus direitos e usufruir de networking seguro.
+                </p>
+
                 <Link to={routes.login}>
-                    <Button size="sm">Entrar</Button>
+                    <Button>Entrar</Button>
                 </Link>
             </div>
-            <img className="w-1/3" src="src/assets/computador.svg" alt="Computador" />
+            <img
+                className="max-width: 768px"
+                src="https://media.istockphoto.com/id/1475349134/pt/foto/programming-school-class.jpg?s=2048x2048&w=is&k=20&c=NHE5eNEDZbGlfTdGeiTYQfp95KgWucrJc7Q3geO4qpU="
+                alt="Computador"
+            />
         </div>
     )
 }

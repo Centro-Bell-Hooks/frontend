@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 import { Servico } from '../../../models'
 import { formatarData } from '../../../utils'
-import { Button } from '../../../components'
+
 
 interface CardServicoProps {
     servico: Servico
