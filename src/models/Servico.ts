@@ -1,5 +1,5 @@
 import { Categoria } from './Categoria'
-import Usuario from './Usuario'
+import { Usuario } from './Usuario'
 
 export interface Servico {
     id: number

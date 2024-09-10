@@ -1,54 +1,22 @@
-import { ChangeEventHandler } from 'react'
+import * as React from 'react'
 
-type SizeProps = 'sm' | 'md' | 'lg'
+import { cn } from '@/lib/utils'
 
-type InputProps = {
-    size?: SizeProps
-    type?: 'text' | 'email' | 'password' | 'date' | 'number'
-    value?: string
-    name: string
-    onChange?: ChangeEventHandler<HTMLInputElement>
-    placeholder: string
-    fullWidth?: boolean
-    margin?: boolean
-    errorMessage?: any
-    className?: string
-    autocomplete?: string
-}
+export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {}
 
-const tipoDoTamanho: Record<SizeProps, string> = {
-    sm: 'py-1 px-3',
-    md: 'py-2 px-4',
-    lg: 'py-3 px-4',
-}
-
-const estiloBase = `border-2 border-slate-700 rounded`
-
-export function Input({
-    size = 'md',
-    type = 'text',
-    value = '',
-    fullWidth = false,
-    margin = true,
-    className = '',
-    errorMessage = '',
-    name,
-    onChange,
-    placeholder,
-    autocomplete,
-}: InputProps) {
+const Input = React.forwardRef<HTMLInputElement, InputProps>(({ className, type, ...props }, ref) => {
     return (
-        <>
-            <input
-                type={type}
-                name={name}
-                onChange={onChange}
-                value={value}
-                placeholder={placeholder}
-                autoComplete={autocomplete}
-                className={`${estiloBase} ${tipoDoTamanho[size]} ${margin && 'my-2'} ${fullWidth && 'w-full'} ${className}`}
-            />
-            <p>{errorMessage}</p>
-        </>
+        <input
+            type={type}
+            className={cn(
+                'flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50',
+                className
+            )}
+            ref={ref}
+            {...props}
+        />
     )
-}
+})
+Input.displayName = 'Input'
+
+export { Input }

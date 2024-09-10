@@ -1,45 +1,48 @@
-import { FC, MouseEventHandler, ReactNode } from 'react'
+import * as React from 'react'
+import { Slot } from '@radix-ui/react-slot'
+import { cva, type VariantProps } from 'class-variance-authority'
 
-type SizeProps = 'sm' | 'md' | 'lg'
+import { cn } from '@/lib/utils'
 
-type ButtonProps = {
-    size?: SizeProps
-    children: ReactNode
-    type?: 'button' | 'reset' | 'submit'
-    onClick?: MouseEventHandler<HTMLButtonElement>
-    disabled?: boolean
-    color?: string
-    background?: string
-    fullWidth?: boolean
+const buttonVariants = cva(
+    'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50',
+    {
+        variants: {
+            variant: {
+                default: 'bg-secundaria text-primary-foreground shadow hover:bg-primary/90',
+                destructive: 'bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90',
+                outline:
+                    'border border-secundaria text-secundaria bg-background shadow-sm hover:bg-accent hover:text-accent-foreground',
+                secondary: 'bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80',
+                ghost: 'hover:bg-accent hover:text-accent-foreground',
+                link: 'text-primary underline-offset-4 hover:underline',
+            },
+            size: {
+                default: 'h-9 px-4 py-2',
+                sm: 'h-8 rounded-md px-3 text-xs',
+                lg: 'h-10 rounded-md px-8',
+                icon: 'h-9 w-9',
+            },
+        },
+        defaultVariants: {
+            variant: 'default',
+            size: 'default',
+        },
+    }
+)
+
+export interface ButtonProps
+    extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+        VariantProps<typeof buttonVariants> {
+    asChild?: boolean
 }
 
-// ver se precisa ajustar o tamanho depois
-const tipoDoTamanho: Record<SizeProps, string> = {
-    sm: 'py-1 px-3',
-    md: 'py-2 px-4',
-    lg: 'py-3 px-4',
-}
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+    ({ className, variant, size, asChild = false, ...props }, ref) => {
+        const Comp = asChild ? Slot : 'button'
+        return <Comp className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props} />
+    }
+)
+Button.displayName = 'Button'
 
-const estiloBase = `border-bg-primaria border-solid border-2 rounded`
-
-export const Button: FC<ButtonProps> = ({
-    size = 'md',
-    type = 'button',
-    disabled = false,
-    color = 'text-fonte',
-    background = 'bg-primaria',
-    fullWidth = false,
-    children,
-    onClick,
-}) => {
-    return (
-        <button
-            type={type}
-            disabled={disabled}
-            onClick={onClick}
-            className={`${estiloBase} ${tipoDoTamanho[size]} ${background} ${color} ${fullWidth && 'w-full'}`}
-        >
-            {children}
-        </button>
-    )
-}
+export { Button, buttonVariants }
