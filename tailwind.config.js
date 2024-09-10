@@ -9,15 +9,8 @@ export default {
             colors: {
                 primaria: '#231B1B',
                 secundaria: '#FFC520',
-                // secundaria: '#FDC62F',
-                // secundaria: '#FFCD1A',
-                light: '#f8fafc',
-                // fonte: '#151b23',
-                // fonte: '#191717',
-                // fonte: '#23252b',
-                link: '#737373',
-                fundo: '#f8fafc',
-                cor_texto: '',
+                light: '#f8fafc', // mudar pra portugues depois
+                cinza: '#737373',
 
                 // shadcn
                 background: 'hsl(var(--background))',

@@ -13,7 +13,7 @@ function Home() {
         <>
             <Swiper
                 slidesPerView={1}
-                spaceBetween={3}
+                spaceBetween={30}
                 loop={true}
                 pagination={{
                     clickable: true,
@@ -26,24 +26,26 @@ function Home() {
                 modules={[Autoplay, Pagination, Navigation]}
                 className="mySwiper"
             >
-               {/*  <SwiperSlide>
+                {/*  <SwiperSlide>
                     
                 </SwiperSlide> */}
-
                 <SwiperSlide>
                     <img
-                        className="swiper-slide-img flex items-center justify-center my-12 gap-4 h-screen"
-                        src="https://media.istockphoto.com/id/1468068296/pt/foto/student-using-laptop-in-the-classroom.jpg?s=1024x1024&w=is&k=20&c=TKlb3-qaS93iJTpIP81fc4JQ4fhSUbn39dLRCgKk_SI="
+                        className="swiper-slide-img gap-4"
+                        src="src/assets/resized1.jpeg"
                         alt="Carrossel - Slide 02"
                     />
                 </SwiperSlide>
-
                 <SwiperSlide>
                     <img
-                        className="swiper-slide-img flex items-center justify-center my-12 gap-4 h-screen"
-                        src="src/assets/ibagem-homepage.jpg"
+                        className="swiper-slide-img gap-4"
+                        src="src/assets/resized2.jpeg"
                         alt="Carrossel - Slide 03"
                     />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <img className="swiper-slide-img flex gap-4"
+                        src="src/assets/resized3.jpeg" alt="Foto de Garotas Estudando"></img>
                 </SwiperSlide>
             </Swiper>
         </>

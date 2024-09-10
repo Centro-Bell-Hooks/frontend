@@ -2,6 +2,7 @@
 import { Sobre } from './sobre'
 import { Contato } from './contato'
 import Carrossel from '../../components/carrossel/Carrossel'
+import { Inicio } from './inicio'
 
 
 
@@ -11,7 +12,8 @@ export function Home() {
             <div>
                 <Carrossel />
             </div>
-           {/*  <Inicio /> */}
+            <Inicio />
+            {/*  <Inicio /> */}
 
             <Sobre />
             <Contato />
