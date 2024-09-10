@@ -32,21 +32,20 @@ export function FormServico() {
     const token = usuario.token
 
     useEffect(() => {
-        buscarCategorias()
         if (token === '') {
             Alert({ mensagem: 'Você precisa estar logado', tipo: 'info' })
             navigate(routes.login)
-        }
+        } else if (id) buscarServicoPorId(id)
 
-        if (id !== undefined) {
-            buscarServicoPorId(id)
-        }
-        // corrir talvez
+        if (!!categorias) buscarCategorias()
+    }, [token, id])
+
+    useEffect(() => {
         setServicos({
             ...servicos,
             categoria: categoria,
         })
-    }, [token, id, categoria])
+    }, [categoria])
 
     async function buscarServicoPorId(id: string) {
         try {
@@ -61,7 +60,6 @@ export function FormServico() {
     }
 
     async function buscarCategoriaPorId(id: string) {
-        console.log('id', id)
         try {
             await buscar(`/categorias/${id}`, setCategoria, {
                 headers: { Authorization: token },
@@ -165,13 +163,14 @@ export function FormServico() {
                                 onChange={atualizarEstado}
                             />
                             <h4 className="font-semibold my-1">Categoria</h4>
+
                             <select
-                                name="tema"
+                                name="categoria"
                                 className="border-slate-800 p-2 border rounded"
                                 onChange={(e) => buscarCategoriaPorId(e.currentTarget.value)}
                             >
-                                <option value="" selected disabled>
-                                    Selecione uma Categoria
+                                <option value={servicos.categoria?.cargo} selected disabled>
+                                    {servicos.categoria?.cargo}
                                 </option>
                                 {categorias.map((categoria) => (
                                     <>
