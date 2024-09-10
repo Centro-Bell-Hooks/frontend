@@ -6,7 +6,7 @@ import { Categoria, Servico } from '../../../models'
 import { AuthContext } from '../../../contexts'
 import { atualizar, buscar, cadastrar } from '../../../services'
 import { routes } from '../../../routes'
-import { Card, CardContent, CardTitle, Button, Input, Alert } from '../../../components'
+import { Card, CardContent, CardTitle, Button, Input, Alert, Select } from '../../../components'
 
 const valoresIniciais = {
     id: 0,
@@ -32,21 +32,20 @@ export function FormServico() {
     const token = usuario.token
 
     useEffect(() => {
-        buscarCategorias()
         if (token === '') {
             Alert({ mensagem: 'Você precisa estar logado', tipo: 'info' })
             navigate(routes.login)
-        }
+        } else if (id) buscarServicoPorId(id)
 
-        if (id !== undefined) {
-            buscarServicoPorId(id)
-        }
-        // corrir talvez
+        if (!!categorias) buscarCategorias()
+    }, [token, id])
+
+    useEffect(() => {
         setServicos({
             ...servicos,
             categoria: categoria,
         })
-    }, [token, id, categoria])
+    }, [categoria])
 
     async function buscarServicoPorId(id: string) {
         try {
@@ -61,7 +60,6 @@ export function FormServico() {
     }
 
     async function buscarCategoriaPorId(id: string) {
-        console.log('id', id)
         try {
             await buscar(`/categorias/${id}`, setCategoria, {
                 headers: { Authorization: token },
@@ -137,7 +135,7 @@ export function FormServico() {
     }
 
     return (
-        <div className="flex flex-col items-center justify-center h-screen">
+        <div className="flex items-center justify-center h-screen">
             <Card className="w-full max-w-[350px]">
                 <CardTitle className="my-4 text-3xl text-center">
                     {id !== undefined ? 'Editar Serviço' : 'Cadastrar Serviço'}
@@ -165,20 +163,17 @@ export function FormServico() {
                                 onChange={atualizarEstado}
                             />
                             <h4 className="font-semibold my-1">Categoria</h4>
-                            <select
-                                name="tema"
-                                className="border-slate-800 p-2 border rounded"
+
+                            <Select
+                                name="categoria"
                                 onChange={(e) => buscarCategoriaPorId(e.currentTarget.value)}
-                            >
-                                <option value="" selected disabled>
-                                    Selecione uma Categoria
-                                </option>
-                                {categorias.map((categoria) => (
-                                    <>
-                                        <option value={categoria.id}>{categoria.cargo}</option>
-                                    </>
+                                defaultValue={servicos.categoria?.cargo}
+                                values={categorias.map((categoria) => (
+                                    <option key={categoria.id} value={categoria.id}>
+                                        {categoria.cargo}
+                                    </option>
                                 ))}
-                            </select>
+                            />
                         </div>
                         <Button type="submit" className="w-full mt-3" disabled={categoria.cargo === ''}>
                             {isLoading ? (
