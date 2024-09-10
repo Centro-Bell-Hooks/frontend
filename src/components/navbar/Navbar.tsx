@@ -49,13 +49,13 @@ export function Navbar() {
                                             Serviços
                                         </Link>
                                         {(acessAdm() || acessInst()) && (
-                                                <Link
-                                                    to={routes.cadastrarServico}
-                                                    className="hover:underline font-semibold"
-                                                >
-                                                    Cadastrar Serviços
-                                                </Link>
-                                            )}
+                                            <Link
+                                                to={routes.cadastrarServico}
+                                                className="hover:underline font-semibold"
+                                            >
+                                                Cadastrar Serviços
+                                            </Link>
+                                        )}
                                         {acessAdm() && (
                                             <Link to={routes.categorias} className="hover:underline font-semibold">
                                                 Categorias

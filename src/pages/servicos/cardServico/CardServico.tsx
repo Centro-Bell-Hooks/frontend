@@ -21,8 +21,8 @@ export function CardServico({ servico }: CardServicoProps) {
         return true
     }
 
-    function candidatoSucesso(){
-        Alert({mensagem:"Candidatura realizada com sucesso!", tipo:'success'})
+    function candidatoSucesso() {
+        Alert({ mensagem: 'Candidatura realizada com sucesso!', tipo: 'success' })
     }
 
     return (
@@ -57,7 +57,9 @@ export function CardServico({ servico }: CardServicoProps) {
                         </Link>
                     </div>
                 ) : (
-                    <Button onClick={candidatoSucesso} className="w-full">Candidatar-se</Button>
+                    <Button onClick={candidatoSucesso} className="w-full">
+                        Candidatar-se
+                    </Button>
                 )}
             </CardContent>
         </Card>
