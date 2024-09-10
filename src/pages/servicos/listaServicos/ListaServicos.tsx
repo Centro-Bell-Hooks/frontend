@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react'
-import { Dna } from 'react-loader-spinner'
+import { RotatingLines } from 'react-loader-spinner'
 import { useNavigate } from 'react-router-dom'
 
 import { AuthContext } from '../../../contexts'
@@ -13,6 +13,7 @@ export function ListaServicos() {
     const navigate = useNavigate()
     const [servicos, setServicos] = useState<Servico[]>([])
     const { usuario, handleLogout } = useContext(AuthContext)
+    const [isLoading, setIsLoading] = useState(false)
     const token = usuario.token
 
     useEffect(() => {
@@ -26,6 +27,7 @@ export function ListaServicos() {
 
     async function buscarServico() {
         try {
+            setIsLoading(true)
             await buscar(`/produtos`, setServicos, {
                 headers: { Authorization: token },
             })
@@ -33,31 +35,36 @@ export function ListaServicos() {
             if (error.toString().includes('401')) {
                 handleLogout()
             }
+        } finally {
+            setIsLoading(false)
         }
     }
 
     return (
-        <>
-            {servicos.length === 0 && (
-                <Dna
-                    visible={true}
-                    height="200"
-                    width="200"
-                    ariaLabel="dna-loading"
-                    wrapperStyle={{}}
-                    wrapperClass="dna-wrapper mx-auto"
-                />
-            )}
-
-            <div className="h-screen">
-                <Box>
+        <Box>
+            {isLoading ? (
+                <div className="h-screen flex justify-center items-center">
+                    <RotatingLines
+                        strokeColor="black"
+                        strokeWidth="5"
+                        animationDuration="0.75"
+                        width="50"
+                        visible={true}
+                    />
+                </div>
+            ) : servicos.length === 0 ? (
+                <h1 className="h-screen flex justify-center items-center text-primaria text-xl font-semibold">
+                    Lista vazia
+                </h1>
+            ) : (
+                <div className="h-screen">
                     <div className="flex flex-col w-full gap-6">
                         {servicos.map((servico) => (
                             <CardServico key={servico.id} servico={servico} />
                         ))}
                     </div>
-                </Box>
-            </div>
-        </>
+                </div>
+            )}
+        </Box>
     )
 }

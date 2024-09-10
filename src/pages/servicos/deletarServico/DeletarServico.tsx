@@ -100,7 +100,7 @@ export function DeletarServico() {
                                     visible={true}
                                 />
                             ) : (
-                                <span>Sim</span>
+                                <>Sim</>
                             )}
                         </Button>
                     </div>

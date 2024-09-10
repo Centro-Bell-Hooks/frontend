@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react'
-import { Dna } from 'react-loader-spinner'
+import { RotatingLines } from 'react-loader-spinner'
 import { useNavigate } from 'react-router-dom'
 
 import { AuthContext } from '../../../contexts'
@@ -11,8 +11,9 @@ import { Alert, Box } from '../../../components'
 
 export function ListaCategoria() {
     const navigate = useNavigate()
-    const [categoria, setCategoria] = useState<Categoria[]>([])
+    const [categorias, setCategorias] = useState<Categoria[]>([])
     const { usuario, handleLogout } = useContext(AuthContext)
+    const [isLoading, setIsLoading] = useState(false)
     const token = usuario.token
 
     useEffect(() => {
@@ -25,38 +26,44 @@ export function ListaCategoria() {
 
     async function buscarCategorias() {
         try {
-            await buscar(`/categorias`, setCategoria, {
+            setIsLoading(true)
+            await buscar(`/categorias`, setCategorias, {
                 headers: { Authorization: token },
             })
         } catch (error: any) {
             if (error.toString().includes('401')) {
                 handleLogout()
             }
+        } finally {
+            setIsLoading(false)
         }
     }
 
     return (
-        <>
-            {categoria.length === 0 && (
-                <Dna
-                    visible={true}
-                    height="200"
-                    width="200"
-                    ariaLabel="dna-loading"
-                    wrapperStyle={{}}
-                    wrapperClass="dna-wrapper mx-auto"
-                />
-            )}
-
-            <div className="h-screen">
-                <Box>
+        <Box>
+            {isLoading ? (
+                <div className="h-screen flex justify-center items-center">
+                    <RotatingLines
+                        strokeColor="black"
+                        strokeWidth="5"
+                        animationDuration="0.75"
+                        width="50"
+                        visible={true}
+                    />
+                </div>
+            ) : categorias.length === 0 ? (
+                <h1 className="h-screen flex justify-center items-center text-primaria text-xl font-semibold">
+                    Lista vazia
+                </h1>
+            ) : (
+                <div className="h-screen">
                     <div className="gap-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                        {categoria.map((categoria) => (
+                        {categorias.map((categoria) => (
                             <CardCategoria key={categoria.id} categoria={categoria} />
                         ))}
                     </div>
-                </Box>
-            </div>
-        </>
+                </div>
+            )}
+        </Box>
     )
 }

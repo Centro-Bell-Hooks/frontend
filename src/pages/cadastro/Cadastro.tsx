@@ -65,8 +65,17 @@ export function Cadastro() {
                     <img src="src/assets/logo-bell-hooks.jpg" className="rounded-full max-w-[300px]" />
                 </Link>
             </div>
+
             {isLoading ? (
-                <RotatingLines strokeColor="white" strokeWidth="5" animationDuration="0.75" width="24" visible={true} />
+                <div className="flex justify-center">
+                    <RotatingLines
+                        strokeColor="black"
+                        strokeWidth="5"
+                        animationDuration="0.75"
+                        width="50"
+                        visible={true}
+                    />
+                </div>
             ) : (
                 <div className="flex flex-col justify-center items-center">
                     <h1 className="text-primaria text-3xl mb-3 font-semibold">Cadastrar</h1>
@@ -100,7 +109,6 @@ export function Cadastro() {
                         <Button onClick={voltar} className="my-1" variant="outline">
                             Voltar
                         </Button>
-
                         <Button type="submit">Cadastrar</Button>
                     </form>
                 </div>
