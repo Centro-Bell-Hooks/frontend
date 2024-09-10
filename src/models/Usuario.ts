@@ -5,6 +5,7 @@ export interface Usuario {
     nome: string
     usuario: string
     senha: string
-    foto: string
+    foto?: string
+    tipo: string
     postagem?: Servico | null // trocar postagem para servico depois
 }
