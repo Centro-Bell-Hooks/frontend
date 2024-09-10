@@ -15,6 +15,18 @@ export function Navbar() {
         Alert({ mensagem: 'Usuário desconectado', tipo: 'info' })
     }
 
+    const acessInst = () => {
+        if (usuario.tipo === 'instituicao') return true
+
+        return false
+    }
+
+    const acessAdm = () => {
+        if (usuario.tipo === 'admin') return true
+
+        return false
+    }
+
     return (
         <>
             {!auth && (
@@ -36,14 +48,29 @@ export function Navbar() {
                                         <Link to={routes.servicos} className="hover:underline font-semibold">
                                             Serviços
                                         </Link>
-                                        <Link to={routes.cadastrarServico} className="hover:underline font-semibold">
-                                            Cadastrar Serviços
-                                        </Link>
-                                        <Link to={routes.categorias} className="hover:underline font-semibold">
-                                            Categorias
-                                        </Link>
-                                        <Link to={routes.cadastrarCategoria} className="hover:underline font-semibold">
-                                            Cadastrar Categoria
+                                        {(acessAdm() || acessInst()) && (
+                                                <Link
+                                                    to={routes.cadastrarServico}
+                                                    className="hover:underline font-semibold"
+                                                >
+                                                    Cadastrar Serviços
+                                                </Link>
+                                            )}
+                                        {acessAdm() && (
+                                            <Link to={routes.categorias} className="hover:underline font-semibold">
+                                                Categorias
+                                            </Link>
+                                        )}
+                                        {acessAdm() && (
+                                            <Link
+                                                to={routes.cadastrarCategoria}
+                                                className="hover:underline font-semibold"
+                                            >
+                                                Cadastrar Categoria
+                                            </Link>
+                                        )}
+                                        <Link to="" className="hover:underline font-semibold">
+                                            Perfil
                                         </Link>
 
                                         <Link
