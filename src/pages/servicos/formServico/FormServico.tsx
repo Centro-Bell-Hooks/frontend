@@ -137,7 +137,7 @@ export function FormServico() {
     }
 
     return (
-        <div className="flex flex-col items-center justify-center h-screen">
+        <div className="flex items-center justify-center h-screen">
             <Card className="w-full max-w-[350px]">
                 <CardTitle className="my-4 text-3xl text-center">
                     {id !== undefined ? 'Editar Serviço' : 'Cadastrar Serviço'}

@@ -48,13 +48,11 @@ export function ListaCategoria() {
                 />
             )}
 
-            <div className="flex justify-center my-4 w-full">
-                <div className="flex flex-col container">
-                    <div className="gap-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                        {categoria.map((categoria) => (
-                            <CardCategoria key={categoria.id} categoria={categoria} />
-                        ))}
-                    </div>
+            <div className="h-screen">
+                <div className="gap-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                    {categoria.map((categoria) => (
+                        <CardCategoria key={categoria.id} categoria={categoria} />
+                    ))}
                 </div>
             </div>
         </>

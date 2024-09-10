@@ -19,7 +19,9 @@ export const AuthContext = createContext({} as AuthContextProps)
 
 export const valoresIniciais = {
     id: 0,
+    nome: '',
     usuario: '',
+    foto: '',
     senha: '',
     token: '',
 }
