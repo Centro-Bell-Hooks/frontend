@@ -7,6 +7,7 @@ import { Servico } from '../../../models'
 import { buscar } from '../../../services'
 import { CardServico } from '../cardServico'
 import { routes } from '../../../routes'
+import { Box } from '../../../components'
 
 export function ListaServicos() {
     const navigate = useNavigate()
@@ -49,11 +50,13 @@ export function ListaServicos() {
             )}
 
             <div className="h-screen">
-                <div className="flex flex-col w-full gap-6">
-                    {servicos.map((servico) => (
-                        <CardServico key={servico.id} servico={servico} />
-                    ))}
-                </div>
+                <Box>
+                    <div className="flex flex-col w-full gap-6">
+                        {servicos.map((servico) => (
+                            <CardServico key={servico.id} servico={servico} />
+                        ))}
+                    </div>
+                </Box>
             </div>
         </>
     )

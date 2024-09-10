@@ -19,6 +19,10 @@ export default {
                 fundo: '#f8fafc',
                 cor_texto: '',
 
+                screens: {
+                    xs: '480px',
+                },
+
                 // shadcn
                 background: 'hsl(var(--background))',
                 foreground: 'hsl(var(--foreground))',

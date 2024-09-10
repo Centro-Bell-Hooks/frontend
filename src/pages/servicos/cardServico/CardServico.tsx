@@ -38,9 +38,7 @@ export function CardServico({ servico }: CardServicoProps) {
                         </Button>
                     </Link>
                     <Link to={`/deletar-servico/${servico.id}`} className="w-full">
-                        <Button className="w-full" variant="outline">
-                            Deletar
-                        </Button>
+                        <Button className="w-full">Deletar</Button>
                     </Link>
                 </div>
             </CardContent>

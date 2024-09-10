@@ -7,7 +7,7 @@ import { Categoria } from '../../../models'
 import { buscar } from '../../../services'
 import { CardCategoria } from '../cardCategoria'
 import { routes } from '../../../routes'
-import { Alert } from '../../../components'
+import { Alert, Box } from '../../../components'
 
 export function ListaCategoria() {
     const navigate = useNavigate()
@@ -49,11 +49,13 @@ export function ListaCategoria() {
             )}
 
             <div className="h-screen">
-                <div className="gap-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                    {categoria.map((categoria) => (
-                        <CardCategoria key={categoria.id} categoria={categoria} />
-                    ))}
-                </div>
+                <Box>
+                    <div className="gap-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                        {categoria.map((categoria) => (
+                            <CardCategoria key={categoria.id} categoria={categoria} />
+                        ))}
+                    </div>
+                </Box>
             </div>
         </>
     )

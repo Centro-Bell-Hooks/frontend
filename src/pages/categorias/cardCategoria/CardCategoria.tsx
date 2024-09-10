@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 
 import { Categoria } from '../../../models'
-import { Button, Card, CardContent, CardTitle } from '../../../components'
+import { Button, Card, CardContent } from '../../../components'
 
 interface CardCategoriasProps {
     categoria: Categoria
@@ -19,12 +19,12 @@ export function CardCategoria({ categoria }: CardCategoriasProps) {
                     </div>
 
                     <div className="flex gap-4 mt-4">
-                        <Link to={`/editar-categoria/${categoria.id}`} className="w-full ">
+                        <Link to={`/editar-categoria/${categoria.id}`} className="w-full">
                             <Button variant="outline">Editar</Button>
                         </Link>
 
                         <Link to={`/deletar-categoria/${categoria.id}`} className="w-full">
-                            <Button variant="outline">Deletar</Button>
+                            <Button>Deletar</Button>
                         </Link>
                     </div>
                 </CardContent>
