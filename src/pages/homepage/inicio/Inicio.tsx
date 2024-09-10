@@ -14,7 +14,7 @@ export function Inicio() {
                 <h1 className="font-bold text-4xl mb-3">Seja Bem vindo!</h1>
 
                 <Link to={routes.login}>
-                    <Button>{!usuario ? 'Entrar' : 'Acesse nossos Serviços'}</Button>
+                    <Button>{usuario.token === '' ? 'Entrar' : 'Acesse nossos Serviços'}</Button>
                 </Link>
             </div>
             <img className="w-1/3" src="src/assets/computador.svg" alt="Computador" />
