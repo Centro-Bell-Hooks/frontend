@@ -30,6 +30,7 @@ export function Navbar() {
                                     <>
                                         <div className="hover:underline font-bold">Sobre</div>
                                         <div className="hover:underline font-bold">Contato</div>
+                                        <div className="hover:underline font-bold">Perfil</div>
                                     </>
                                 ) : (
                                     <>
@@ -44,6 +45,10 @@ export function Navbar() {
                                         </Link>
                                         <Link to={routes.cadastrarCategoria} className="hover:underline font-semibold">
                                             Cadastrar Categoria
+                                        </Link>
+
+                                        <Link to={routes.perfil} className="hover:underline font-semibold">
+                                            Perfil
                                         </Link>
 
                                         <Link

@@ -7,6 +7,7 @@ export const routes = {
     cadastrarCategoria: '/cadastrar-categoria',
     editarCategoria: '/editar-categoria/:id',
     deletarCategoria: '/deletar-categoria/:id',
+    perfil: '/perfil',
 
     servicos: '/servicos',
     cadastrarServico: '/cadastrar-servico',
