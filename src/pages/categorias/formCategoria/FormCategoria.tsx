@@ -84,8 +84,8 @@ export function FormCategoria() {
 
     return (
         <div className="container flex flex-col items-center justify-center mx-auto h-screen">
-            <Card className='w-full max-w-[350px]'>
-                <CardTitle className="text-3xl text-center my-8">
+            <Card className="w-full max-w-[350px]">
+                <CardTitle className="text-3xl text-center my-4">
                     {id === undefined ? 'Cadastrar Categoria' : 'Editar Categoria'}
                 </CardTitle>
 
@@ -95,12 +95,11 @@ export function FormCategoria() {
                             <Input
                                 name="cargo"
                                 placeholder="Nova categoria"
-                                className="border-2 border-slate-700 rounded p-2"
                                 value={categoria.cargo}
                                 onChange={atualizarEstado}
                             />
                         </div>
-                        <Button type="submit" className='w-full mt-3'>
+                        <Button type="submit" className="w-full mt-3">
                             {isLoading ? (
                                 <RotatingLines
                                     strokeColor="white"

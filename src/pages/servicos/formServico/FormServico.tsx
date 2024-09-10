@@ -5,11 +5,8 @@ import { RotatingLines } from 'react-loader-spinner'
 import { Categoria, Servico } from '../../../models'
 import { AuthContext } from '../../../contexts'
 import { atualizar, buscar, cadastrar } from '../../../services'
-import { Alert } from '../../../components/alert'
-import { Input } from '../../../components/input'
-import { Button } from '../../../components/button'
 import { routes } from '../../../routes'
-import { Card, CardContent, CardTitle } from '../../../components/card/Card'
+import { Card, CardContent, CardTitle, Button, Input, Alert } from '../../../components'
 
 const valoresIniciais = {
     id: 0,
@@ -64,6 +61,7 @@ export function FormServico() {
     }
 
     async function buscarCategoriaPorId(id: string) {
+        console.log('id', id)
         try {
             await buscar(`/categorias/${id}`, setCategoria, {
                 headers: { Authorization: token },
@@ -140,7 +138,7 @@ export function FormServico() {
 
     return (
         <div className="flex flex-col items-center justify-center h-screen">
-            <Card className='w-full max-w-[350px]'>
+            <Card className="w-full max-w-[350px]">
                 <CardTitle className="my-4 text-3xl text-center">
                     {id !== undefined ? 'Editar Serviço' : 'Cadastrar Serviço'}
                 </CardTitle>
@@ -166,7 +164,7 @@ export function FormServico() {
                                 value={servicos.descricao}
                                 onChange={atualizarEstado}
                             />
-                            <p className="mt-3">Categoria</p>
+                            <h4 className="font-semibold my-1">Categoria</h4>
                             <select
                                 name="tema"
                                 className="border-slate-800 p-2 border rounded"
