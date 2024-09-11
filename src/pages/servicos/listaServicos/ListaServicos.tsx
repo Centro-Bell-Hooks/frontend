@@ -7,7 +7,7 @@ import { Servico } from '../../../models'
 import { buscar } from '../../../services'
 import { CardServico } from '../cardServico'
 import { routes } from '../../../routes'
-import { Box } from '../../../components'
+import { Alert, Box } from '../../../components'
 
 export function ListaServicos() {
     const navigate = useNavigate()
@@ -20,7 +20,7 @@ export function ListaServicos() {
         buscarServico()
 
         if (token === '') {
-            alert('Você precisa estar logado!')
+            Alert({ mensagem: 'Você precisa estar logado!', tipo: 'info' })
             navigate(routes.login)
         }
     }, [token]) // ver se vai dar problema sem servico.length
