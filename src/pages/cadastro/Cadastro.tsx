@@ -5,9 +5,9 @@ import { RotatingLines } from 'react-loader-spinner'
 import { Usuario } from '../../models'
 import { auth } from '../../services'
 import { routes } from '../../routes'
-import { Alert, Button, Input } from '../../components'
+import { Alert, Button, Input, Select } from '../../components'
 
-const valoresInicias = { id: 0, nome: '', tipo: '', usuario: '', senha: '', foto: '' }
+const valoresInicias = { id: 0, nome: '', tipo: '', usuario: '', senha: '', foto: '-' }
 
 export function Cadastro() {
     const navigate = useNavigate()
@@ -66,53 +66,60 @@ export function Cadastro() {
                 </Link>
             </div>
 
-            {isLoading ? (
-                <div className="flex justify-center">
-                    <RotatingLines
-                        strokeColor="black"
-                        strokeWidth="5"
-                        animationDuration="0.75"
-                        width="50"
-                        visible={true}
+            <div className="flex flex-col justify-center items-center">
+                <h1 className="text-primaria text-3xl mb-3 font-semibold">Cadastrar</h1>
+                <form
+                    className="flex flex-col justify-center items-center gap-3 w-full max-w-[350px]"
+                    onSubmit={cadastrarNovoUsuario}
+                >
+                    <Input name="nome" placeholder="Nome" value={usuario.nome} onChange={atualizarInput} />
+                    <Input
+                        name="usuario"
+                        placeholder="Digite o email do usuário"
+                        value={usuario.usuario}
+                        onChange={atualizarInput}
                     />
-                </div>
-            ) : (
-                <div className="flex flex-col justify-center items-center">
-                    <h1 className="text-primaria text-3xl mb-3 font-semibold">Cadastrar</h1>
-                    <form
-                        className="flex flex-col justify-center items-center gap-3 w-full max-w-[350px]"
-                        onSubmit={cadastrarNovoUsuario}
-                    >
-                        <Input name="nome" placeholder="Nome" value={usuario.nome} onChange={atualizarInput} />
-                        <Input
-                            name="usuario"
-                            placeholder="Digite o email do usuário"
-                            value={usuario.usuario}
-                            onChange={atualizarInput}
-                        />
-                        {/* <Input name="foto" placeholder="Foto" value={usuario.foto} onChange={atualizarInput} /> */}
-                        <Input
-                            type="password"
-                            name="senha"
-                            placeholder="Senha"
-                            value={usuario.senha}
-                            onChange={atualizarInput}
-                            autoComplete="current-password"
-                        />
-                        <Input
-                            type="password"
-                            name="confirmarSenha"
-                            placeholder="Confirmar Senha"
-                            value={confirmaSenha}
-                            onChange={atualizarConfirmarSenha}
-                        />
-                        <Button onClick={voltar} className="my-1" variant="outline">
-                            Voltar
-                        </Button>
-                        <Button type="submit">Cadastrar</Button>
-                    </form>
-                </div>
-            )}
+                    <Input
+                        type="password"
+                        name="senha"
+                        placeholder="Senha"
+                        value={usuario.senha}
+                        onChange={atualizarInput}
+                        autoComplete="current-password"
+                    />
+                    <Input
+                        type="password"
+                        name="confirmarSenha"
+                        placeholder="Confirmar Senha"
+                        value={confirmaSenha}
+                        onChange={atualizarConfirmarSenha}
+                    />
+                    {/* ajustar o select */}
+                    <Select
+                        name="tipo"
+                        onChange={atualizarInput}
+                        defaultValue="Selecione uma opção"
+                        className="w-full"
+                        values={['candidato', 'institucional']}
+                    />
+                    <Button onClick={voltar} className="my-1" variant="outline">
+                        Voltar
+                    </Button>
+                    <Button type="submit">
+                        {isLoading ? (
+                            <RotatingLines
+                                strokeColor="white"
+                                strokeWidth="5"
+                                animationDuration="0.75"
+                                width="24"
+                                visible={true}
+                            />
+                        ) : (
+                            <> Cadastrar</>
+                        )}
+                    </Button>
+                </form>
+            </div>
         </div>
     )
 }

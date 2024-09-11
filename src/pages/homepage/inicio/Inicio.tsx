@@ -7,6 +7,7 @@ import { AuthContext } from '../../../contexts'
 
 export function Inicio() {
     const { usuario } = useContext(AuthContext)
+    const token = usuario.token === ''
 
     return (
         <div className="h-screen flex flex-col justify-center items-center">

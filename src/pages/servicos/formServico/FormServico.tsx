@@ -59,7 +59,10 @@ export function FormServico() {
         }
     }
 
-    async function buscarCategoriaPorId(id: string) {
+    async function buscarCategoriaPorId(e: any) {
+        const selectedOption = e.currentTarget.options[e.currentTarget.selectedIndex]
+        const id = selectedOption.getAttribute('data-key')
+
         try {
             await buscar(`/categorias/${id}`, setCategoria, {
                 headers: { Authorization: token },
@@ -134,6 +137,8 @@ export function FormServico() {
         navigate(routes.servicos)
     }
 
+    console.log(categoria)
+
     return (
         <div className="flex items-center justify-center h-screen">
             <Card className="w-full max-w-[350px]">
@@ -164,18 +169,21 @@ export function FormServico() {
                             />
                             <h4 className="font-semibold my-1">Categoria</h4>
 
+                            {/* arrumar os outros values */}
                             <Select
                                 name="categoria"
-                                onChange={(e) => buscarCategoriaPorId(e.currentTarget.value)}
-                                defaultValue={servicos.categoria?.cargo}
+                                onChange={buscarCategoriaPorId}
+                                defaultValue={
+                                    servicos.categoria?.id ? servicos.categoria?.cargo : 'Selecione uma categoria'
+                                }
                                 values={categorias.map((categoria) => (
-                                    <option key={categoria.id} value={categoria.id}>
+                                    <option key={categoria.id} data-key={categoria.id} value={categoria.cargo}>
                                         {categoria.cargo}
                                     </option>
                                 ))}
                             />
                         </div>
-                        <Button type="submit" className="w-full mt-3" disabled={categoria.cargo === ''}>
+                        <Button type="submit" className="w-full mt-3" disabled={servicos.categoria?.cargo === ''}>
                             {isLoading ? (
                                 <RotatingLines
                                     strokeColor="white"

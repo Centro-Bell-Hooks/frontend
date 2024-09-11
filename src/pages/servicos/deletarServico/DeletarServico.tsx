@@ -70,13 +70,14 @@ export function DeletarServico() {
                 <CardContent>
                     <CardTitle className="text-xl my-4 font-semibold text-center">Você deseja mesmo apagar?</CardTitle>
 
-                    <div className="flex flex-col gap-1 mb-4">
+                    <div className="flex flex-col gap-1 mb-5">
                         <p>
                             <strong className="font-semibold">Título: </strong> {servico.titulo}
                         </p>
                         <p>
                             <strong className="font-semibold">Empresa: </strong> {servico.nome}
                         </p>
+                        <hr className="border-1 border-primaria my-4" />
                         <p>
                             <strong className="font-semibold">Descrição: </strong> {servico.descricao}
                         </p>

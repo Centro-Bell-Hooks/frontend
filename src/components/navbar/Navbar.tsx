@@ -10,7 +10,7 @@ export function Navbar() {
     const { usuario, handleLogout } = useContext(AuthContext)
     const location = useLocation()
     const auth = location.pathname === routes.login || location.pathname === routes.cadastro
-    const instituicao = usuario.tipo === 'instituicao'
+    const instituicao = usuario.tipo === 'institucional'
     const admin = usuario.tipo === 'admin'
 
     function logout() {

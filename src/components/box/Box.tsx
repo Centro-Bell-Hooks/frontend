@@ -11,8 +11,8 @@ const estilos = `
     box-border 
     max-w-[1440px] 
     m-auto h-full 
-    xs:px-8
-    xs:py-5
+    px-8
+    py-5
     md:px-14 
     md:py-14
 `
