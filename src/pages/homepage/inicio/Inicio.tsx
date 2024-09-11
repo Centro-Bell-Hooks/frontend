@@ -1,9 +1,13 @@
 import { Link } from 'react-router-dom'
+import { useContext } from 'react'
 
 import { Button } from '../../../components'
 import { routes } from '../../../routes'
+import { AuthContext } from '../../../contexts'
 
 export function Inicio() {
+    const { usuario } = useContext(AuthContext)
+
     return (
         <div className="flex">
             <div className="h-screen flex flex-col justify-center items-center">

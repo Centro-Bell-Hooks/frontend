@@ -8,10 +8,9 @@ type AlertProps = {
 export function Alert({ mensagem, tipo = 'success' }: AlertProps) {
     toast[tipo](`${mensagem}`, {
         position: 'bottom-left',
-        autoClose: false,
-        hideProgressBar: false,
+        autoClose: 2000,
+        hideProgressBar: true,
         closeOnClick: true,
-        pauseOnHover: true,
         draggable: true,
         progress: undefined,
         theme: 'light',

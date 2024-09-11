@@ -7,6 +7,7 @@ import { buscar, deletar } from '../../../services'
 import { Servico } from '../../../models'
 import { Alert } from '../../../components/alert'
 import { routes } from '../../../routes'
+import { Button, Card, CardContent, CardTitle } from '../../../components'
 
 export function DeletarServico() {
     const navigate = useNavigate()
@@ -64,38 +65,47 @@ export function DeletarServico() {
     }
 
     return (
-        <div className="mx-auto w-1/3 container">
-            <p className="mb-4 font-semibold text-center">Você tem certeza de que deseja apagar o serviço?</p>
+        <div className="flex items-center justify-center h-screen">
+            <Card className="w-full max-w-[350px]">
+                <CardContent>
+                    <CardTitle className="text-xl my-4 font-semibold text-center">Você deseja mesmo apagar?</CardTitle>
 
-            <div className="flex flex-col justify-between border rounded-2xl overflow-hidden">
-                <header className="bg-indigo-600 px-6 py-2 font-bold text-2xl text-white">Servico</header>
-                <div className="p-4">
-                    <p className="h-full text-xl">{servico.titulo}</p>
-                    <p className="h-full text-xl">{servico.nome}</p>
-                    <p>{servico.descricao}</p>
-                </div>
-                <div className="flex">
-                    <button className="bg-red-400 hover:bg-red-600 py-2 w-full text-slate-100" onClick={retornar}>
-                        Não
-                    </button>
-                    <button
-                        className="flex justify-center items-center bg-indigo-400 hover:bg-indigo-600 w-full text-slate-100"
-                        onClick={deletarServico}
-                    >
-                        {isLoading ? (
-                            <RotatingLines
-                                strokeColor="white"
-                                strokeWidth="5"
-                                animationDuration="0.75"
-                                width="24"
-                                visible={true}
-                            />
-                        ) : (
-                            <span>Sim</span>
-                        )}
-                    </button>
-                </div>
-            </div>
+                    <div className="flex flex-col gap-1 mb-4">
+                        <p>
+                            <strong className="font-semibold">Título: </strong> {servico.titulo}
+                        </p>
+                        <p>
+                            <strong className="font-semibold">Empresa: </strong> {servico.nome}
+                        </p>
+                        <p>
+                            <strong className="font-semibold">Descrição: </strong> {servico.descricao}
+                        </p>
+
+                        <p>
+                            <strong className="font-semibold">Categoria: </strong> {servico.categoria?.cargo}
+                        </p>
+                    </div>
+
+                    <div className="flex gap-4">
+                        <Button variant="outline" onClick={retornar}>
+                            Não
+                        </Button>
+                        <Button onClick={deletarServico}>
+                            {isLoading ? (
+                                <RotatingLines
+                                    strokeColor="white"
+                                    strokeWidth="5"
+                                    animationDuration="0.75"
+                                    width="24"
+                                    visible={true}
+                                />
+                            ) : (
+                                <>Sim</>
+                            )}
+                        </Button>
+                    </div>
+                </CardContent>
+            </Card>
         </div>
     )
 }

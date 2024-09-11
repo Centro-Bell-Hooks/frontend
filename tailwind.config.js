@@ -12,6 +12,10 @@ export default {
                 light: '#f8fafc', // mudar pra portugues depois
                 cinza: '#737373',
 
+                screens: {
+                    xs: '480px',
+                },
+
                 // shadcn
                 background: 'hsl(var(--background))',
                 foreground: 'hsl(var(--foreground))',

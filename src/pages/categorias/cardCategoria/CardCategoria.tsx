@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 
 import { Categoria } from '../../../models'
-// import { Card } from '../../../components/card'
+import { Button, Card, CardContent } from '../../../components'
 
 interface CardCategoriasProps {
     categoria: Categoria
@@ -9,25 +9,26 @@ interface CardCategoriasProps {
 
 export function CardCategoria({ categoria }: CardCategoriasProps) {
     return (
-        <div className="border flex flex-col rounded-2xl overflow-hidden justify-between">
-            <header className="py-2 px-6 bg-indigo-800 text-white font-bold text-2xl">Categoria</header>
-            <p className="p-8 text-3xl bg-slate-200 h-full">Cargos: {categoria.cargo}</p>
+        <div className="flex flex-col">
+            <Card>
+                <CardContent>
+                    <div className="flex mt-4 mb-2 items-end">
+                        <p>
+                            <strong className="text-lg font-semibold">Categoria: </strong> {categoria.cargo}
+                        </p>
+                    </div>
 
-            <div className="flex">
-                <Link
-                    to={`/editar-categoria/${categoria.id}`}
-                    className="w-full text-slate-100 bg-indigo-400 hover:bg-indigo-800 flex items-center justify-center py-2"
-                >
-                    <button>Editar</button>
-                </Link>
+                    <div className="flex gap-4 mt-4">
+                        <Link to={`/editar-categoria/${categoria.id}`} className="w-full">
+                            <Button variant="outline">Editar</Button>
+                        </Link>
 
-                <Link
-                    to={`/deletar-categoria/${categoria.id}`}
-                    className="text-slate-100 bg-red-400 hover:bg-red-700 w-full flex items-center justify-center"
-                >
-                    <button>Deletar</button>
-                </Link>
-            </div>
+                        <Link to={`/deletar-categoria/${categoria.id}`} className="w-full">
+                            <Button>Deletar</Button>
+                        </Link>
+                    </div>
+                </CardContent>
+            </Card>
         </div>
     )
 }

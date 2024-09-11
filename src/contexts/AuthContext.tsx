@@ -17,12 +17,13 @@ interface AuthProvidersProps {
 
 export const AuthContext = createContext({} as AuthContextProps)
 
-const valoresIniciais = {
+export const valoresIniciais = {
     id: 0,
     nome: '',
     usuario: '',
-    senha: '',
     foto: '',
+    senha: '',
+    tipo: '',
     token: '',
 }
 
