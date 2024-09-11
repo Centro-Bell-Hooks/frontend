@@ -71,7 +71,7 @@ export function Navbar() {
 
                                         <Link
                                             to={usuario.token ? routes.homepage : routes.login}
-                                            className="hover:underline font-bold"
+                                            className="hover:underline font-semibold"
                                             onClick={usuario.token ? logout : undefined}
                                         >
                                             {usuario.token === '' ? 'Login' : 'Sair'}
