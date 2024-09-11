@@ -7,7 +7,7 @@ import { auth } from '../../services'
 import { routes } from '../../routes'
 import { Alert, Button, Input } from '../../components'
 
-const valoresInicias = { id: 0, nome: '', usuario: '', senha: '', foto: '' }
+const valoresInicias = { id: 0, nome: '', tipo: '', usuario: '', senha: '', foto: '' }
 
 export function Cadastro() {
     const navigate = useNavigate()
