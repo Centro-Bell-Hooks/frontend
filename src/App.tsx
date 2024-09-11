@@ -12,9 +12,9 @@ import {
     ListaCategoria,
     FormCategoria,
     DeletarCategoria,
-    ListaServicos,
     FormServico,
     DeletarServico,
+    ServicosPage,
 } from './pages'
 
 function App() {
@@ -33,7 +33,7 @@ function App() {
                     <Route path={routes.editarCategoria} element={<FormCategoria />} />
                     <Route path={routes.deletarCategoria} element={<DeletarCategoria />} />
 
-                    <Route path={routes.servicos} element={<ListaServicos />} />
+                    <Route path={routes.servicos} element={<ServicosPage />} />
                     <Route path={routes.cadastrarServico} element={<FormServico />} />
                     <Route path={routes.editarServico} element={<FormServico />} />
                     <Route path={routes.deletarServico} element={<DeletarServico />} />
