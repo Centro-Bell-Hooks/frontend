@@ -4,7 +4,7 @@ import { useContext } from 'react'
 import { routes } from '../../routes'
 import { AuthContext } from '../../contexts'
 import { Alert } from '../alert'
-import logoBellHooks from 'src/assets/logo-bell-hooks.jpg'
+import logoBellHooks from '../../../public/assets/logo-bell-hooks.jpg'
 
 export function Navbar() {
     const { usuario, handleLogout } = useContext(AuthContext)
