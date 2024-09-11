@@ -33,15 +33,15 @@ export function Login() {
     }
 
     return (
-        <div className="grid grid-cols-2 h-screen">
-            <div className="bg-primaria flex justify-center items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 h-screen">
+            <div className="hidden md:flex bg-primaria  justify-center items-center p-4">
                 <Link to={routes.homepage}>
-                    <img src="/assets/logo-bell-hooks.jpg" className="rounded-full max-w-[300px]" />
+                    <img src="/assets/logo-bell-hooks.jpg" className="rounded-full max-w-[200px] md:max-w-[300px]" />
                 </Link>
             </div>
-            <div className="flex flex-col justify-center items-center">
-                <h1 className="text-3xl mb-3 font-semibold text-primaria">Login</h1>
-                <form onSubmit={login} className="flex flex-col gap-3 w-full max-w-[350px]">
+            <div className="flex flex-col justify-center items-center p-4">
+                <h1 className="text-2xl md:text-3xl mb-3 font-semibold text-primaria">Login</h1>
+                <form onSubmit={login} className="flex flex-col gap-3 w-full max-w-[300px] md:max-w-[350px]">
                     <Input
                         name="usuario"
                         placeholder="Digite seu Email"
@@ -56,15 +56,13 @@ export function Login() {
                         onChange={atualizarEstado}
                         autoComplete="current-password"
                     />
-
-                    <p className="my-1 text-center">
+                    <p className="my-1 text-center text-sm md:text-base">
                         Ainda não tem uma conta?
                         <Link to={routes.cadastro} className="text-secundaria hover:underline">
                             {' '}
                             Cadastre-se
                         </Link>
                     </p>
-
                     <Button type="submit">
                         {isLoading ? (
                             <RotatingLines
