@@ -1,5 +1,5 @@
 import { GithubLogo, LinkedinLogo } from '@phosphor-icons/react'
-import { useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 import { routes } from '../../routes'
 
@@ -13,22 +13,12 @@ export function Footer() {
             {!auth && (
                 <>
                     <hr className="bg-secundaria h-1" />
-                    <div className="bg-primaria flex justify-center text-light py-8 text-center w-full">
-                        <div className="text-xl-3">
-                            <p className="font-bold"> Centro Bell Hooks</p>
-                            <p className="font-light "> Copyright: {data}</p>
-                            <p className="font-bold mb-3">Acesse nossas redes sociais</p>
-                            <div className="flex justify-center gap-3">
-                                <a
-                                    target="_blank "
-                                    href="https://github.com/Centro-Bell-Hooks"
-                                    aria-label="Github Centro Bell Hooks"
-                                    rel="noopener"
-                                >
-                                    <GithubLogo size={34} />
-                                </a>
-                                <LinkedinLogo size={34} />
-                            </div>
+                    <div className="h-[100px] bg-primaria flex items-center justify-center">
+                        <div className="flex flex-col gap-1 text-md text-light text-center">
+                            <p className="font-semibold text-lg">Centro Bell Hooks {data}</p>
+                            <Link to="https://github.com/Centro-Bell-Hooks" aria-label="Github Centro Bell Hooks">
+                                <p className="font-semibold hover:underline">Acesse nosso projeto</p>
+                            </Link>
                         </div>
                     </div>
                 </>

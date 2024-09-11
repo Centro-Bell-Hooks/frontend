@@ -4,6 +4,7 @@ import { useContext } from 'react'
 import { routes } from '../../routes'
 import { AuthContext } from '../../contexts'
 import { Alert } from '../alert'
+import { Button } from '../button'
 
 export function Navbar() {
     const { usuario, handleLogout } = useContext(AuthContext)
@@ -68,16 +69,16 @@ export function Navbar() {
                                         <Link to="" className="hover:underline font-semibold">
                                             Perfil
                                         </Link>
-
-                                        <Link
-                                            to={usuario.token ? routes.homepage : routes.login}
-                                            className="hover:underline font-bold"
-                                            onClick={usuario.token ? logout : undefined}
-                                        >
-                                            {usuario.token === '' ? 'Login' : 'Sair'}
-                                        </Link>
                                     </>
                                 )}
+
+                                <Link
+                                    to={usuario.token ? routes.homepage : routes.login}
+                                    className="hover:underline font-bold"
+                                    onClick={usuario.token ? logout : undefined}
+                                >
+                                    {usuario.token === '' ? 'Login' : 'Sair'}
+                                </Link>
                             </div>
                         </div>
                     </div>

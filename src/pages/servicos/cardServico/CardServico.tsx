@@ -11,7 +11,6 @@ interface CardServicoProps {
 
 export function CardServico({ servico }: CardServicoProps) {
     const data = formatarData(servico.data)
-
     const { usuario } = useContext(AuthContext)
 
     const acess = () => {
