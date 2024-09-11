@@ -4,7 +4,6 @@ import { useContext } from 'react'
 import { routes } from '../../routes'
 import { AuthContext } from '../../contexts'
 import { Alert } from '../alert'
-import logoBellHooks from '../../../public/assets/logo-bell-hooks.jpg'
 
 export function Navbar() {
     const { usuario, handleLogout } = useContext(AuthContext)
@@ -26,7 +25,7 @@ export function Navbar() {
                         <div className="container flex items-center justify-between text-lg">
                             <Link to={routes.homepage}>
                                 <img
-                                    src={logoBellHooks}
+                                    src="/assets/logo-bell-hooks.jpg"
                                     className="rounded-full max-w-[80px]"
                                     alt="Logo do site Bell Hooks"
                                 />

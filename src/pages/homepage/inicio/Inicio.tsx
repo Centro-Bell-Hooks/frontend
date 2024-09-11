@@ -17,7 +17,7 @@ export function Inicio() {
                     <Button>{usuario.token === '' ? 'Entrar' : 'Acesse nossos Serviços'}</Button>
                 </Link>
             </div>
-            <img className="w-1/3" src="src/assets/computador.svg" alt="Computador" />
+            <img className="w-1/3" src="/assets/computador.svg" alt="Imagem de Computador" />
         </div>
     )
 }

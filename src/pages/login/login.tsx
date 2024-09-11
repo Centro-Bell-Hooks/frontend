@@ -34,7 +34,7 @@ export function Login() {
         <div className="grid grid-cols-2 h-screen">
             <div className="bg-primaria flex justify-center items-center">
                 <Link to={routes.homepage}>
-                    <img src="src/assets/logo-bell-hooks.jpg" className="rounded-full max-w-[300px]" />
+                    <img src="/assets/logo-bell-hooks.jpg" className="rounded-full max-w-[300px]" />
                 </Link>
             </div>
             <div className="flex flex-col justify-center items-center">
