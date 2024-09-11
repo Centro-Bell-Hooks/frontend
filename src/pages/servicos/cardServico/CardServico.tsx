@@ -5,14 +5,12 @@ import { Alert, Button, Card, CardContent, CardTitle } from '../../../components
 import { AuthContext } from '../../../contexts'
 import { Servico } from '../../../models'
 import { formatarData } from '../../../utils'
-
 interface CardServicoProps {
     servico: Servico
 }
 
 export function CardServico({ servico }: CardServicoProps) {
     const data = formatarData(servico.data)
-
     const { usuario } = useContext(AuthContext)
 
     const acess = () => {

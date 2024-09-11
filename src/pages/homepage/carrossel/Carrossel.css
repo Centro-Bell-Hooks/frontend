@@ -1,0 +1,21 @@
+/*Cor dos botões de Navegação*/
+:root {
+    --swiper-theme-color: #737373;
+}
+
+.swiper {
+    height: 80vh;
+    width: 100%;
+    margin: 0;
+}
+
+/*Estiliza a imagem do slide*/
+.swiper-slide-img {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+}
+
+.text-shadow {
+    text-shadow: 1px 1px 3px black;
+}
