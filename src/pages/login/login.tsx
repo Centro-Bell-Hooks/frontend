@@ -13,8 +13,10 @@ export function Login() {
     const navigate = useNavigate()
 
     useEffect(() => {
-        if (usuario.id) {
+        if (usuario.id && usuario.tipo !== 'admin') {
             navigate(routes.servicos)
+        } else if (usuario.id) {
+            navigate(routes.categorias)
         }
     }, [usuario])
 

@@ -10,7 +10,8 @@ export function Inicio() {
     const token = usuario.token === ''
 
     return (
-        <div className="h-screen flex flex-col justify-center items-center">
+        // ver o padding
+        <div className="h-screen py-4 flex flex-col justify-center items-center">
             <h1 className="font-bold text-5xl mb-8">CENTRO BELL HOOKS</h1>
             <p className="leading-3 text-center mb-8 tracking-widest first-letter:text-xl max-w-[80%] text-primaria">
                 Nossa missão é capacitar, empoderar e conectar meninas e mulheres à educação de qualidade, ter
