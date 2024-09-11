@@ -16,12 +16,10 @@ export function Carrossel() {
                 pagination={{
                     clickable: true,
                 }}
-                // autoplay={
-                //     {
-                //         delay: 10000,
-                //         disableOnInteraction: false,
-                //     }
-                // }
+                autoplay={{
+                    delay: 10000,
+                    disableOnInteraction: false,
+                }}
                 navigation={true}
                 modules={[Autoplay, Pagination, Navigation]}
                 className="mySwiper"
