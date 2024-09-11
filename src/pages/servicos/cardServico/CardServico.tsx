@@ -12,14 +12,8 @@ interface CardServicoProps {
 
 export function CardServico({ servico }: CardServicoProps) {
     const data = formatarData(servico.data)
-
     const { usuario } = useContext(AuthContext)
-
-    const acess = () => {
-        if (usuario.tipo === 'candidato') return false
-
-        return true
-    }
+    const tipoUsuario = usuario.tipo !== 'candidato'
 
     function candidatoSucesso() {
         Alert({ mensagem: 'Candidatura realizada com sucesso!', tipo: 'success' })
@@ -30,23 +24,23 @@ export function CardServico({ servico }: CardServicoProps) {
             <CardContent>
                 <CardTitle className="text-xl my-4 font-semibold">{servico.titulo}</CardTitle>
 
-                <div className="flex flex-col gap-1 mb-4">
+                <div className="flex justify-between gap-1">
                     <p>
-                        <strong className="font-semibold">Empresa: </strong> {servico.nome}
+                        <strong className="font-semibold">Empresa: </strong> <br /> {servico.nome}
                     </p>
                     <p>
-                        <strong className="font-semibold">Descrição: </strong> {servico.descricao}
+                        <strong className="font-semibold">Categoria: </strong> <br /> {servico.categoria?.cargo}
                     </p>
                     <p>
-                        <strong className="font-semibold">Categoria: </strong> {servico.categoria?.cargo}
-                    </p>
-                    <p>
-                        <strong className="font-semibold">Data: </strong> {data}
+                        <strong className="font-semibold">Data: </strong> <br /> {data}
                     </p>
                 </div>
-
-                {acess() ? (
-                    <div className="flex gap-4">
+                <hr className="border-1 border-primaria my-4" />
+                <p>
+                    <strong className="font-semibold">Descrição: </strong> {servico.descricao}
+                </p>
+                {tipoUsuario ? (
+                    <div className="flex gap-4 mt-5">
                         <Link to={`/editar-servico/${servico.id}`} className="w-full">
                             <Button className="w-full" variant="outline">
                                 Editar

@@ -8,6 +8,7 @@ import { buscar } from '../../../services'
 import { CardServico } from '../cardServico'
 import { routes } from '../../../routes'
 import { Alert, Box } from '../../../components'
+import { FiltroServico } from './filtroServico'
 
 export function ListaServicos() {
     const navigate = useNavigate()
@@ -57,13 +58,16 @@ export function ListaServicos() {
                     Lista vazia
                 </h1>
             ) : (
-                <div className="h-screen">
-                    <div className="flex flex-col w-full gap-6">
-                        {servicos.map((servico) => (
-                            <CardServico key={servico.id} servico={servico} />
-                        ))}
+                <>
+                    <FiltroServico />
+                    <div className="h-screen">
+                        <div className="grid grid-cols-2 w-full gap-7">
+                            {servicos.map((servico) => (
+                                <CardServico key={servico.id} servico={servico} />
+                            ))}
+                        </div>
                     </div>
-                </div>
+                </>
             )}
         </Box>
     )
