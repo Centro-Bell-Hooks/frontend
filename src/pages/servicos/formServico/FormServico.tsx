@@ -140,9 +140,9 @@ export function FormServico() {
     console.log(categoria)
 
     return (
-        <div className="flex items-center justify-center h-screen">
-            <Card className="w-full max-w-[350px]">
-                <CardTitle className="my-4 text-3xl text-center">
+        <div className="flex items-center justify-center min-h-screen p-4 sm:p-8">
+            <Card className="w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-3xl">
+                <CardTitle className="my-4 text-xl sm:text-2x1 text-center">
                     {id !== undefined ? 'Editar Serviço' : 'Cadastrar Serviço'}
                 </CardTitle>
 
