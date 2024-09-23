@@ -65,12 +65,12 @@ export function DeletarServico() {
     }
 
     return (
-        <div className="flex items-center justify-center h-screen">
-            <Card className="w-full max-w-[350px]">
+        <div className="flex items-center justify-center min-h-screen p-4 sm:p-8">
+            <Card className="w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-lg">
                 <CardContent>
                     <CardTitle className="text-xl my-4 font-semibold text-center">Você deseja mesmo apagar?</CardTitle>
 
-                    <div className="flex flex-col gap-1 mb-5">
+                    <div className="flex flex-col gap-2 mb-5">
                         <p>
                             <strong className="font-semibold">Título: </strong> {servico.titulo}
                         </p>
@@ -87,11 +87,11 @@ export function DeletarServico() {
                         </p>
                     </div>
 
-                    <div className="flex gap-4">
-                        <Button variant="outline" onClick={retornar}>
+                    <div className="flex flex-col sm:flex-row gap-4">
+                        <Button variant="outline" onClick={retornar} className="w-full sm:w-auto">
                             Não
                         </Button>
-                        <Button onClick={deletarServico}>
+                        <Button onClick={deletarServico} className="w-full sm:w-auto">
                             {isLoading ? (
                                 <RotatingLines
                                     strokeColor="white"
