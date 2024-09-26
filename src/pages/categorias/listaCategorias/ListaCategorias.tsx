@@ -1,46 +1,46 @@
-import { useContext, useEffect, useState } from 'react'
-import { RotatingLines } from 'react-loader-spinner'
-import { useNavigate } from 'react-router-dom'
+import { useContext, useEffect, useState } from 'react';
+import { RotatingLines } from 'react-loader-spinner';
+import { useNavigate } from 'react-router-dom';
 
-import { AuthContext } from '../../../contexts'
-import { Categoria } from '../../../models'
-import { buscar } from '../../../services'
-import { CardCategoria } from '../cardCategoria'
-import { routes } from '../../../routes'
-import { Alert, Box } from '../../../components'
+import { AuthContext } from '../../../contexts';
+import { Categoria } from '../../../models';
+import { buscar } from '../../../services';
+import { CardCategoria } from '../cardCategoria';
+import { routes } from '../../../routes';
+import { Alert, Box } from '../../../components';
 
 export function ListaCategoria() {
-    const navigate = useNavigate()
-    const [categorias, setCategorias] = useState<Categoria[]>([])
-    const { usuario, handleLogout } = useContext(AuthContext)
-    const [isLoading, setIsLoading] = useState(false)
-    const token = usuario.token
+    const navigate = useNavigate();
+    const [categorias, setCategorias] = useState<Categoria[]>([]);
+    const { usuario, handleLogout } = useContext(AuthContext);
+    const [isLoading, setIsLoading] = useState(false);
+    const token = usuario.token;
 
     useEffect(() => {
-        buscarCategorias()
+        buscarCategorias();
         if (token === '') {
-            Alert({ mensagem: 'Você precisa estar logado', tipo: 'info' })
-            navigate(routes.login)
+            Alert({ mensagem: 'Você precisa estar logado', tipo: 'info' });
+            navigate(routes.login);
         }
-    }, [token]) // ver se vai dar bo sem o categorias.length
+    }, [token]);
 
     async function buscarCategorias() {
         try {
-            setIsLoading(true)
+            setIsLoading(true);
             await buscar(`/categorias`, setCategorias, {
                 headers: { Authorization: token },
-            })
+            });
         } catch (error: any) {
             if (error.toString().includes('401')) {
-                handleLogout()
+                handleLogout();
             }
         } finally {
-            setIsLoading(false)
+            setIsLoading(false);
         }
     }
 
     return (
-        <Box>
+        <Box className="min-h-screen p-4 sm:p-8">
             {isLoading ? (
                 <div className="h-screen flex justify-center items-center">
                     <RotatingLines
@@ -56,14 +56,12 @@ export function ListaCategoria() {
                     Lista vazia
                 </h1>
             ) : (
-                <div className="h-screen">
-                    <div className="gap-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                        {categorias.map((categoria) => (
-                            <CardCategoria key={categoria.id} categoria={categoria} />
-                        ))}
-                    </div>
+                <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
+                    {categorias.map((categoria) => (
+                        <CardCategoria key={categoria.id} categoria={categoria} />
+                    ))}
                 </div>
             )}
         </Box>
-    )
+    );
 }
