@@ -3,13 +3,13 @@ import { Box } from '../../../components'
 
 export function Sobre() {
     return (
-        <div className="bg-gray-100 w-full">
-            <Box>
-                <div className="h-[100vh] flex justify-center items-center">
-                    <div className="grid grid-cols-2 items-center">
+        <Box>
+            <div className="bg-gray-100 w-full md:h-screen">
+                <div className="flex justify-center items-center">
+                    <div className="md:grid md:grid-cols-2 items-center">
                         <div>
                             <h1 className="text-4xl font-bold text-center mb-5 text-primaria">Sobre nós</h1>
-                            <p className="display-flex p-6 text-justify text-lg text-cinza mb-1">
+                            <p className="text-justify m-7">
                                 Somos o <span className="font-bold">Centro Bell Hooks</span>, uma instituição criada em
                                 2024 por 7 alunos da turma de JavaScript-05 da Generation Brasil. Temos como base a ODS
                                 5 - Igualdade de Gênero, por isso, nossa instituição tem o foco de fazer um{' '}
@@ -17,22 +17,22 @@ export function Sobre() {
                                 mulheres. O objetivo central é inserir mulheres no mercado de trabalho para que possam
                                 ter seu autossustento. Esperamos colaborar com a{' '}
                                 <span className="font-bold">resolução</span> dessa problemática.
+                                <Link
+                                    to="https://github.com/Centro-Bell-Hooks"
+                                    className="flex gap-3 items-center justify-center text-primaria hover:underline"
+                                >
+                                    <p className="text-md font-semibold m-5">Acesse nosso Projeto</p>
+                                </Link>
                             </p>
-                            <Link
-                                to="https://github.com/Centro-Bell-Hooks"
-                                className="flex gap-3 items-center justify-center text-primaria hover:underline"
-                            >
-                                <p className="text-lg font-semibold">Acesse nosso Projeto</p>
-                            </Link>
                         </div>
 
-                        <div className="w-full max-w-[350px] flex flex-col justify-self-center">
+                        <div className="w-full max-w-[350px] flex flex-col justify-self-center mt-4">
                             <img
                                 src="/assets/wepik-abstract-aesthetic-woman-instagram-post-20240827162342brNR.png"
                                 alt="Imagem Bell Hooks"
                             />
                             <h1 className="font-bold text-primaria text-center m-3">Sobre Bell Hooks</h1>
-                            <p className="text-justify text-primaria">
+                            <p className="text-justify text-primaria m-1">
                                 Mulher negra, nascida em 1952 e falecida em 2021. Seu nome é homenagem ao símbolo de
                                 resistência de mulheres negras por três gerações. Teórica feminista renomada com
                                 doutorado em Literatura. Autora de mais de 30 livros e muitos artigos acadêmicos.
@@ -41,7 +41,7 @@ export function Sobre() {
                                 dos EUA.{' '}
                                 <Link
                                     to="https://pt.wikipedia.org/wiki/Bell_hooks"
-                                    className="hover:underline font-semibold text-primaria"
+                                    className="hover:underline font-bold text-primaria"
                                 >
                                     Saiba mais
                                 </Link>
@@ -49,7 +49,7 @@ export function Sobre() {
                         </div>
                     </div>
                 </div>
-            </Box>
-        </div>
+            </div>
+        </Box>
     )
 }
