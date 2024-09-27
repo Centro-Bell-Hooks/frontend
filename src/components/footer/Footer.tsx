@@ -16,8 +16,14 @@ export function Footer() {
                     <div className="h-[100px] bg-primaria flex items-center justify-center">
                         <div className="flex flex-col gap-1 text-md text-light text-center">
                             <p className="font-semibold text-lg">Centro Bell Hooks {data}</p>
+
                             <Link to="https://github.com/Centro-Bell-Hooks" aria-label="Github Centro Bell Hooks">
                                 <p className="font-semibold hover:underline">Acesse nosso projeto</p>
+                            </Link>
+                            <Link to="https://www.freepik.com/">
+                                <p className="font-thin text-xs md:flex justify-center hover:underline">
+                                    Carrossel Pictures by freepik.com
+                                </p>
                             </Link>
                         </div>
                     </div>
