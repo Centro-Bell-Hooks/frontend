@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 
 import { routes } from '../../routes'
 import { AuthContext } from '../../contexts'
@@ -23,11 +23,11 @@ export function Navbar() {
             {!auth && (
                 <>
                     <div className="w-full bg-primaria text-light flex justify-center py-4">
-                        <div className="container flex items-center justify-between text-lg">
+                        <div className="container flex items-center justify-between text-lg  md:grid-cols-1">
                             <Link to={routes.homepage}>
                                 <img
                                     src="/assets/logo-bell-hooks.jpg"
-                                    className="rounded-full max-w-[80px]"
+                                    className="rounded-full md:max-w-[80px]"
                                     alt="Logo do site Bell Hooks"
                                 />
                             </Link>
