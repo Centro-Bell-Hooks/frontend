@@ -77,6 +77,13 @@ Inicie o servidor
 - [Samira Grossi](https://github.com/sam-grs)
 
 
+## Documentação - MER, DER, ESCOPO
+
+[Documentação](https://github.com/Centro-Bell-Hooks/documentacao)
+
+### Repositório do backend: 
+https://github.com/Centro-Bell-Hooks/backend
+
 ## Feedback
 
 Se você tiver algum feedback, por favor nos deixe saber por meio de bellhooksprojeto@gmail.com
