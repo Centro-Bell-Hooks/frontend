@@ -1,4 +1,3 @@
-/* import { Inicio } from './inicio' */
 import { Sobre } from './sobre'
 import { Contato } from './contato'
 import { Carrossel } from './carrossel'

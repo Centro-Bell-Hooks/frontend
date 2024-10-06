@@ -3,7 +3,7 @@ import { Box } from '../../../components'
 
 export function Sobre() {
     return (
-        <div className="bg-gray-100 w-full">
+        <section id="sobre" className="bg-gray-100 w-full">
             <Box>
                 <div className="h-[100vh] flex justify-center items-center">
                     <div className="grid grid-cols-2 items-center">
@@ -27,10 +27,7 @@ export function Sobre() {
                         </div>
 
                         <div className="w-full max-w-[350px] flex flex-col justify-self-center">
-                            <img
-                                src="/assets/wepik-abstract-aesthetic-woman-instagram-post-20240827162342brNR.png"
-                                alt="Imagem Bell Hooks"
-                            />
+                            <img src="/assets/ilustracao-bell-hooks.png" alt="Imagem Bell Hooks" />
                             <h1 className="font-bold text-primaria text-center m-3">Sobre Bell Hooks</h1>
                             <p className="text-justify text-primaria">
                                 Mulher negra, nascida em 1952 e falecida em 2021. Seu nome é homenagem ao símbolo de
@@ -50,6 +47,6 @@ export function Sobre() {
                     </div>
                 </div>
             </Box>
-        </div>
+        </section>
     )
 }
