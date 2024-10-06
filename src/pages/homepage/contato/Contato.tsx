@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 export function Contato() {
     return (
-        <div className="h-screen flex flex-col justify-center items-center p-10 gap-y-10 mt-8 ">
+        <section id="contato" className="h-screen flex flex-col justify-center items-center p-10 gap-y-10 mt-8">
             <h1 className="text-center text-4xl font-bold mb-14">Conheça nossos Desenvolvedores</h1>
 
             <div className="grid grid-cols-4 gap-x-5">
@@ -146,6 +146,6 @@ export function Contato() {
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     )
 }

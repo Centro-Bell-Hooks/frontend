@@ -29,7 +29,7 @@ export const ServicosPage = () => {
     async function buscarServico() {
         try {
             setIsLoading(true)
-            const resposta = await buscar(`/produtos`, setServicos, {
+            await buscar(`/produtos`, setServicos, {
                 headers: { Authorization: token },
             })
         } catch (error: any) {
