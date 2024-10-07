@@ -3,9 +3,9 @@ import { Box } from '../../../components'
 export function Inicio() {
     return (
         <Box>
-            <section id="inicio" className="lg:h-screen flex flex-col justify-center items-center relative">
+            <section id="inicio" className="lg:h-screen flex flex-col justify-center items-center">
                 <div className="md:max-w-[70%]">
-                    <h1 className="flex flex-col justify-center items-center pb-4 font-bold text-2xl">
+                    <h1 className="flex flex-col justify-center items-center mb-4 font-bold text-2xl">
                         CENTRO BELL HOOKS
                     </h1>
                     <p className="leading-6 text-center mb-8 tracking-widest first-letter:text-xl text-primaria">
