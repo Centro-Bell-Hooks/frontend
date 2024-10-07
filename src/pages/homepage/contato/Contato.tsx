@@ -5,7 +5,7 @@ import { Box } from '../../../components/box/Box'
 export function Contato() {
     return (
         <Box>
-            <div className="md:h-screen justify-center items-center p-10 gap-y-10">
+            <section id="contato" className="md:h-screen justify-center items-center p-10 gap-y-10">
                 <h1 className="text-center md:text-2xl font-bold mb-12">Conheça nosso time</h1>
 
                 <div className="md:grid md:grid-cols-4 gap-x-5">
@@ -148,7 +148,7 @@ export function Contato() {
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
         </Box>
     )
 }

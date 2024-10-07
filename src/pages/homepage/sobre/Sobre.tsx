@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom'
+
 import { Box } from '../../../components'
 
 export function Sobre() {
     return (
-        <Box>
-            <div className="bg-gray-100 w-full md:h-screen">
+        <section id="sobre" className="bg-gray-100 w-full md:h-screen">
+            <Box>
                 <div className="flex justify-center items-center">
                     <div className="md:grid md:grid-cols-2 items-center">
                         <div>
@@ -27,10 +28,7 @@ export function Sobre() {
                         </div>
 
                         <div className="w-full max-w-[350px] flex flex-col justify-self-center mt-4">
-                            <img
-                                src="/assets/wepik-abstract-aesthetic-woman-instagram-post-20240827162342brNR.png"
-                                alt="Imagem Bell Hooks"
-                            />
+                            <img src="/assets/ilustracao-bell-hooks.png" alt="Imagem Bell Hooks" />
                             <h1 className="font-bold text-primaria text-center m-3">Sobre Bell Hooks</h1>
                             <p className="text-justify text-primaria m-1">
                                 Mulher negra, nascida em 1952 e falecida em 2021. Seu nome é homenagem ao símbolo de
@@ -38,7 +36,7 @@ export function Sobre() {
                                 doutorado em Literatura. Autora de mais de 30 livros e muitos artigos acadêmicos.
                                 "Teoria Feminista" é um marco na teoria feminista de estudos de gênero, raça e classe.
                                 Foi vencedora do The American Book Award, um dos prêmios literários mais prestigiados
-                                dos EUA.{' '}
+                                dos EUA.
                                 <Link
                                     to="https://pt.wikipedia.org/wiki/Bell_hooks"
                                     className="hover:underline font-bold text-primaria"
@@ -49,7 +47,7 @@ export function Sobre() {
                         </div>
                     </div>
                 </div>
-            </div>
-        </Box>
+            </Box>
+        </section>
     )
 }

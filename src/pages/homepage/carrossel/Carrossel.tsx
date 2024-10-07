@@ -1,9 +1,9 @@
 import { Autoplay, Navigation, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
-
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
+
 import './Carrossel.css'
 
 export function Carrossel() {
@@ -28,7 +28,7 @@ export function Carrossel() {
                 <SwiperSlide className="relative">
                     <img
                         className="swiper-slide-img gap-4 w-full h-auto object-cover"
-                        src="/assets/resized1.jpeg"
+                        src="/assets/carrossel-imagem1.jpeg"
                         alt="Carrossel - Slide 01"
                     />
                     <div className="absolute max-w-[40%] top-1/2 left-[30%] transform -translate-x-1/2 -translate-y-1/2 text-white text-shadow p-4 rounded ">
@@ -39,7 +39,11 @@ export function Carrossel() {
                     </div>
                 </SwiperSlide>
                 <SwiperSlide className="relative">
-                    <img className="swiper-slide-img gap-4" src="/assets/resized2.jpeg" alt="Carrossel - Slide 02" />
+                    <img
+                        className="swiper-slide-img gap-4"
+                        src="/assets/carrossel-imagem2.jpeg"
+                        alt="Carrossel - Slide 02"
+                    />
                     <div className="absolute max-w-[40%] top-1/2 left-[30%] transform -translate-x-1/2 -translate-y-1/2 text-white text-shadow p-4 rounded">
                         <h2 className="md:text-3xl font-bold mb-2">
                             Gostaria de uma nova oportunidade no mercado de trabalho?
@@ -50,7 +54,11 @@ export function Carrossel() {
                     </div>
                 </SwiperSlide>
                 <SwiperSlide className="relative">
-                    <img className="swiper-slide-img" src="/assets/resized3.jpeg" alt="Carrossel - Slide 03"></img>
+                    <img
+                        className="swiper-slide-img"
+                        src="/assets/carrossel-imagem3.jpeg"
+                        alt="Carrossel - Slide 03"
+                    ></img>
                     <div className="absolute max-w-[40%] top-1/2 left-[30%] transform -translate-x-1/2 -translate-y-1/2 text-white text-shadow p-4 rounded">
                         <h2 className="md:text-3xl font-bold mb-2">Juntas, podemos superar desafios. </h2>
                         <p className="md:text-xl">

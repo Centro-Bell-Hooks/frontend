@@ -1,18 +1,9 @@
-import { Link } from 'react-router-dom'
-import { useContext } from 'react'
-
-import { Box, Button } from '../../../components'
-import { routes } from '../../../routes'
-import { AuthContext } from '../../../contexts'
+import { Box } from '../../../components'
 
 export function Inicio() {
-    const { usuario } = useContext(AuthContext)
-    const token = usuario.token === ''
-
     return (
-        // depois tirar o mt-80
         <Box>
-            <div className="md:h-screen py-4 flex flex-col justify-center items-center relative">
+            <section id="inicio" className="md:h-screen py-4 flex flex-col justify-center items-center relative">
                 <div className="md:max-w-[70%]">
                     <h1 className="flex flex-col justify-center items-center pb-4 font-bold text-2xl">
                         CENTRO BELL HOOKS
@@ -26,7 +17,7 @@ export function Inicio() {
                     <div className="flex flex-col items-center md:max-w-[300px]">
                         <img
                             className="md:max-w-[300px] mb-4"
-                            src="/assets/emporwer.svg"
+                            src="/assets/empoderamento.svg"
                             alt="Imagem de Empoderamento"
                         />
                         <p className="font-semibold tracking-widest text-center mb-4">Empoderamento</p>
@@ -37,7 +28,7 @@ export function Inicio() {
                     </div>
 
                     <div className="flex flex-col items-center md:max-w-[300px]">
-                        <img className="md:max-w-[300px] mb-4" src="/assets/onlinelearning.svg" alt="Imagem de Educação" />
+                        <img className="md:max-w-[300px] mb-4" src="/assets/educacao.svg" alt="Imagem de Educação" />
                         <p className="font-semibold tracking-widest text-center mb-4">Educação</p>
                         <p className="text-center">
                             A educação de qualidade é essencial para que mulheres alcancem lugares na qual são limitadas
@@ -46,14 +37,14 @@ export function Inicio() {
                     </div>
 
                     <div className="flex flex-col items-center md:max-w-[280px]">
-                        <img className="md:max-w-[280px] mb-4" src="/assets/businesswoman.svg" alt="Imagem de Networking" />
+                        <img className="md:max-w-[280px] mb-4" src="/assets/contatos.svg" alt="Imagem de Networking" />
                         <p className="font-semibold tracking-widest text-center mb-4">Networking</p>
                         <p className="text-center">
                             Com conexões seguras com outras mulheres, as oportunidades e rede de apoio se expandem.
                         </p>
                     </div>
                 </div>
-            </div>
+            </section>
         </Box>
     )
 }

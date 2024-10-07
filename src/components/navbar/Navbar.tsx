@@ -1,10 +1,11 @@
 import { Link, useLocation } from 'react-router-dom'
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
+import { Link as LinkScroll } from 'react-scroll'
 
 import { routes } from '../../routes'
 import { AuthContext } from '../../contexts'
 import { Alert } from '../alert'
-import { Button } from '../button'
+import { Menubar } from './Menubar'
 
 export function Navbar() {
     const { usuario, handleLogout } = useContext(AuthContext)
@@ -19,11 +20,11 @@ export function Navbar() {
     }
 
     return (
-        <>
-            {!auth && (
-                <>
-                    <div className="w-full bg-primaria text-light flex justify-center py-4">
-                        <div className="container flex items-center justify-between text-lg  md:grid-cols-1">
+        !auth && (
+            <div className="fixed z-10 w-full">
+                <div className="bg-primaria text-light py-6 px-8">
+                    <div className="w-full flex justify-center">
+                        <div className="hidden container md:flex items-center justify-between text-lg">
                             <Link to={routes.homepage}>
                                 <img
                                     src="/assets/logo-bell-hooks.jpg"
@@ -35,8 +36,23 @@ export function Navbar() {
                             <div className="flex gap-4">
                                 {location.pathname === routes.homepage ? (
                                     <>
-                                        <div className="hover:underline font-bold">Sobre</div>
-                                        <div className="hover:underline font-bold">Contato</div>
+                                        {/* colocar como link */}
+                                        <LinkScroll
+                                            to="inicio"
+                                            className="hover:underline font-semibold cursor-pointer"
+                                        >
+                                            Início
+                                        </LinkScroll>
+                                        <LinkScroll to="sobre" className="hover:underline font-semibold cursor-pointer">
+                                            Sobre
+                                        </LinkScroll>
+                                        <LinkScroll
+                                            to="contato"
+                                            smooth={true}
+                                            className="hover:underline font-semibold cursor-pointer"
+                                        >
+                                            Contato
+                                        </LinkScroll>
                                     </>
                                 ) : (
                                     <>
@@ -73,18 +89,19 @@ export function Navbar() {
                                 )}
 
                                 <Link
-                                    to={usuario.token ? routes.homepage : routes.login}
-                                    className="hover:underline font-bold"
-                                    onClick={usuario.token ? logout : undefined}
+                                    to={usuario?.token ? routes.homepage : routes.login}
+                                    className="hover:underline font-semibold"
+                                    onClick={usuario?.token ? logout : undefined}
                                 >
-                                    {usuario.token === '' ? 'Login' : 'Sair'}
+                                    {usuario?.token === '' ? 'Entrar' : 'Sair'}
                                 </Link>
                             </div>
                         </div>
                     </div>
-                    <hr className="bg-secundaria h-1" />
-                </>
-            )}
-        </>
+                    <Menubar instituicao={instituicao} admin={admin} logout={logout} usuario={usuario} />
+                </div>
+                <hr className="bg-secundaria h-1" />
+            </div>
+        )
     )
 }
