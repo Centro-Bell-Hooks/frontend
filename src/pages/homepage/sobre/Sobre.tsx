@@ -41,6 +41,7 @@ export function Sobre() {
                                     to="https://pt.wikipedia.org/wiki/Bell_hooks"
                                     className="hover:underline font-bold text-primaria"
                                 >
+                                    {' '}
                                     Saiba mais
                                 </Link>
                             </p>

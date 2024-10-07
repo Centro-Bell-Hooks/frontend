@@ -12,7 +12,7 @@ const estilos = `
     max-w-[1440px] 
     m-auto h-full 
     px-8
-    py-5
+    py-12
     sm:px-14 
     sm:py-14
 `
