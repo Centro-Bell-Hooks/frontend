@@ -8,7 +8,7 @@ export function Sobre() {
             <Box>
                 <div className="grid min-[900px]:grid-cols-2 items-center max-[800px]:gap-12">
                     <div>
-                        <h1 className="text-2xl font-bold text-center mb-5 text-primaria">Sobre nós</h1>
+                        <h1 className="text-2xl md:text-3xl font-bold text-center mb-5 text-primaria">Sobre nós</h1>
                         <p className="text-justify my-7">
                             Somos o <span className="font-bold">Centro Bell Hooks</span>, uma instituição criada em 2024
                             por 7 alunos da turma de JavaScript-05 da Generation Brasil. Temos como base a ODS 5 -
