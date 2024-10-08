@@ -1,50 +1,90 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Centro Bell Hooks
 
-Currently, two official plugins are available:
+  ![Logo](https://ik.imagekit.io/lidskey/PI/logobellhooksoficial_resized_small_hd.png?updatedAt=1728139094804)
 
--   [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
--   [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Nosso Projeto é um site e-commerce de soluções baseadas na ODS5 - Igualdade de Gênero da ONU. Ofereceremos cursos profissionalizantes tanto na área de TI quanto outros segmentos. Nossa missão é ajudar mulheres e meninas a alcançarem o lugar que desejam e merecem. Faremos um gancho entre mulheres e oportunidades de trabalho, cursos de qualidade e networking seguro.
 
-## Expanding the ESLint configuration
+## Stacks Utilizadas 
+### Frontend
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
--   Configure the top-level `parserOptions` property like this:
+**Biblioteca Javascript:** ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) 
 
-```js
-export default tseslint.config({
-    languageOptions: {
-        // other options...
-        parserOptions: {
-            project: ['./tsconfig.node.json', './tsconfig.app.json'],
-            tsconfigRootDir: import.meta.dirname,
-        },
-    },
-})
+ **Cliente HTTP:** ![Axios](https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white)
+
+**Ferramenta de build:** ![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white) 
+
+**Framework de estilização:**![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white) 
+
+**Deploy:** ![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)  
+
+
+## Funcionalidades
+
+- Login autênticado de usuário
+- Login autênticado do Admin
+- Tela Home 
+- Tela apresentando todos os serviços/cursos
+- Cadastro de novos serviços/cursos - Admin
+- Edição de novos serviços/cursos - Admin
+- Remoção de novos serviços/cursos - Admin
+- Perfil do candidato - melhoria futura
+- Tela 'Meus cursos' do candidato - melhoria futura
+
+
+## Confira o Site
+
+ - [Centro Bell Hooks](https://centro-bellhooks.netlify.app/)
+
+
+
+## Rodando localmente
+
+Clone o projeto
+
+```bash
+  git clone https://github.com/Centro-Bell-Hooks/frontend
 ```
 
--   Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
--   Optionally add `...tseslint.configs.stylisticTypeChecked`
--   Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Entre no diretório do projeto
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-    // Set the react version
-    settings: { react: { version: '18.3' } },
-    plugins: {
-        // Add the react plugin
-        react,
-    },
-    rules: {
-        // other rules...
-        // Enable its recommended rules
-        ...react.configs.recommended.rules,
-        ...react.configs['jsx-runtime'].rules,
-    },
-})
+```bash
+  cd frontend
 ```
+
+Instale as dependências
+
+```bash
+  yarn
+```
+
+Inicie o servidor
+
+```bash
+ yarn dev
+```
+
+
+## Autores
+
+- [Arthur Lopes](https://github.com/arthurlopes7)
+- [Danillo Oliveira](https://github.com/DanNilloOli)
+- [Ezequiel Almeida](https://github.com/EzeAlmeida)
+- [Fernando Cássio](https://github.com/FernandoCassioDev)
+- [Letícia Virgílio](https://github.com/Virgilioleticia)
+- [Liara Cristina](https://github.com/lidskey)
+- [Samira Grossi](https://github.com/sam-grs)
+
+
+## Documentação - MER, DER, ESCOPO
+
+[Documentação](https://github.com/Centro-Bell-Hooks/documentacao)
+
+### Repositório do backend: 
+https://github.com/Centro-Bell-Hooks/backend
+
+## Feedback
+
+Se você tiver algum feedback, por favor nos deixe saber por meio de bellhooksprojeto@gmail.com
+
