@@ -44,29 +44,31 @@ export const ServicosPage = () => {
     console.log('SERVIÇOS', servicos)
 
     return (
-        <FilterProvider cursos={servicos}>
-            <Box>
-                {isLoading ? (
-                    <div className="h-screen flex justify-center items-center">
-                        <RotatingLines
-                            strokeColor="black"
-                            strokeWidth="5"
-                            animationDuration="0.75"
-                            width="50"
-                            visible={true}
-                        />
-                    </div>
-                ) : servicos.length === 0 ? (
-                    <h1 className="h-screen flex justify-center items-center text-primaria text-xl font-semibold">
-                        Lista vazia
-                    </h1>
-                ) : (
-                    <>
-                        <FiltroServico />
-                        <ListaServicos />
-                    </>
-                )}
-            </Box>
-        </FilterProvider>
+        <div className="pt-[130px]">
+            <FilterProvider cursos={servicos}>
+                <Box>
+                    {isLoading ? (
+                        <div className="h-screen flex justify-center items-center">
+                            <RotatingLines
+                                strokeColor="black"
+                                strokeWidth="5"
+                                animationDuration="0.75"
+                                width="50"
+                                visible={true}
+                            />
+                        </div>
+                    ) : servicos.length === 0 ? (
+                        <h1 className="h-screen flex justify-center items-center text-primaria text-xl font-semibold">
+                            Lista vazia
+                        </h1>
+                    ) : (
+                        <>
+                            <FiltroServico />
+                            <ListaServicos />
+                        </>
+                    )}
+                </Box>
+            </FilterProvider>
+        </div>
     )
 }
