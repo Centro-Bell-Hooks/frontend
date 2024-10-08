@@ -62,10 +62,7 @@ export function Cadastro() {
         <div className="grid grid-cols-1 md:grid-cols-2 h-screen">
             <div className="bg-primaria hidden md:flex justify-center items-center p-4">
                 <Link to={routes.homepage}>
-                    <img
-                        src="/assets/logo-bell-hooks.jpg"
-                        className="rounded-full max-w-[200px] md:max-w-[300px]"
-                    />
+                    <img src="/assets/logo-bell-hooks.jpg" className="rounded-full max-w-[200px] md:max-w-[300px]" />
                 </Link>
             </div>
 
@@ -103,7 +100,11 @@ export function Cadastro() {
                         onChange={atualizarInput}
                         defaultValue="Selecione uma opção"
                         className="w-full"
-                        values={['candidato', 'institucional']}
+                        values={['candidato', 'institucional'].map((value: any) => (
+                            <option key={value.id} value={value}>
+                                {value}
+                            </option>
+                        ))}
                     />
                     <Button onClick={voltar} className="my-1" variant="outline">
                         Voltar

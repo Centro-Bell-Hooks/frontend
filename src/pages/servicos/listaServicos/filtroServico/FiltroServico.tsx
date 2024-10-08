@@ -43,7 +43,7 @@ export function FiltroServico() {
                     onChange={(e) => setTitulo(e.target.value)}
                 />
                 <Select
-                    className="w-full max-w-[200px] border border-primaria"
+                    className="w-full max-w-[200px]"
                     name="nome"
                     defaultValue="Todos"
                     onChange={(e) => setNome(e.target.value)}
