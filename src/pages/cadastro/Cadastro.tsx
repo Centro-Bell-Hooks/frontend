@@ -59,17 +59,20 @@ export function Cadastro() {
     }
 
     return (
-        <div className="grid grid-cols-2 h-screen">
-            <div className="bg-primaria flex justify-center items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 h-screen">
+            <div className="bg-primaria hidden md:flex justify-center items-center p-4">
                 <Link to={routes.homepage}>
-                    <img src="/assets/logo-bell-hooks.jpg" className="rounded-full max-w-[300px]" />
+                    <img
+                        src="/assets/logo-bell-hooks.jpg"
+                        className="rounded-full max-w-[200px] md:max-w-[300px]"
+                    />
                 </Link>
             </div>
 
-            <div className="flex flex-col justify-center items-center">
-                <h1 className="text-primaria text-3xl mb-3 font-semibold">Cadastrar</h1>
+            <div className="flex flex-col justify-center items-center p-4">
+                <h1 className="text-primaria md:text-3xl mb-3 font-semibold">Cadastrar</h1>
                 <form
-                    className="flex flex-col justify-center items-center gap-3 w-full max-w-[350px]"
+                    className="flex flex-col justify-center items-center gap-3 w-full max-w-[300px] md:max-w-[350px]"
                     onSubmit={cadastrarNovoUsuario}
                 >
                     <Input name="nome" placeholder="Nome" value={usuario.nome} onChange={atualizarInput} />
