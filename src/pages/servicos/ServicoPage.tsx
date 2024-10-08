@@ -4,8 +4,7 @@ import { useContext, useEffect, useState } from 'react'
 
 import { Alert, Box } from '../../components'
 import { AuthContext, FilterProvider } from '../../contexts'
-import { FiltroServico } from './listaServicos/filtroServico'
-import { ListaServicos } from './listaServicos'
+import { FiltroServico, ListaServicos } from './listaServicos'
 import { Servico } from '../../models'
 import { routes } from '../../routes'
 import { buscar } from '../../services'
@@ -44,29 +43,31 @@ export const ServicosPage = () => {
     console.log('SERVIÇOS', servicos)
 
     return (
-        <FilterProvider cursos={servicos}>
-            <Box>
-                {isLoading ? (
-                    <div className="h-screen flex justify-center items-center">
-                        <RotatingLines
-                            strokeColor="black"
-                            strokeWidth="5"
-                            animationDuration="0.75"
-                            width="50"
-                            visible={true}
-                        />
-                    </div>
-                ) : servicos.length === 0 ? (
-                    <h1 className="h-screen flex justify-center items-center text-primaria text-xl font-semibold">
-                        Lista vazia
-                    </h1>
-                ) : (
-                    <>
-                        <FiltroServico />
-                        <ListaServicos />
-                    </>
-                )}
-            </Box>
-        </FilterProvider>
+        <div className="pt-[130px]">
+            <FilterProvider cursos={servicos}>
+                <Box>
+                    {isLoading ? (
+                        <div className="h-screen flex justify-center items-center">
+                            <RotatingLines
+                                strokeColor="black"
+                                strokeWidth="5"
+                                animationDuration="0.75"
+                                width="50"
+                                visible={true}
+                            />
+                        </div>
+                    ) : servicos.length === 0 ? (
+                        <h1 className="h-screen flex justify-center items-center text-primaria text-xl font-semibold">
+                            Lista vazia
+                        </h1>
+                    ) : (
+                        <>
+                            <FiltroServico />
+                            <ListaServicos />
+                        </>
+                    )}
+                </Box>
+            </FilterProvider>
+        </div>
     )
 }
