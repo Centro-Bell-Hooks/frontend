@@ -19,7 +19,7 @@ export function CardServico({ servico }: CardServicoProps) {
     }
 
     return (
-        <Card className="w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto p-4">
+        <Card>
             <CardContent>
                 <CardTitle className="text-xl my-4 font-semibold text-center">{servico.titulo}</CardTitle>
 
