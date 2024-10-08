@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom'
-import { MouseEventHandler, useContext } from 'react'
+import { useContext } from 'react'
 import { Link as LinkScroll } from 'react-scroll'
 
 import { routes } from '../../routes'
@@ -28,7 +28,7 @@ export function Navbar() {
                             <Link to={routes.homepage}>
                                 <img
                                     src="/assets/logo-bell-hooks.jpg"
-                                    className="rounded-full max-w-[80px]"
+                                    className="rounded-full md:max-w-[80px]"
                                     alt="Logo do site Bell Hooks"
                                 />
                             </Link>
@@ -93,7 +93,7 @@ export function Navbar() {
                                     className="hover:underline font-semibold"
                                     onClick={usuario?.token ? logout : undefined}
                                 >
-                                    {usuario?.token === '' ? 'Login' : 'Sair'}
+                                    {usuario?.token === '' ? 'Entrar' : 'Sair'}
                                 </Link>
                             </div>
                         </div>

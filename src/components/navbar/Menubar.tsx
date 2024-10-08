@@ -44,6 +44,7 @@ export function Menubar({ instituicao, admin, usuario, logout }: MenubarProps) {
                                 <LinkScroll to="inicio" className="hover:underline">
                                     <DialogTitle>Início</DialogTitle>
                                 </LinkScroll>
+                                <hr className="bg-primaria w-full my-3" />
                                 <LinkScroll to="sobre" className="hover:underline">
                                     <DialogTitle>Sobre</DialogTitle>
                                 </LinkScroll>
@@ -102,7 +103,7 @@ export function Menubar({ instituicao, admin, usuario, logout }: MenubarProps) {
                             className="hover:underline"
                             onClick={usuario?.token ? logout : undefined}
                         >
-                            <DialogTitle> {usuario?.token === '' ? 'Login' : 'Sair'}</DialogTitle>
+                            <DialogTitle> {usuario?.token === '' ? 'Entrar' : 'Sair'}</DialogTitle>
                             <hr className="bg-primaria w-full mb-4 mt-2" />
                         </Link>
                     </div>
