@@ -6,7 +6,7 @@ import { Categoria, Servico } from '../../../models'
 import { AuthContext } from '../../../contexts'
 import { atualizar, buscar, cadastrar } from '../../../services'
 import { routes } from '../../../routes'
-import { Card, CardContent, CardTitle, Button, Input, Alert, Select } from '../../../components'
+import { Card, CardContent, CardTitle, Button, Input, Alert, Select, Box } from '../../../components'
 
 const valoresIniciais = {
     id: 0,
@@ -140,65 +140,67 @@ export function FormServico() {
     console.log(categoria)
 
     return (
-        <div className="flex items-center justify-center h-screen">
-            <Card className="w-full max-w-[350px]">
-                <CardTitle className="my-4 text-3xl text-center">
-                    {id !== undefined ? 'Editar Serviço' : 'Cadastrar Serviço'}
-                </CardTitle>
+        <Box>
+            <div className="flex items-center justify-center h-[90vh] sm:h-screen pt-[130px]">
+                <Card className="w-full max-w-xs sm:max-w-sm">
+                    <CardTitle className="my-4 text-xl sm:text-2xl text-center">
+                        {id !== undefined ? 'Editar Serviço' : 'Cadastrar Serviço'}
+                    </CardTitle>
 
-                <CardContent>
-                    <form onSubmit={gerarNovoServico}>
-                        <div className="flex flex-col gap-3">
-                            <Input
-                                name="titulo"
-                                placeholder="Titulo do curso"
-                                value={servicos.titulo}
-                                onChange={atualizarEstado}
-                            />
-                            <Input
-                                name="nome"
-                                placeholder="Nome da instituição"
-                                value={servicos.nome}
-                                onChange={atualizarEstado}
-                            />
-                            <Input
-                                name="descricao"
-                                placeholder="Descrição"
-                                value={servicos.descricao}
-                                onChange={atualizarEstado}
-                            />
-                            <h4 className="font-semibold my-1">Categoria</h4>
-
-                            {/* arrumar os outros values */}
-                            <Select
-                                name="categoria"
-                                onChange={buscarCategoriaPorId}
-                                defaultValue={
-                                    servicos.categoria?.id ? servicos.categoria?.cargo : 'Selecione uma categoria'
-                                }
-                                values={categorias.map((categoria) => (
-                                    <option key={categoria.id} data-key={categoria.id} value={categoria.cargo}>
-                                        {categoria.cargo}
-                                    </option>
-                                ))}
-                            />
-                        </div>
-                        <Button type="submit" className="w-full mt-3" disabled={servicos.categoria?.cargo === ''}>
-                            {isLoading ? (
-                                <RotatingLines
-                                    strokeColor="white"
-                                    strokeWidth="5"
-                                    animationDuration="0.75"
-                                    width="24"
-                                    visible={true}
+                    <CardContent>
+                        <form onSubmit={gerarNovoServico}>
+                            <div className="flex flex-col gap-3">
+                                <Input
+                                    name="titulo"
+                                    placeholder="Titulo do curso"
+                                    value={servicos.titulo}
+                                    onChange={atualizarEstado}
                                 />
-                            ) : (
-                                <> {id !== undefined ? 'Atualizar' : 'Cadastrar'}</>
-                            )}
-                        </Button>
-                    </form>
-                </CardContent>
-            </Card>
-        </div>
+                                <Input
+                                    name="nome"
+                                    placeholder="Nome da instituição"
+                                    value={servicos.nome}
+                                    onChange={atualizarEstado}
+                                />
+                                <Input
+                                    name="descricao"
+                                    placeholder="Descrição"
+                                    value={servicos.descricao}
+                                    onChange={atualizarEstado}
+                                />
+                                <h4 className="font-semibold my-1">Categoria</h4>
+
+                                {/* arrumar os outros values */}
+                                <Select
+                                    name="categoria"
+                                    onChange={buscarCategoriaPorId}
+                                    defaultValue={
+                                        servicos.categoria?.id ? servicos.categoria?.cargo : 'Selecione uma categoria'
+                                    }
+                                    values={categorias.map((categoria) => (
+                                        <option key={categoria.id} data-key={categoria.id} value={categoria.cargo}>
+                                            {categoria.cargo}
+                                        </option>
+                                    ))}
+                                />
+                            </div>
+                            <Button type="submit" className="w-full mt-3" disabled={servicos.categoria?.cargo === ''}>
+                                {isLoading ? (
+                                    <RotatingLines
+                                        strokeColor="white"
+                                        strokeWidth="5"
+                                        animationDuration="0.75"
+                                        width="24"
+                                        visible={true}
+                                    />
+                                ) : (
+                                    <> {id !== undefined ? 'Atualizar' : 'Cadastrar'}</>
+                                )}
+                            </Button>
+                        </form>
+                    </CardContent>
+                </Card>
+            </div>
+        </Box>
     )
 }
