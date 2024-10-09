@@ -14,7 +14,6 @@ export function Login() {
     const navigate = useNavigate()
     const [erros, setErros] = useState<any>({ usuario: '', senha: '' })
     const [senhaVisivel, setSenhaVisivel] = useState(false)
-    console.log('Erros', erros)
 
     useEffect(() => {
         if (usuario.id && usuario.tipo !== 'admin') {
@@ -33,11 +32,10 @@ export function Login() {
 
     function login(e: ChangeEvent<HTMLFormElement>) {
         e.preventDefault()
-        const res = schemaValidacao.safeParse(usuarioLogin)
+        const validacao = schemaValidacao.safeParse(usuarioLogin)
 
-        if (!res.success) {
-            res.error.issues.map((issue) => {
-                console.log('ISSUE', issue)
+        if (!validacao.success) {
+            validacao.error.issues.map((issue) => {
                 setErros((prevErros) => ({ ...prevErros, [issue.path[0]]: issue.message }))
             })
         } else {
@@ -65,7 +63,6 @@ export function Login() {
                         placeholder="Digite seu Email"
                         value={usuarioLogin.usuario}
                         onChange={atualizarEstado}
-                        className=""
                     />
                     {erros.usuario && <p className="text-red-600 text-sm text-end">{erros.usuario}</p>}
                     <div className="relative">
@@ -88,7 +85,6 @@ export function Login() {
                             />
                         </span>
                     </div>
-
                     {erros.senha && <p className="text-red-600 text-sm text-end">{erros.senha}</p>}
 
                     <Button type="submit" className="mt-5">

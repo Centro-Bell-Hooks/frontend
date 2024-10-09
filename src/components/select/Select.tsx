@@ -1,9 +1,9 @@
-import { ChangeEventHandler } from 'react'
+import { ChangeEvent } from 'react'
 
 type SelectProps = {
     values: any
     name?: string
-    onChange?: any // depois ver a tipagem
+    onChange?: (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void // depois ver a tipagem
     defaultValue?: any
     className?: string
 }
