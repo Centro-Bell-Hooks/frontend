@@ -21,9 +21,9 @@ export function CardServico({ servico }: CardServicoProps) {
     return (
         <Card>
             <CardContent>
-                <CardTitle className="text-xl my-4 font-semibold">{servico.titulo}</CardTitle>
+                <CardTitle className="text-xl my-4 font-semibold text-center">{servico.titulo}</CardTitle>
 
-                <div className="flex justify-between gap-1">
+                <div className="flex flex-col gap-2 sm:flex-row sm:justify-between">
                     <p>
                         <strong className="font-semibold">Empresa: </strong> <br /> {servico.nome}
                     </p>
@@ -39,18 +39,18 @@ export function CardServico({ servico }: CardServicoProps) {
                     <strong className="font-semibold">Descrição: </strong> {servico.descricao}
                 </p>
                 {tipoUsuario ? (
-                    <div className="flex gap-4 mt-5">
-                        <Link to={`/editar-servico/${servico.id}`} className="w-full">
-                            <Button className="w-full" variant="outline">
+                    <div className="flex flex-col sm:flex-row gap-4 mt-5">
+                        <Link to={`/editar-servico/${servico.id}`} className="w-full sm:w-auto">
+                            <Button className="w-full sm:w-auto" variant="outline">
                                 Editar
                             </Button>
                         </Link>
-                        <Link to={`/deletar-servico/${servico.id}`} className="w-full">
-                            <Button className="w-full">Deletar</Button>
+                        <Link to={`/deletar-servico/${servico.id}`} className="w-full sm:w-auto">
+                            <Button className="w-full sm:w-auto">Deletar</Button>
                         </Link>
                     </div>
                 ) : (
-                    <Button onClick={candidatoSucesso} className="w-full">
+                    <Button onClick={candidatoSucesso} className="w-full mt-5 sm:mt-0">
                         Candidatar-se
                     </Button>
                 )}

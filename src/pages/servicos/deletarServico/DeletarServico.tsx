@@ -5,9 +5,8 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { AuthContext } from '../../../contexts'
 import { buscar, deletar } from '../../../services'
 import { Servico } from '../../../models'
-import { Alert } from '../../../components/alert'
 import { routes } from '../../../routes'
-import { Button, Card, CardContent, CardTitle } from '../../../components'
+import { Button, Card, CardContent, CardTitle, Alert, Box } from '../../../components'
 
 export function DeletarServico() {
     const navigate = useNavigate()
@@ -65,48 +64,52 @@ export function DeletarServico() {
     }
 
     return (
-        <div className="flex items-center justify-center h-screen">
-            <Card className="w-full max-w-[350px]">
-                <CardContent>
-                    <CardTitle className="text-xl my-4 font-semibold text-center">Você deseja mesmo apagar?</CardTitle>
+        <Box>
+            <div className="flex items-center justify-center h-screen pt-[100px]">
+                <Card className="w-full max-w-xs sm:max-w-sm">
+                    <CardContent>
+                        <CardTitle className="text-1xl sm:text-2xl my-4 font-semibold text-center">
+                            Você deseja mesmo apagar?
+                        </CardTitle>
 
-                    <div className="flex flex-col gap-1 mb-5">
-                        <p>
-                            <strong className="font-semibold">Título: </strong> {servico.titulo}
-                        </p>
-                        <p>
-                            <strong className="font-semibold">Empresa: </strong> {servico.nome}
-                        </p>
-                        <hr className="border-1 border-primaria my-4" />
-                        <p>
-                            <strong className="font-semibold">Descrição: </strong> {servico.descricao}
-                        </p>
+                        <div className="flex flex-col gap-2 mb-5">
+                            <p>
+                                <strong className="font-semibold">Título: </strong> {servico.titulo}
+                            </p>
+                            <p>
+                                <strong className="font-semibold">Empresa: </strong> {servico.nome}
+                            </p>
+                            <hr className="border-1 border-primaria my-4" />
+                            <p>
+                                <strong className="font-semibold">Descrição: </strong> {servico.descricao}
+                            </p>
 
-                        <p>
-                            <strong className="font-semibold">Categoria: </strong> {servico.categoria?.cargo}
-                        </p>
-                    </div>
+                            <p>
+                                <strong className="font-semibold">Categoria: </strong> {servico.categoria?.cargo}
+                            </p>
+                        </div>
 
-                    <div className="flex gap-4">
-                        <Button variant="outline" onClick={retornar}>
-                            Não
-                        </Button>
-                        <Button onClick={deletarServico}>
-                            {isLoading ? (
-                                <RotatingLines
-                                    strokeColor="white"
-                                    strokeWidth="5"
-                                    animationDuration="0.75"
-                                    width="24"
-                                    visible={true}
-                                />
-                            ) : (
-                                <>Sim</>
-                            )}
-                        </Button>
-                    </div>
-                </CardContent>
-            </Card>
-        </div>
+                        <div className="flex flex-col sm:flex-row gap-4">
+                            <Button variant="outline" onClick={retornar} className="w-full">
+                                Não
+                            </Button>
+                            <Button onClick={deletarServico} className="w-full">
+                                {isLoading ? (
+                                    <RotatingLines
+                                        strokeColor="white"
+                                        strokeWidth="5"
+                                        animationDuration="0.75"
+                                        width="24"
+                                        visible={true}
+                                    />
+                                ) : (
+                                    <>Sim</>
+                                )}
+                            </Button>
+                        </div>
+                    </CardContent>
+                </Card>
+            </div>
+        </Box>
     )
 }

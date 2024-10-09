@@ -12,9 +12,9 @@ const estilos = `
     max-w-[1440px] 
     m-auto h-full 
     px-8
-    py-5
-    md:px-14 
-    md:py-14
+    py-12
+    sm:px-14 
+    sm:py-14
 `
 
 export function Box({ children, className }: BoxProps) {
