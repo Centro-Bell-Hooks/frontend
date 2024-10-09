@@ -19,11 +19,11 @@ export const ServicosPage = () => {
     useEffect(() => {
         buscarServico()
 
-        // if (token === '') {
-        //     Alert({ mensagem: 'Você precisa estar logado!', tipo: 'info' })
-        //     navigate(routes.login)
-        // }
-    }, [token]) // ver se vai dar problema sem servico.length
+        if (token === '') {
+            Alert({ mensagem: 'Você precisa estar logado!', tipo: 'info' })
+            navigate(routes.login)
+        }
+    }, [token])
 
     async function buscarServico() {
         try {

@@ -53,10 +53,6 @@ export function Menubar({ instituicao, admin, usuario, logout }: MenubarProps) {
                                     <DialogTitle>Contato</DialogTitle>
                                 </LinkScroll>
                                 <hr className="bg-primaria w-full my-3" />
-                                <LinkScroll to={routes.servicos} className="hover:underline">
-                                    <DialogTitle>Serviços</DialogTitle>
-                                </LinkScroll>
-                                <hr className="bg-primaria w-full my-3" />
                             </>
                         ) : (
                             <>
