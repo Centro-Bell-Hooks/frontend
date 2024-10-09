@@ -40,8 +40,6 @@ export const ServicosPage = () => {
         }
     }
 
-    console.log('SERVIÇOS', servicos)
-
     return (
         <div className="pt-[130px]">
             <FilterProvider cursos={servicos}>

@@ -137,8 +137,6 @@ export function FormServico() {
         navigate(routes.servicos)
     }
 
-    console.log(categoria)
-
     return (
         <Box>
             <div className="flex items-center justify-center h-[90vh] sm:h-screen pt-[130px]">

@@ -6,55 +6,63 @@ import { Usuario } from '../../models'
 import { auth } from '../../services'
 import { routes } from '../../routes'
 import { Alert, Button, Input, Select } from '../../components'
+import { schemaValidacao } from './Cadastro.schema'
 
-const valoresInicias = { id: 0, nome: '', tipo: '', usuario: '', senha: '', foto: '-' }
+const valoresInicias = { nome: '', tipo: '', usuario: '', senha: '', confirmarSenha: '', foto: '-' }
 
 export function Cadastro() {
     const navigate = useNavigate()
-    const [confirmaSenha, setConfirmaSenha] = useState<string>('')
-    const [usuario, setUsuario] = useState<Usuario>(valoresInicias)
+    const [usuario, setUsuario] = useState<Usuario>({ ...valoresInicias, id: 0 })
     const [isLoading, setIsLoading] = useState<boolean>(false)
+    const [erros, setErros] = useState(valoresInicias)
 
     const voltar = useCallback(() => {
         navigate(routes.login)
     }, [navigate])
 
-    // ver se vai dar problema
     useEffect(() => {
         if (usuario.id !== 0) {
             voltar()
         }
     }, [usuario, voltar])
 
-    function atualizarConfirmarSenha(e: ChangeEvent<HTMLInputElement>) {
-        setConfirmaSenha(e.target.value)
-    }
-
     function atualizarInput(e: ChangeEvent<HTMLInputElement>) {
         setUsuario({
             ...usuario,
-            [e.target.name]: e.target.value,
+            [e.target.name]: e.target.value.toLowerCase(),
         })
     }
 
     async function cadastrarNovoUsuario(e: ChangeEvent<HTMLFormElement>) {
         e.preventDefault()
 
-        if (confirmaSenha === usuario.senha && usuario.senha.length >= 8) {
+        const validacao = schemaValidacao.safeParse(usuario)
+
+        if (!validacao.success) {
+            validacao.error.issues.map((issue) => {
+                setErros((prevErros) => ({ ...prevErros, [issue.path[0]]: issue.message }))
+            })
+        } else {
             setIsLoading(true)
+            setErros(valoresInicias)
+            const valoresDoUsuario = { ...usuario }
+            delete valoresDoUsuario.confirmarSenha
+
             try {
-                await auth(`/usuarios/cadastrar`, usuario, setUsuario)
+                await auth(`/usuarios/cadastrar`, valoresDoUsuario, setUsuario)
 
                 Alert({ mensagem: 'Usuário cadastrado com sucesso!' })
                 setTimeout(() => voltar(), 3000)
             } catch (err: any) {
                 console.error(err)
-                Alert({ mensagem: 'Erro ao cadastrar o Usuário.', tipo: 'error' })
+                Alert({
+                    mensagem: 'Erro ao cadastrar o Usuário, o email já existe ou os dados são inconsistentes.',
+                    tipo: 'error',
+                })
+            } finally {
+                setIsLoading(false)
+                setUsuario({ ...usuario, senha: '' })
             }
-        } else {
-            Alert({ mensagem: 'Dados inconsistentes. Verifique as informações de cadastro.', tipo: 'error' })
-            setUsuario({ ...usuario, senha: '' })
-            setConfirmaSenha('')
         }
     }
 
@@ -69,16 +77,20 @@ export function Cadastro() {
             <div className="flex flex-col justify-center items-center p-4">
                 <h1 className="text-primaria md:text-3xl mb-3 font-semibold">Cadastrar</h1>
                 <form
-                    className="flex flex-col justify-center items-center gap-3 w-full max-w-[300px] md:max-w-[350px]"
+                    className="flex flex-col gap-3 w-full max-w-[300px] md:max-w-[350px]"
                     onSubmit={cadastrarNovoUsuario}
                 >
                     <Input name="nome" placeholder="Nome" value={usuario.nome} onChange={atualizarInput} />
+                    {erros.nome && <p className="text-red-600 text-sm text-end">{erros.nome}</p>}
+
                     <Input
                         name="usuario"
                         placeholder="Digite o email do usuário"
                         value={usuario.usuario}
                         onChange={atualizarInput}
                     />
+                    {erros.usuario && <p className="text-red-600 text-sm text-end">{erros.usuario}</p>}
+
                     <Input
                         type="password"
                         name="senha"
@@ -87,25 +99,31 @@ export function Cadastro() {
                         onChange={atualizarInput}
                         autoComplete="current-password"
                     />
+                    {erros.senha && <p className="text-red-600 text-sm text-end">{erros.senha}</p>}
+
                     <Input
                         type="password"
                         name="confirmarSenha"
                         placeholder="Confirmar Senha"
-                        value={confirmaSenha}
-                        onChange={atualizarConfirmarSenha}
+                        value={usuario.confirmarSenha}
+                        onChange={atualizarInput}
+                        autoComplete="current-password"
                     />
-                    {/* ajustar o select */}
+                    {erros.confirmarSenha && <p className="text-red-600 text-sm text-end">{erros.confirmarSenha}</p>}
+
                     <Select
                         name="tipo"
                         onChange={atualizarInput}
                         defaultValue="Selecione uma opção"
                         className="w-full"
-                        values={['candidato', 'institucional'].map((value: any) => (
-                            <option key={value.id} value={value}>
+                        values={['Candidato', 'Institucional'].map((value: string, index: number) => (
+                            <option key={index} value={value}>
                                 {value}
                             </option>
                         ))}
                     />
+                    {erros.tipo && <p className="text-red-600 text-sm text-end">{erros.tipo}</p>}
+
                     <Button onClick={voltar} className="my-1" variant="outline">
                         Voltar
                     </Button>
@@ -119,7 +137,7 @@ export function Cadastro() {
                                 visible={true}
                             />
                         ) : (
-                            <> Cadastrar</>
+                            <>Cadastrar</>
                         )}
                     </Button>
                 </form>
