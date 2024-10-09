@@ -22,11 +22,12 @@ export function ListaCategoria() {
             Alert({ mensagem: 'Você precisa estar logado', tipo: 'info' })
             navigate(routes.login)
         }
-    }, [token]) // ver se vai dar bo sem o categorias.length
+    }, [token])
 
     async function buscarCategorias() {
         try {
             setIsLoading(true)
+            // adicionar o contador no enpoint de categorias
             await buscar(`/categorias`, setCategorias, {
                 headers: { Authorization: token },
             })
@@ -40,30 +41,30 @@ export function ListaCategoria() {
     }
 
     return (
-        <Box>
-            {isLoading ? (
-                <div className="h-screen flex justify-center items-center">
-                    <RotatingLines
-                        strokeColor="black"
-                        strokeWidth="5"
-                        animationDuration="0.75"
-                        width="50"
-                        visible={true}
-                    />
-                </div>
-            ) : categorias.length === 0 ? (
-                <h1 className="h-screen flex justify-center items-center text-primaria text-xl font-semibold">
-                    Lista vazia
-                </h1>
-            ) : (
-                <div className="h-screen">
-                    <div className="gap-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <div className="pt-[130px]">
+            <Box>
+                {isLoading ? (
+                    <div className="h-screen flex justify-center items-center">
+                        <RotatingLines
+                            strokeColor="black"
+                            strokeWidth="5"
+                            animationDuration="0.75"
+                            width="50"
+                            visible={true}
+                        />
+                    </div>
+                ) : categorias.length === 0 ? (
+                    <h1 className="h-screen flex justify-center items-center text-primaria text-xl font-semibold">
+                        Lista vazia
+                    </h1>
+                ) : (
+                    <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
                         {categorias.map((categoria) => (
                             <CardCategoria key={categoria.id} categoria={categoria} />
                         ))}
                     </div>
-                </div>
-            )}
-        </Box>
+                )}
+            </Box>
+        </div>
     )
 }

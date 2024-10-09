@@ -22,23 +22,27 @@ function App() {
         <AuthProviders>
             <ToastContainer />
             <BrowserRouter>
-                <Navbar />
-                <Routes>
-                    <Route path={routes.homepage} element={<Home />} />
-                    <Route path={routes.login} element={<Login />} />
-                    <Route path={routes.cadastro} element={<Cadastro />} />
+                <div className="flex flex-col min-h-screen">
+                    <Navbar />
+                    <div className="flex-grow">
+                        <Routes>
+                            <Route path={routes.homepage} element={<Home />} />
+                            <Route path={routes.login} element={<Login />} />
+                            <Route path={routes.cadastro} element={<Cadastro />} />
 
-                    <Route path={routes.categorias} element={<ListaCategoria />} />
-                    <Route path={routes.cadastrarCategoria} element={<FormCategoria />} />
-                    <Route path={routes.editarCategoria} element={<FormCategoria />} />
-                    <Route path={routes.deletarCategoria} element={<DeletarCategoria />} />
+                            <Route path={routes.categorias} element={<ListaCategoria />} />
+                            <Route path={routes.cadastrarCategoria} element={<FormCategoria />} />
+                            <Route path={routes.editarCategoria} element={<FormCategoria />} />
+                            <Route path={routes.deletarCategoria} element={<DeletarCategoria />} />
 
-                    <Route path={routes.servicos} element={<ServicosPage />} />
-                    <Route path={routes.cadastrarServico} element={<FormServico />} />
-                    <Route path={routes.editarServico} element={<FormServico />} />
-                    <Route path={routes.deletarServico} element={<DeletarServico />} />
-                </Routes>
-                <Footer />
+                            <Route path={routes.servicos} element={<ServicosPage />} />
+                            <Route path={routes.cadastrarServico} element={<FormServico />} />
+                            <Route path={routes.editarServico} element={<FormServico />} />
+                            <Route path={routes.deletarServico} element={<DeletarServico />} />
+                        </Routes>
+                    </div>
+                    <Footer />
+                </div>
             </BrowserRouter>
         </AuthProviders>
     )
