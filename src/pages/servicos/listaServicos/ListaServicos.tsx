@@ -7,7 +7,7 @@ export function ListaServicos() {
     const { cursoFiltrado } = useContext(FilterContext)
 
     return (
-        <div className="h-screen">
+        <div>
             <div className="grid grid-cols-2 w-full gap-7">
                 {cursoFiltrado.length === 0 ? (
                     <p>Nenhum serviço encontrado.</p>

@@ -94,8 +94,6 @@ export function Menubar({ instituicao, admin, usuario, logout }: MenubarProps) {
                                         <hr className="bg-primaria w-full my-3" />
                                     </>
                                 )}
-
-                                <hr className="bg-primaria w-full mb-4 mt-2" />
                             </>
                         )}
                         <Link

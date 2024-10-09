@@ -11,7 +11,7 @@ export function Footer() {
     return (
         <>
             {!auth && (
-                <>
+                <div>
                     <hr className="bg-secundaria h-1" />
                     <div className="h-[100px] bg-primaria flex items-center justify-center">
                         <div className="flex flex-col gap-1 text-md text-light text-center">
@@ -27,7 +27,7 @@ export function Footer() {
                             </Link>
                         </div>
                     </div>
-                </>
+                </div>
             )}
         </>
     )
