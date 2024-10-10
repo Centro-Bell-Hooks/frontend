@@ -14,7 +14,7 @@ export function CardServico({ servico }: CardServicoProps) {
     const { usuario } = useContext(AuthContext)
     const tipoUsuario = usuario.tipo !== 'candidato'
 
-    function candidatoSucesso() {
+    function cadastroDaCandidatura() {
         Alert({ mensagem: 'Candidatura realizada com sucesso!', tipo: 'success' })
     }
 
@@ -52,7 +52,7 @@ export function CardServico({ servico }: CardServicoProps) {
                     </Link>
                 </div>
             ) : (
-                <Button onClick={candidatoSucesso} className="w-full mt-5">
+                <Button onClick={cadastroDaCandidatura} className="w-full mt-5">
                     Candidatar-se
                 </Button>
             )}
