@@ -7,10 +7,8 @@ import { buscar } from '@/services'
 import { Categoria } from '@/models'
 
 export function FiltroServico() {
-    const { titulo, nome, cargo, setTitulo, setNome, setCargo } = useContext(FilterContext)
-    const instituicoes = ['Todos', 'Facebook', 'Apple', 'Microsoft']
+    const { titulo, setTitulo, setNome, setCargo } = useContext(FilterContext)
     const [categorias, setCategorias] = useState<Categoria[]>([])
-
     const { usuario, handleLogout } = useContext(AuthContext)
     const token = usuario.token
 
@@ -18,20 +16,6 @@ export function FiltroServico() {
         buscarCategorias()
     }, [])
 
-    const cargos = [
-        'Todos',
-        'Desenvolvedora FullStack',
-        'Design UX',
-        'Desenvolvedora Frontend',
-        'Design Gráfico',
-        'Inteligência Artificial',
-        'Eletrônica',
-        'Desenvolvedora Backend',
-        'Psicologia',
-        'Power BI',
-    ]
-
-    // FormServico
     async function buscarCategorias() {
         try {
             await buscar('/categorias', setCategorias, {
@@ -43,8 +27,6 @@ export function FiltroServico() {
             }
         }
     }
-
-    console.log(categorias)
 
     return (
         <div>
