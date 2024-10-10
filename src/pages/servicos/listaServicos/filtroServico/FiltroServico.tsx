@@ -60,7 +60,6 @@ export function FiltroServico() {
                     name="cargo"
                     defaultValue="Cargo"
                     onChange={(e) => setCargo(e.target.value)}
-                    value="Todos"
                     values={categorias.map((value: any) => (
                         <option key={value.id} value={value.cargo}>
                             {value.cargo}
