@@ -4,5 +4,5 @@ export interface Categoria {
     id: number
     tipo: string
     cargo: string
-    servico?: Servico | null
+    produto?: Servico | null
 }

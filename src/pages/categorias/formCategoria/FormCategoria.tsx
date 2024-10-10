@@ -76,7 +76,7 @@ export function FormCategoria() {
     return (
         <div className="max-sm:pt-[130px]">
             <Box>
-                <div className="flex items-center justify-center sm:h-screen">
+                <div className="flex items-center justify-center h-[90vh] sm:h-screen">
                     <Card className="w-full max-w-sm shadow-lg p-6">
                         <CardTitle className="text-3xl text-center mb-4">
                             {id === undefined ? 'Cadastrar Categoria' : 'Editar Categoria'}

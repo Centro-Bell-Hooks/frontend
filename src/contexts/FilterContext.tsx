@@ -17,8 +17,8 @@ export const FilterContext = createContext({} as FilterContextProps)
 
 export const FilterProvider: FC<{ children: ReactNode; cursos: Servico[] }> = ({ children, cursos }) => {
     const [titulo, setTitulo] = useState('')
-    const [nome, setNome] = useState('')
-    const [cargo, setCargo] = useState<string>('')
+    const [nome, setNome] = useState('Todos')
+    const [cargo, setCargo] = useState<string>('Todos')
 
     const cursoFiltrado = cursos?.filter((curso) => {
         const filtroTitulo = curso?.titulo?.toLowerCase().includes(titulo.toLocaleLowerCase())
