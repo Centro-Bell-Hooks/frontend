@@ -66,9 +66,9 @@ export function DeletarServico() {
     return (
         <Box>
             <div className="flex items-center justify-center h-screen pt-[100px]">
-                <Card className="w-full max-w-xs sm:max-w-sm">
+                <Card className="w-full max-w-xs sm:max-w-sm p-6">
                     <CardContent>
-                        <CardTitle className="text-1xl sm:text-2xl my-4 font-semibold text-center">
+                        <CardTitle className="text-1xl sm:text-2xl mb-4 font-semibold text-center">
                             Você deseja mesmo apagar?
                         </CardTitle>
 
