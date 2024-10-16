@@ -8,8 +8,8 @@ export const routes = {
     editarCategoria: '/editar-categoria/:id',
     deletarCategoria: '/deletar-categoria/:id',
 
-    servicos: '/servicos',
-    cadastrarServico: '/cadastrar-servico',
-    editarServico: '/editar-servico/:id',
-    deletarServico: '/deletar-servico/:id',
+    servicos: '/cursos',
+    cadastrarServico: '/cadastrar-curso',
+    editarServico: '/editar-curso/:id',
+    deletarServico: '/deletar-curso/:id',
 }
