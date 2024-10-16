@@ -19,18 +19,18 @@ export function CardServico({ servico }: CardServicoProps) {
     }
 
     return (
-        <Card className="p-6 flex flex-col shadow-lg">
+        <Card className="p-6 flex flex-col">
             <CardContent className="flex-grow">
                 <CardTitle className="text-xl mb-4 font-semibold text-center">{servico.titulo}</CardTitle>
 
-                <div className="gap-2 flex justify-between">
-                    <p>
+                <div className="max-[400px]:grid max-[400px]:grid-cols-2 gap-5 min-[401px]:flex justify-between">
+                    <p className="max-[400px]:text-center">
                         <strong className="font-semibold">Empresa: </strong> <br /> {servico.nome}
                     </p>
-                    <p>
+                    <p className="max-[400px]:text-center">
                         <strong className="font-semibold">Categoria: </strong> <br /> {servico.categoria?.cargo}
                     </p>
-                    <p>
+                    <p className="max-[400px]:text-center max-[400px]:col-span-2">
                         <strong className="font-semibold">Data: </strong> <br /> {data}
                     </p>
                 </div>
@@ -41,18 +41,18 @@ export function CardServico({ servico }: CardServicoProps) {
             </CardContent>
 
             {tipoUsuario ? (
-                <div className="flex gap-4 mt-5">
-                    <Link to={`/editar-servico/${servico.id}`} className="w-full">
+                <div className="flex justify-between gap-4 mt-8">
+                    <Link to={`/editar-servico/${servico.id}`} className="max-[800px]:max-w-[200px] w-full">
                         <Button className="w-full" variant="outline">
                             Editar
                         </Button>
                     </Link>
-                    <Link to={`/deletar-servico/${servico.id}`} className="w-full">
+                    <Link to={`/deletar-servico/${servico.id}`} className="max-[800px]:max-w-[200px] w-full">
                         <Button className="w-full">Deletar</Button>
                     </Link>
                 </div>
             ) : (
-                <Button onClick={cadastroDaCandidatura} className="w-full mt-5">
+                <Button onClick={cadastroDaCandidatura} className="max-[800px]:max-w-[100px] w-full mt-5">
                     Candidatar-se
                 </Button>
             )}

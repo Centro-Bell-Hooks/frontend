@@ -78,7 +78,7 @@ export function FormCategoria() {
             <Box>
                 <div className="flex items-center justify-center h-[90vh] sm:h-screen">
                     <Card className="w-full max-w-sm shadow-lg p-6">
-                        <CardTitle className="text-3xl text-center mb-4">
+                        <CardTitle className="text-3xl text-center mb-6">
                             {id === undefined ? 'Cadastrar Categoria' : 'Editar Categoria'}
                         </CardTitle>
                         <CardContent>
@@ -91,7 +91,7 @@ export function FormCategoria() {
                                         onChange={atualizarEstado}
                                     />
                                 </div>
-                                <Button type="submit" className="w-full mt-3">
+                                <Button type="submit" className="w-full mt-6">
                                     {isLoading ? (
                                         <RotatingLines
                                             strokeColor="white"
