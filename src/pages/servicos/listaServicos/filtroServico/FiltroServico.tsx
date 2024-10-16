@@ -9,7 +9,7 @@ import { Categoria } from '@/models'
 export function FiltroServico() {
     const { titulo, setTitulo, setNome, setCargo } = useContext(FilterContext)
     const [categorias, setCategorias] = useState<Categoria[]>([])
-    const { usuario, handleLogout } = useContext(AuthContext)
+    const { usuario } = useContext(AuthContext)
     const token = usuario.token
 
     useEffect(() => {
@@ -23,17 +23,17 @@ export function FiltroServico() {
             })
         } catch (error: any) {
             if (error.toString().includes('401')) {
-                handleLogout()
+                console.error(error)
             }
         }
     }
 
     return (
         <div>
-            <div className="grid grid-cols-1 max-[800px]:grid-cols-2 md:grid-cols-[4fr_1fr_1fr] mb-8 gap-4 justify-between">
+            <div className="grid grid-cols-1 max-[850px]:grid-cols-2 min-[851px]:grid-cols-[4fr_1fr_1fr] mb-8 gap-4 justify-between">
                 <div className="relative w-full max-[850px]:col-span-2">
                     <Input
-                        className="w-full md:max-w-[500px] border border-primaria"
+                        className="w-full min-[850px]:max-w-[500px] border border-primaria"
                         name="buscar"
                         placeholder="Pesquise cursos"
                         value={titulo}
@@ -41,30 +41,40 @@ export function FiltroServico() {
                     />
                 </div>
                 <Select
-                    className="w-full max-w-[150px] md:max-w-[200px] border border-primaria"
+                    className="w-full max-w-[150px] sm:max-w-[200px] border border-primaria"
                     name="nome"
                     defaultValue="Instituição"
                     onChange={(e) => setNome(e.target.value)}
-                    values={categorias.flatMap(
-                        (categoria: any) =>
-                            categoria?.produto &&
-                            categoria.produto.map((prod: any, idx: number) => (
-                                <option key={`${categoria.id}-${idx}`} value={prod.nome}>
-                                    {prod.nome}
-                                </option>
-                            ))
-                    )}
+                    values={[
+                        <option key="all" value="Todos">
+                            Todos
+                        </option>,
+                        categorias.flatMap(
+                            (categoria: any) =>
+                                categoria?.produto &&
+                                categoria.produto.map((prod: any, idx: number) => (
+                                    <option key={`${categoria.id}-${idx}`} value={prod.nome}>
+                                        {prod.nome}
+                                    </option>
+                                ))
+                        ),
+                    ]}
                 />
                 <Select
-                    className="w-full max-w-[150px] md:max-w-[200px] border border-primaria justify-self-end"
+                    className="w-full max-w-[150px] sm:max-w-[200px] border border-primaria justify-self-end"
                     name="cargo"
                     defaultValue="Cargo"
                     onChange={(e) => setCargo(e.target.value)}
-                    values={categorias.map((value: any) => (
-                        <option key={value.id} value={value.cargo}>
-                            {value.cargo}
-                        </option>
-                    ))}
+                    values={[
+                        <option key="all" value="Todos">
+                            Todos
+                        </option>,
+                        categorias.map((value: any) => (
+                            <option key={value.id} value={value.cargo}>
+                                {value.cargo}
+                            </option>
+                        )),
+                    ]}
                 />
             </div>
         </div>
