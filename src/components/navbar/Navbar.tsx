@@ -36,7 +36,6 @@ export function Navbar() {
                             <div className="flex gap-4">
                                 {location.pathname === routes.homepage ? (
                                     <>
-                                        {/* colocar como link */}
                                         <LinkScroll
                                             to="inicio"
                                             className="hover:underline font-semibold cursor-pointer"
@@ -53,19 +52,21 @@ export function Navbar() {
                                         >
                                             Contato
                                         </LinkScroll>
+                                        <Link to={routes.servicos} className="hover:underline font-semibold">
+                                            Cursos
+                                        </Link>
                                     </>
                                 ) : (
                                     <>
                                         <Link to={routes.servicos} className="hover:underline font-semibold">
-                                            Serviços
+                                            Cursos
                                         </Link>
-
                                         {instituicao && (
                                             <Link
                                                 to={routes.cadastrarServico}
                                                 className="hover:underline font-semibold"
                                             >
-                                                Cadastrar Serviços
+                                                Cadastrar Cursos
                                             </Link>
                                         )}
 
@@ -82,9 +83,6 @@ export function Navbar() {
                                                 </Link>
                                             </>
                                         )}
-                                        <Link to="" className="hover:underline font-semibold">
-                                            Perfil
-                                        </Link>
                                     </>
                                 )}
 
