@@ -1,2 +1,2 @@
-export * from './listaServicos'
+export * from './ListaServicos'
 export * from './filtroServico'
