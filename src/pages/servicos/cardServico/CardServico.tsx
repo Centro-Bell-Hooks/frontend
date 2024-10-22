@@ -42,12 +42,12 @@ export function CardServico({ servico }: CardServicoProps) {
 
             {tipoUsuario ? (
                 <div className="flex justify-between gap-4 mt-8">
-                    <Link to={`/editar-servico/${servico.id}`} className="max-[800px]:max-w-[200px] w-full">
+                    <Link to={`/editar-curso/${servico.id}`} className="max-[800px]:max-w-[200px] w-full">
                         <Button className="w-full" variant="outline">
                             Editar
                         </Button>
                     </Link>
-                    <Link to={`/deletar-servico/${servico.id}`} className="max-[800px]:max-w-[200px] w-full">
+                    <Link to={`/deletar-curso/${servico.id}`} className="max-[800px]:max-w-[200px] w-full">
                         <Button className="w-full">Deletar</Button>
                     </Link>
                 </div>

@@ -52,9 +52,6 @@ export function Navbar() {
                                         >
                                             Contato
                                         </LinkScroll>
-                                        <Link to={routes.servicos} className="hover:underline font-semibold">
-                                            Cursos
-                                        </Link>
                                     </>
                                 ) : (
                                     <>

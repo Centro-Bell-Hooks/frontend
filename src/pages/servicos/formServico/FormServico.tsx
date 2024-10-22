@@ -6,7 +6,7 @@ import { Categoria, Servico } from '../../../models'
 import { AuthContext } from '../../../contexts'
 import { atualizar, buscar, cadastrar } from '../../../services'
 import { routes } from '../../../routes'
-import { Card, CardContent, CardTitle, Button, Input, Alert, Select, Box } from '../../../components'
+import { Card, CardContent, CardTitle, Button, Input, Alert, Select, Box, Textarea } from '../../../components'
 
 const valoresIniciais = {
     id: 0,
@@ -86,7 +86,7 @@ export function FormServico() {
         }
     }
 
-    function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
+    function atualizarEstado(e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>) {
         setServicos({
             ...servicos,
             [e.target.name]: e.target.value,
@@ -140,7 +140,7 @@ export function FormServico() {
     return (
         <Box>
             <div className="flex items-center justify-center pt-[130px] sm:h-screen">
-                <Card className="w-full max-w-xs sm:max-w-sm p-6">
+                <Card className="w-full max-w-xs sm:max-w-md p-6">
                     <CardTitle className="mb-4 text-xl sm:text-2xl text-center">
                         {id !== undefined ? 'Editar Serviço' : 'Cadastrar Serviço'}
                     </CardTitle>
@@ -160,7 +160,7 @@ export function FormServico() {
                                     value={servicos.nome}
                                     onChange={atualizarEstado}
                                 />
-                                <Input
+                                <Textarea
                                     name="descricao"
                                     placeholder="Descrição"
                                     value={servicos.descricao}
