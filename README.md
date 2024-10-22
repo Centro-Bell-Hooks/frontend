@@ -17,26 +17,26 @@ Nosso Projeto é um site e-commerce de soluções baseadas na ODS5 - Igualdade d
 
 **Framework de estilização:**![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white) 
 
-**Deploy:** ![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)  
+**Deploy:** ![Netlify](https://img.shields.io/badge/Netlify-000000?style=for-the-badge&logo=netlify&logoColor=white)  
 
 
 ## Funcionalidades
 
-- Login autênticado de usuário
-- Login autênticado do Admin
+- Login e Registro com autenticação de usuário
+- Login e Registro autênticado do Admin, Intituição e Candidato
 - Tela Home 
-- Tela apresentando todos os serviços/cursos
-- Cadastro de novos serviços/cursos - Admin
-- Edição de novos serviços/cursos - Admin
-- Remoção de novos serviços/cursos - Admin
+- Tela apresentando todos os cursos 
+- Cadastro, edição, remoção de novos cursos - Instituição
+- Tela apresentando todas as categorias
+- Cadastro, edição, remoção de novas categorias - Admin
 - Perfil do candidato - melhoria futura
 - Tela 'Meus cursos' do candidato - melhoria futura
 
 
 ## Confira o Site
+**Lembrete:** Nosso site demora para carregar o servidor quando faz uma operação para inserir os seus dados (cadastro e login), por favor espere 5 minutos. 
 
  - [Centro Bell Hooks](https://centro-bellhooks.netlify.app/)
-
 
 
 ## Rodando localmente
